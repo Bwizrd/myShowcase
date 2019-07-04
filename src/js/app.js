@@ -36,9 +36,13 @@ function loaded(d){
         ]
     }
 );
-window.addEventListener('beforeunload', function(event){
-  event.returnValue = 'Are you sure you want to leave?';
-});
+function SlowReload(){
+  if(window.slowreload)return;
+  window.addEventListener('beforeunload', function(event){
+    event.returnValue = 'Are you sure you want to leave?';
+  });
+  window.slowreload=true;
+}
 function SetPage(page){
     $('.page').hide();
     $('#'+page).show();
