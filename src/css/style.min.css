@@ -12,8 +12,7 @@
   height: 80%; }
 
 .question, .question_container {
-  width: 100%;
-  height: 60vh; }
+  width: 100%; }
 
 .question {
   overflow-y: auto; }
@@ -184,6 +183,9 @@ fieldset {
   background-color: orange;
   width: 19%;
   display: inline-block; }
+
+.navLink-active {
+  background-color: orange; }
 
 /* .navLink-active{
 	background-color: #148399;
@@ -7390,6 +7392,9 @@ a.navbar-item:focus {
   background-color: orange; }
 
 .navLink-active:focus {
+  background-color: orange; }
+
+.navLink-active {
   background-color: orange; }
 
 .navbar.is-link {
