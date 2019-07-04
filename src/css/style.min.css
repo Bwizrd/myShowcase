@@ -8,6 +8,10 @@
 .wdrLogo {
   max-height: 38.196601125%; }
 
+.footer {
+  padding: 0px !important;
+  padding-top: 10px !important; }
+
 #quizBox {
   height: 80%; }
 
