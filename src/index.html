@@ -189,7 +189,8 @@
                 var cz = '';
                 if (!bAllButtons) cz = ' onlyNext';
                 var qb = $('<a id="qb' + it + '" class="button is-large is-info qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
-                    SlowReload();
+                    $('#quiz').scrollTop(0);
+                    //SlowReload();
                     var jq = $('#question_container' + currentQuestion);
                     $('.question_container').hide();
                     //$('.qbtn').removeClass('btn-');
@@ -267,7 +268,7 @@
                 var questions =
                     [
                         {
-                            "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system. There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds. It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).",
+                            "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the",
                             "a": {}
                         },
                         {
@@ -308,7 +309,7 @@
                             }
                         },
                         {
-                            "q": "(No Question)",
+                            "q": "Order the following statements from most accurate at the top, to least accurate at the bottom",
                             "a": {
                                 "A": "I am very attuned to the sounds of my surroundings.",
                                 "D": "I am very adept at making sense of new facts and data.",
@@ -353,7 +354,7 @@
                             }
                         },
                         {
-                            "q": "(No Question)",
+                            "q": "Order the following statements from most accurate at the top, to least accurate at the bottom",
                             "a": {
                                 "D": "I easily receive inner inspirations.",
                                 "A": "I can tell easily where new ideas fit.",
@@ -2054,7 +2055,7 @@
 
 
 
-                        <input type="submit" />
+                        <input type="submit" class="button is-info" />
 
                     </form>
 
