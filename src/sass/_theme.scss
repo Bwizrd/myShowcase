@@ -15,7 +15,8 @@
 	height: 80%;
 }
 .question, .question_container{
-	width:100%;
+  width:100%;
+  min-height: 40vh;
 }
 .question{
 	overflow-y: auto;
