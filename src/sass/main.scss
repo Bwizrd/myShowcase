@@ -36,6 +36,20 @@ $navbar-breakpoint: 0;
 html{
 overflow-y: auto;
 }
+
+//bulma flexbox additions
+
+.outer-flex{
+    display: flex;
+}
+
+.is-vertical-center {
+    display: flex;
+    align-items: center;
+  }
+
+///
+
 a.navbar-item:hover{
     background-color: orange;
 }
@@ -66,6 +80,16 @@ a.navbar-item:focus{
 .amexLogo{
     max-width: 30%;
 
+}
+
+//table
+
+#trainingContent table p {
+    padding-bottom: 10px;
+}
+
+#trainingContent ol li {
+    padding-bottom: 30px;
 }
 
 $navbar-breakpoint: 0;
@@ -99,6 +123,10 @@ $navbar-breakpoint: 0;
    xxl = extra extra large
 
     */
+    .h30vh{
+        height: 30vh;
+    }
+
     .pan { padding: 0; }
     .paxs { padding: .25rem; }
     .pas { padding: .5rem; }

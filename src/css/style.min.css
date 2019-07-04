@@ -7386,6 +7386,13 @@ label.panel-block {
 html {
   overflow-y: auto; }
 
+.outer-flex {
+  display: flex; }
+
+.is-vertical-center {
+  display: flex;
+  align-items: center; }
+
 a.navbar-item:hover {
   background-color: orange; }
 
@@ -7407,6 +7414,12 @@ a.navbar-item:focus {
 
 .amexLogo {
   max-width: 30%; }
+
+#trainingContent table p {
+  padding-bottom: 10px; }
+
+#trainingContent ol li {
+  padding-bottom: 30px; }
 
 /*
    SPACING
@@ -7436,6 +7449,9 @@ a.navbar-item:focus {
    xxl = extra extra large
 
     */
+.h30vh {
+  height: 30vh; }
+
 .pan {
   padding: 0; }
 
