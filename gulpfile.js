@@ -22,8 +22,8 @@ const jsDist = './dist/js/';
 const jsWatch = './src/js/**/*.js';
 
 const htmlWatch = './src/**/*.html'
-const imgSrc = './src/imgages/*';
-const imgDist = './dist/imgages/';
+const imgSrc = './src/images/*';
+const imgDist = './dist/images/';
 
 
 const jsFiles = [
