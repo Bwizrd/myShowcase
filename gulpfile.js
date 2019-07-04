@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const scp = require('gulp-scp2');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync');
 // const reload = browserSync.reload;
@@ -114,6 +115,31 @@ function watch(){
     gulp.watch([htmlWatch, jsDist, styleDist]).on('change', browserSync.reload);
 }
 
+//uploads dist folder to pans-house server
+function deploy(cb){
+  /*var cmd = spawn('scp -P 18765 -r dist panshous@uk47.siteground.eu:/home/panshous/public_html/amexapp',[], {stdio: 'inherit'});
+  cmd.on('close', function (code) {
+    console.log('my-task exited with code ' + code);
+    //cb(code);
+  });*/
+  /*exec('scp -P 18765 -r dist panshous@uk47.siteground.eu:/home/panshous/public_html/amexapp', (err, stdout, stderr) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(stdout);
+  });*/
+  return gulp.src('**/*.js')
+    .pipe(scp({
+      host:'uk47.siteground.eu',
+      username:'panshous',
+      password: 'Netzach1',
+      port: 18765,
+      dest: '/home/panshous/public_html/amexapp'
+    }))
+    .on('error',function(err){console.log(err);})
+}
+
 gulp.task('watch', watch)
 gulp.task('sass', css);
 gulp.task('js', javascript);
@@ -125,5 +151,5 @@ const build = gulp.series(css, javascript, imgmin, htmlminify, assets);
 
 gulp.task('default', build);
 
-
+gulp.task('deploy', deploy);
 
