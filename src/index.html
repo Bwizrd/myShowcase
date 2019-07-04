@@ -507,41 +507,6 @@
             </div>
         </div>
         <script>
-<<<<<<< HEAD
-            var oc = [
-                localStorage.getItem('outcomes0'),
-                localStorage.getItem('outcomes1'),
-                localStorage.getItem('outcomes2'),
-                localStorage.getItem('outcomes3'),
-                localStorage.getItem('outcomes4'),
-                localStorage.getItem('outcomes5')
-            ];
-
-            $('#q1').val(oc[0]);
-            $('#q2').val(oc[1]);
-            $('#q3').val(oc[2]);
-            $('#q4').val(oc[3]);
-            $('#q5').val(oc[4]);
-            $('#q6').val(oc[5]);
-            function SaveLearningOutcomes() {
-                var oc = [
-                    $('#q1').val(),
-                    $('#q2').val(),
-                    $('#q3').val(),
-                    $('#q4').val(),
-                    $('#q5').val(),
-                    $('#q6').val()
-                ]
-
-                localStorage.setItem('outcomes0', oc[0]);
-                localStorage.setItem('outcomes1', oc[1]);
-                localStorage.setItem('outcomes2', oc[2]);
-                localStorage.setItem('outcomes3', oc[3]);
-                localStorage.setItem('outcomes4', oc[4]);
-                localStorage.setItem('outcomes5', oc[5]);
-                SlowReload();
-            }
-=======
           var oc=[
             localStorage.getItem('outcomes0'),
             localStorage.getItem('outcomes1'),
@@ -574,7 +539,6 @@
             localStorage.setItem('outcomes4', oc[4]);
             localStorage.setItem('outcomes5', oc[5]);
           }
->>>>>>> f3aeeb179770ea138b04595b2006fd6f1730f30a
         </script>
 
         <!-- TRAINING MATERIALS PAGE -->
@@ -2104,9 +2068,8 @@
     <!-- FOOTER -->
     <div class="footer">
         <div class="privacy">
-            By continuing to use our WebApp, you acknowledge that you have read and understand our <a
-                href="privacy.html">Privacy Policy</a>.
-            <span class="delete is-pulled-right mrm" onclick="$('.privacy').hide()"></span>
+            By continuing to use our WebApp, you acknowledge that you have read and understand our <a href="privacy.html">Privacy Policy</a>.
+            <span class="delete mlm" onclick="$('.privacy').hide()"></span>
         </div>
         <nav class="navbar is-link" role="navigation">
             <!-- <div class="navbar-brand"> -->
