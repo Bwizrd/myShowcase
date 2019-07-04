@@ -38,6 +38,7 @@
   "dependencies": {
     "bulma": "^0.7.5",
     "bulma-extensions": "^6.2.7",
+    "gulp-scp2": "^0.2.0",
     "live-server": "^1.2.1"
   }
 }
