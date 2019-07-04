@@ -189,6 +189,7 @@
                 var cz = '';
                 if (!bAllButtons) cz = ' onlyNext';
                 var qb = $('<a id="qb' + it + '" class="button is-large is-info qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
+                    SlowReload();
                     var jq = $('#question_container' + currentQuestion);
                     $('.question_container').hide();
                     //$('.qbtn').removeClass('btn-');
@@ -536,7 +537,6 @@
             localStorage.setItem('outcomes3', oc[3]);
             localStorage.setItem('outcomes4', oc[4]);
             localStorage.setItem('outcomes5', oc[5]);
-            SlowReload();
           }
         </script>
 
@@ -550,7 +550,8 @@
                 //    }*/
                 $(".training-content").hide();
                 $(".training-content.item-" + session).show();
-
+                $(".menu-item-active").removeClass("menu-item-active");
+                $(".menu-item-"+session).addClass("menu-item-active");
             }
         </script>
         <div class="page training" id="training">
@@ -568,18 +569,18 @@
                         <br />
 
                         <ul class="menu-list">
-                            <li><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li>
-                            <li><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li>
-                            <li><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li>
-                            <li><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li>
-                            <li><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li>
-                            <li><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li>
-                            <li><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li>
-                            <li><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li>
-                            <li><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li>
-                            <li><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a></li>
-                            <li><a href="javascript:setTrainingContent(11)">Session&nbsp;11</a></li>
-                            <li><a href="javascript:setTrainingContent(12)">Session&nbsp;12</a></li>
+                            <li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li>
+                            <li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li>
+                            <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li>
+                            <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li>
+                            <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li>
+                            <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li>
+                            <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li>
+                            <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li>
+                            <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li>
+                            <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a></li>
+                            <li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Session&nbsp;11</a></li>
+                            <li class="menu-item-12"><a href="javascript:setTrainingContent(12)">Session&nbsp;12</a></li>
                         </ul>
 
                     </aside>
@@ -1391,18 +1392,18 @@
                         <br />
 
                         <ul class="menu-list">
-                            <li><a href="javascript:setTrainingContent(1)">Exercise&nbsp;1</a></li>
-                            <li><a href="javascript:setTrainingContent(2)">Exercise&nbsp;2</a></li>
-                            <li><a href="javascript:setTrainingContent(3)">Exercise&nbsp;3</a></li>
-                            <li><a href="javascript:setTrainingContent(4)">Exercise&nbsp;4</a></li>
-                            <li><a href="javascript:setTrainingContent(5)">Exercise&nbsp;5</a></li>
-                            <li><a href="javascript:setTrainingContent(6)">Exercise&nbsp;6</a></li>
-                            <li><a href="javascript:setTrainingContent(7)">Exercise&nbsp;7</a></li>
-                            <li><a href="javascript:setTrainingContent(8)">Exercise&nbsp;8</a></li>
-                            <li><a href="javascript:setTrainingContent(9)">Exercise&nbsp;9</a></li>
-                            <li><a href="javascript:setTrainingContent(10)">Exercise&nbsp;10</a></li>
-                            <li><a href="javascript:setTrainingContent(11)">Exercise&nbsp;11</a></li>
-                            <li><a href="javascript:setTrainingContent(12)">Exercise&nbsp;12</a></li>
+                            <li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Exercise&nbsp;1</a></li>
+                            <li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Exercise&nbsp;2</a></li>
+                            <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Exercise&nbsp;3</a></li>
+                            <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Exercise&nbsp;4</a></li>
+                            <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Exercise&nbsp;5</a></li>
+                            <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Exercise&nbsp;6</a></li>
+                            <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Exercise&nbsp;7</a></li>
+                            <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Exercise&nbsp;8</a></li>
+                            <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Exercise&nbsp;9</a></li>
+                            <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Exercise&nbsp;10</a></li>
+                            <li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Exercise&nbsp;11</a></li>
+                            <li class="menu-item-12"><a href="javascript:setTrainingContent(12)">Exercise&nbsp;12</a></li>
                         </ul>
 
                     </aside>

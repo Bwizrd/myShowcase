@@ -8,6 +8,16 @@
 	max-height: 38.196601125%;
 }
 
+.menu-item-active{
+  background-color: orange;
+}
+.menu-item-active:hover{
+  background-color: orange;
+}
+.menu-list .menu-item-active a:hover{
+  background-color: orange;
+}
+
 .footer{
   padding: 0px !important;
 }
