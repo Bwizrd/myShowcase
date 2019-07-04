@@ -31,7 +31,7 @@ $primary-invert: $pink-invert;
 $navbar-breakpoint: 0;
 @import "node_modules/bulma/bulma";
 @import "node_modules/bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
-@import "node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css";
+// @import "node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css";
 
 html{
 overflow-y: auto;
@@ -58,6 +58,11 @@ a.navbar-item:focus{
 .tabs ul{
     -webkit-flex-direction: column;
     flex-direction: column;
+}
+
+.amexLogo{
+    max-width: 30%;
+
 }
 
 $navbar-breakpoint: 0;
