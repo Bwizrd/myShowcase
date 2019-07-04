@@ -248,7 +248,8 @@
                             pt += p;
                             if (g == r.length - 1) {
                                 if (pt != 100) {
-                                    alert('arp..!! ' + pt + '%');
+                                    //alert('arp..!! ' + (pt-100) + '%');
+                                    p-=(pt-100);
                                 }
                             }
                             html += +p + '% <br/>';
