@@ -26,6 +26,8 @@ $primary-invert: $pink-invert;
 // 4. Import the rest of Bulma
 */
 
+
+$navbar-breakpoint: 0;
 @import "node_modules/bulma/bulma";
 @import "node_modules/bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
 @import "node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css";
