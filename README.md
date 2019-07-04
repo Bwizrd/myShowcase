@@ -17,6 +17,6 @@ rsync -ru dist/* ml2rhvgma7ol@160.153.133.188:/home/ml2rhvgma7ol/public_html/bul
 
 Deploy to Dev Server Siteground - pans-house.com/bulmagulp
 
-scp -P 18765 -r dist  panshous@uk47.siteground.eu:/home/panshous/public_html/bulmagulp
+scp -P 18765 -r dist  panshous@uk47.siteground.eu:/home/panshous/public_html/amexapp
 
 rsync -P 18765 -ru dist/* panshous@uk47.siteground.eu:/home/panshous/public_html/bulmagulp/ -v

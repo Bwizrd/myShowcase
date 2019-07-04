@@ -29,8 +29,8 @@ function loaded(d){
         ]
     }
 );
-window.addEventListener('beforeunload', (event) => {
-  event.returnValue = `Are you sure you want to leave?`;
+window.addEventListener('beforeunload', function(event){
+  event.returnValue = 'Are you sure you want to leave?';
 });
 function SetPage(page){
     $('.page').hide();

@@ -17,13 +17,13 @@ const styleSrc = './src/sass/';
 const styleDist = './dist/css/';
 const styleWatch = './src/sass/**/*.scss';
 
-const jsSrc = './src/js/';
+const jsSrc = './src/js/*.js';
 const jsDist = './dist/js/';
 const jsWatch = './src/js/**/*.js';
 
 const htmlWatch = './src/**/*.html'
-const imgSrc = './src/img/*';
-const imgDist = './dist/img/';
+const imgSrc = './src/imgages/*';
+const imgDist = './dist/imgages/';
 
 
 const jsFiles = [
@@ -66,7 +66,7 @@ function concatCSS(){
 
 
 function javascript() {
-    return gulp.src(jsFiles)
+    return gulp.src(jsSrc)
     // .pipe(concat('main.js')) don't concat for now - until html replace of script tags
     .pipe(uglify())
     .pipe(lineec())
