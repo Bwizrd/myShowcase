@@ -21,11 +21,18 @@ function loaded(d){
         "images":[
             'images/wdr.png',
             'images/amex.png',
-            'images/Quiz.svg',
+            /*'images/Quiz.svg',
             'images/NLP Model.svg',
             'images/Predicates.svg',
             'images/Practice.svg',
-            'images/Feedback.svg',
+            'images/Feedback.svg',*/
+            'images/Home.png',
+            'images/Learning.png',
+            'images/Training.png',
+            'images/Quiz.png',
+            'images/Resources.png',
+            'images/Practice.png',
+            'images/Feedback.png',
         ]
     }
 );
