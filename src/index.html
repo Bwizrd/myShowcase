@@ -469,7 +469,7 @@
                             <p class="title">Please provide 6 learing outcomes</p>
                             <div class="field">
                                 <div class="control">
-                                    <input id="q1" class="input" type="text" placeholder="Outcome 1"/>
+                                    <input id="q1" class="input" type="text" placeholder="Outcome 1" />
                                 </div>
                             </div>
                             <div class="field">
@@ -498,46 +498,47 @@
                                 </div>
                             </div>
 
-                            <a href="javascript:SaveLearningOutcomes()" class="button is-large is-danger is-right mtl">Save</a>
+                            <a href="javascript:SaveLearningOutcomes()"
+                                class="button is-large is-danger is-right mtl">Save</a>
                         </article>
                     </div>
                 </div>
             </div>
         </div>
         <script>
-          var oc=[
-            localStorage.getItem('outcomes0'),
-            localStorage.getItem('outcomes1'),
-            localStorage.getItem('outcomes2'),
-            localStorage.getItem('outcomes3'),
-            localStorage.getItem('outcomes4'),
-            localStorage.getItem('outcomes5')
-          ];
-          
-          $('#q1').val(oc[0]);
-          $('#q2').val(oc[1]);
-          $('#q3').val(oc[2]);
-          $('#q4').val(oc[3]);
-          $('#q5').val(oc[4]);
-          $('#q6').val(oc[5]);
-          function SaveLearningOutcomes(){
-            var oc=[
-              $('#q1').val(),
-              $('#q2').val(),
-              $('#q3').val(),
-              $('#q4').val(),
-              $('#q5').val(),
-              $('#q6').val()
-            ]
-            
-            localStorage.setItem('outcomes0', oc[0]);
-            localStorage.setItem('outcomes1', oc[1]);
-            localStorage.setItem('outcomes2', oc[2]);
-            localStorage.setItem('outcomes3', oc[3]);
-            localStorage.setItem('outcomes4', oc[4]);
-            localStorage.setItem('outcomes5', oc[5]);
-            SlowReload();
-          }
+            var oc = [
+                localStorage.getItem('outcomes0'),
+                localStorage.getItem('outcomes1'),
+                localStorage.getItem('outcomes2'),
+                localStorage.getItem('outcomes3'),
+                localStorage.getItem('outcomes4'),
+                localStorage.getItem('outcomes5')
+            ];
+
+            $('#q1').val(oc[0]);
+            $('#q2').val(oc[1]);
+            $('#q3').val(oc[2]);
+            $('#q4').val(oc[3]);
+            $('#q5').val(oc[4]);
+            $('#q6').val(oc[5]);
+            function SaveLearningOutcomes() {
+                var oc = [
+                    $('#q1').val(),
+                    $('#q2').val(),
+                    $('#q3').val(),
+                    $('#q4').val(),
+                    $('#q5').val(),
+                    $('#q6').val()
+                ]
+
+                localStorage.setItem('outcomes0', oc[0]);
+                localStorage.setItem('outcomes1', oc[1]);
+                localStorage.setItem('outcomes2', oc[2]);
+                localStorage.setItem('outcomes3', oc[3]);
+                localStorage.setItem('outcomes4', oc[4]);
+                localStorage.setItem('outcomes5', oc[5]);
+                SlowReload();
+            }
         </script>
 
         <!-- TRAINING MATERIALS PAGE -->
@@ -599,6 +600,20 @@
                                     </div>
                                 </div>
                             </section>
+                            <div class="container mts">
+                                <div class="columns">
+                                    <div class="column is-8">
+                                        <div class="image">
+                                            <img src="https://placehold.it/800x500">
+                                        </div>
+                                        <br>
+                                        <div class="box video-meta">
+                                            <div class="video-title">Video Title</div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table mtl">
                                 <thead>
                                     <tr>
@@ -809,11 +824,25 @@
                                             Session&nbsp;2
                                             </h2>
                                             <h2 class="subtitle">
-                                                Session&nbsp;2 Subtitle
+                                                Developing New Habits
                                             </h2>
                                     </div>
                                 </div>
                             </section>
+                            <div class="container mts">
+                                <div class="columns">
+                                    <div class="column is-8">
+                                        <div class="image">
+                                            <img src="https://placehold.it/800x500">
+                                        </div>
+                                        <br>
+                                        <div class="box video-meta">
+                                            <div class="video-title">Video Title</div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table mtl">
                                 <thead>
                                     <tr>
@@ -1427,12 +1456,12 @@
                                     <div class="tile ptm pbm h30vh">
                                         <article class="tile is-child notification is-info outer-flex">
                                             <div class="column columns is-centered is-vertical-center">
-                                                
-                                                    <h1 class="title center">
-                                                        No Exercises for Introduction
-                                                    </h1>
 
-                                                
+                                                <h1 class="title center">
+                                                    No Exercises for Introduction
+                                                </h1>
+
+
                                             </div>
                                         </article>
                                     </div>
@@ -2037,49 +2066,57 @@
 
     <!-- FOOTER -->
     <div class="footer">
-      <div class="privacy">
-        By continuing to use our WebApp, you acknowledge that you have read and understand our <a href="privacy.html">Privacy Policy</a>.
-        <span class="delete is-pulled-right mrm" onclick="$('.privacy').hide()"></span>
-      </div>
-      <nav class="navbar is-link" role="navigation">
-          <!-- <div class="navbar-brand"> -->
-          <a id="navhome" href="javascript:SetPage('home');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-home is-size-2 is-size-5-touch has-text-white"></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Home.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Introduction</p>
-          </a>
-          <a id="navoutcomes" href="javascript:SetPage('outcomes');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-brain is-size-2 is-size-5-touch has-text-white"></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Learning.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Learning Outcomes</p>
-          </a>
-          <a id="navtraining" href="javascript:SetPage('training');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-book is-size-2 is-size-5-touch has-text-white"></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Training.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Training Materials</p>
-          </a>
-          <a id="navquiz" href="javascript:SetPage('quiz');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-question is-size-2 is-size-5-touch has-text-white"></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Quiz.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Quiz</p>
-          </a>
-          <a id="navresources" href="javascript:SetPage('resources');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-cubes is-size-2 is-size-5-touch has-text-white"></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Resources.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Resources</p>
-          </a>
-          <a id="navpractice" href="javascript:SetPage('practice');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-comments is-size-2 is-size-5-touch has-text-white"></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Practice.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Practice</p>
-          </a>
-          <a id="navfeedback" href="javascript:SetPage('feedback');" class="navbar-item is-expanded is-block has-text-centered">
-              <!-- <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white "></i> -->
-              <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Feedback.png"/></p>
-              <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Feedback</p>
-          </a>
-          <!-- </div> -->
-      </nav>
+        <div class="privacy">
+            By continuing to use our WebApp, you acknowledge that you have read and understand our <a
+                href="privacy.html">Privacy Policy</a>.
+            <span class="delete is-pulled-right mrm" onclick="$('.privacy').hide()"></span>
+        </div>
+        <nav class="navbar is-link" role="navigation">
+            <!-- <div class="navbar-brand"> -->
+            <a id="navhome" href="javascript:SetPage('home');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-home is-size-2 is-size-5-touch has-text-white"></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Home.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Introduction</p>
+            </a>
+            <a id="navoutcomes" href="javascript:SetPage('outcomes');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-brain is-size-2 is-size-5-touch has-text-white"></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Learning.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Learning Outcomes</p>
+            </a>
+            <a id="navtraining" href="javascript:SetPage('training');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-book is-size-2 is-size-5-touch has-text-white"></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Training.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Training Materials</p>
+            </a>
+            <a id="navquiz" href="javascript:SetPage('quiz');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-question is-size-2 is-size-5-touch has-text-white"></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Quiz.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Quiz</p>
+            </a>
+            <a id="navresources" href="javascript:SetPage('resources');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-cubes is-size-2 is-size-5-touch has-text-white"></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Resources.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Resources</p>
+            </a>
+            <a id="navpractice" href="javascript:SetPage('practice');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-comments is-size-2 is-size-5-touch has-text-white"></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Practice.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Practice</p>
+            </a>
+            <a id="navfeedback" href="javascript:SetPage('feedback');"
+                class="navbar-item is-expanded is-block has-text-centered">
+                <!-- <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white "></i> -->
+                <p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Feedback.png" /></p>
+                <p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Feedback</p>
+            </a>
+            <!-- </div> -->
+        </nav>
     </div>
 
 
