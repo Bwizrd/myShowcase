@@ -9,26 +9,29 @@
   max-height: 38.196601125%; }
 
 .menu-item-active {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 .menu-item-active:hover {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 .menu-list .menu-item-active a:hover {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 .main-footer {
   padding: 0px; }
 
 .privacy {
-  padding: 5px; }
+  padding: 5px;
+  text-align: center; }
+
+#quizBox {
+  min-height: 60vh; }
 
 .question, .question_container {
-  width: 100%;
-  min-height: 35vh; }
+  width: 100%; }
 
 .quiz-container {
-  height: 90%; }
+  height: 100%; }
 
 .question {
   overflow-y: auto; }
@@ -51,14 +54,15 @@
   width: 99%; }
 
 .list-group-item {
-  margin: 5px;
+  margin: 15px;
   margin-left: auto;
   margin-right: auto;
   padding: 0;
   border-radius: 5px;
   background-color: #eef;
   display: flex;
-  width: 80%; }
+  width: 80%;
+  cursor: all-scroll; }
 
 .list-group-item > i {
   font-size: 160%;
@@ -196,12 +200,12 @@ fieldset {
   text-align: center; }
 
 .navLink {
-  background-color: orange;
+  background-color: #98d4f5;
   width: 19%;
   display: inline-block; }
 
 .navLink-active {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 /* .navLink-active{
 	background-color: #148399;
@@ -218,7 +222,7 @@ fieldset {
 	color:#fff;
 } */
 .navLink-active:active, .navLink-active:visited, .navLink-active:hover {
-  color: orange; }
+  color: #98d4f5; }
 
 @-webkit-keyframes AnimationName {
   0% {
@@ -7490,16 +7494,16 @@ html {
   padding-top: 0.5rem; }
 
 a.navbar-item:hover {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 a.navbar-item:focus {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 .navLink-active:focus {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 .navLink-active {
-  background-color: orange; }
+  background-color: #98d4f5; }
 
 .navbar.is-link {
   background-color: #398ACC; }

@@ -269,13 +269,13 @@
                 var questions =
                     [
                         {
-                            "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom",
+                            "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom.",
                             "a": {}
                         },
                         {
                             "q": "I base important decisions on:",
                             "a": {
-                                "K": "A gut feeling",
+                                "K": "A gut feeling.",
                                 "A": "What sounds the best.",
                                 "V": "What looks best to me.",
                                 "D": "Precise review and study of the issues.",
@@ -421,7 +421,7 @@
                     var row = $('<div class="row qrow"></div>');
                     qContainer.append(row);
 
-                    row.append($('<h1 class="col-12">' + question + '</h1>'));
+                    row.append($('<h1>' + question + '</h1>'));
 
                     //create list group
                     var q = $('<div id="question' + it + '" class="question list-group col is-size-6-touch">');
@@ -623,7 +623,7 @@
                                     <tr>
                                         <th>Time</th>
                                         <th>Session Notes</th>
-                                        <th>Slide</th>
+                                        <th class="is-hidden-touch">Slide</th>
                                         <th>Learning Resources/Facilitator Resources</th>
                                     </tr>
                                 </thead>
@@ -674,7 +674,7 @@
                                                 <p>Keep flip at the front of the room as an anchor for the 2 days.</p>
 
                                         </td>
-                                        <td>1</td>
+                                        <td class="is-hidden-touch">1</td>
                                         <td>
                                             <p> Opening Slide (<strong>everything in bold in notes is on
                                                     slide/handout)</strong> </p>
@@ -743,7 +743,7 @@
                                                     they
                                                     say and then they swap over.</p>
                                         </td>
-                                        <td>2</td>
+                                        <td class="is-hidden-touch">2</td>
                                         <td>
                                             <p> Facilitator
                                                 resource:</p> <a
@@ -795,7 +795,7 @@
                                                 </li>
                                             </ul>
                                         </td>
-                                        <td>3</td>
+                                        <td class="is-hidden-touch">3</td>
                                         <td>
                                             <p>Handout/In App Handout/In App</p>
                                         </td>
@@ -864,7 +864,7 @@
                                     <tr>
                                         <th>Time</th>
                                         <th>Session Notes</th>
-                                        <th>Slide</th>
+                                        <th class="is-hidden-touch">Slide</th>
                                         <th>Learning Resources/Facilitator Resources</th>
                                     </tr>
                                 </thead>
