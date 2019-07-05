@@ -8,13 +8,13 @@
 	max-height: 38.196601125%;
 }
 .menu-item-active{
-  background-color: orange;
+  background-color: $hover-color;
 }
 .menu-item-active:hover{
-  background-color: orange;
+  background-color: $hover-color;
 }
 .menu-list .menu-item-active a:hover{
-  background-color: orange;
+  background-color: $hover-color;
 }
 
 .main-footer{
@@ -22,18 +22,17 @@
 }
 .privacy{
   padding: 5px;
+  text-align: center;
 }
 
-
 #quizBox{
-	//height: 80%;
+  min-height: 60vh;
 }
 .question, .question_container{
   width:100%;
-  min-height: 35vh;
 }
 .quiz-container{
-  height: 90%;
+  height: 100%;
 }
 .question{
 	overflow-y: auto;
@@ -56,14 +55,15 @@
 	width: 99%;
 }
 .list-group-item {
-	margin: 5px;
+	margin: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 0;
 	border-radius: 5px;
 	background-color: #eef;
 	display: flex;
-	width:80%;
+  width:80%;
+  cursor: all-scroll;
 }
 .list-group-item > i {
 	font-size: 160%;
@@ -243,12 +243,12 @@ fieldset{
 	text-align: center;
 }
 .navLink{
-	background-color: orange;
+	background-color: $hover-color;
 	width:19%;
 	display: inline-block;
 }
 .navLink-active{
-	background-color: orange;
+	background-color: $hover-color;
 }
 
 /* .navLink-active{
@@ -266,7 +266,7 @@ fieldset{
 	color:#fff;
 } */
 .navLink-active:active, .navLink-active:visited, .navLink-active:hover{
-	color: orange;
+	color: $hover-color;
 }
 @-webkit-keyframes AnimationName {
     0%{background-position:50% 0%}
