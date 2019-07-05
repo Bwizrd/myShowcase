@@ -6,6 +6,13 @@ function loaded(d){
     if(toload.length==0){
         SetPage('home');
         $('.footer').show();
+        if(window.location.hash!==''){
+          console.log(window.location.hash.substr(1,7));
+          if(window.location.hash.substr(1,7)=='Session'){
+            SetPage('training');
+            setTrainingContent(window.location.hash.substr(8,1))
+          }
+        }
     }
 }
 
