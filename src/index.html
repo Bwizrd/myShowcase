@@ -562,7 +562,7 @@
         <div class="page training" id="training">
 
 
-            <div class="columns is-mobile mlm">
+            <div class="columns is-mobile mlm-ns">
                 <div class="column is-one-fifth-desktop is-two-fifths-touch session-menu">
                     <aside class="menu">
                         <br />
@@ -1534,8 +1534,8 @@
         <!-- PRACTICE PAGE -->
         <div class="page practice" id="practice">
 
-            <div class="columns is-mobile mlm">
-                <div class="column is-one-fifth-destop is-two-fifths-mobile">
+            <div class="columns is-mobile mlm-ns">
+                <div class="column is-one-fifths-desktop is-two-fifths-mobile session-menu">
                     <aside class="menu">
                         <br />
                         <br />
@@ -1563,13 +1563,19 @@
 
                     </aside>
                 </div>
-                <div id="trainingContent" class="column is-10">
+                <div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content">
                     <div class="carousel">
                         <div class="training-content item-1">
                             <section class="hero is-info is-bold">
                                 <div class="hero-body">
                                     <div class="container">
                                         <h1 class="title">
+                                            <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                                              onclick="ToggleSessionMenu()">
+                                              <span aria-hidden="true"></span>
+                                              <span aria-hidden="true"></span>
+                                              <span aria-hidden="true"></span>
+                                            </a>
                                             Exercise&nbsp;1
                                         </h1>
                                         <h2 class="subtitle">
