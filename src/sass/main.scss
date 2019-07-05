@@ -66,16 +66,48 @@ $navbar-breakpoint: 0;
 .session-burger span:nth-child(3) {
   top: calc(50% + 4px);
 }
-@media screen and (min-width: $desktop){
+@media screen and (min-width: $tablet){
   .session-burger {
       display: none;
   }
 }
-
-.menu-list-active{
-  display: block !important;
+@media screen and (max-width: $tablet){
+  .session-menu{
+    display: block !important;
+    width: 0% !important;
+    overflow-x: hidden;
+    padding: 0;
+  }
+  .columns{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .session-menu.menu-list-active{
+    width: 50% !important;
+  }
+  .page > .columns > .column{
+    transition: width 0.3s;
+  }
+  .session-content{
+    width:100% !important;
+    padding: 0;
+  }
+  .session-content.menu-list-active{
+    width:50% !important;
+  }
+  .menu-label{
+    color: white;
+  }
+  .menu-list-active .menu-label{
+    color: #7a7a7a;
+  }
+  .menu-label{
+    transition: color 0.3s;
+  }
 }
-
+h1.title{
+  word-break: normal;
+}
 html{
 overflow-y: auto;
 }
