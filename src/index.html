@@ -555,12 +555,15 @@
                 $(".menu-item-active").removeClass("menu-item-active");
                 $(".menu-item-" + session).addClass("menu-item-active");
             }
+            function ToggleSessionMenu() {
+              $(".page > .columns > .column").toggleClass('menu-list-active');
+            }
         </script>
         <div class="page training" id="training">
 
 
             <div class="columns is-mobile mlm">
-                <div class="column is-one-fifth-destop is-two-fifths-mobile">
+                <div class="column is-one-fifth-desktop is-two-fifths-touch session-menu">
                     <aside class="menu">
                         <br />
                         <br />
@@ -597,6 +600,12 @@
                                 <div class="hero-body">
                                     <div class="container">
                                         <h1 class="title">
+                                            <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                                              onclick="ToggleSessionMenu()">
+                                              <span aria-hidden="true"></span>
+                                              <span aria-hidden="true"></span>
+                                              <span aria-hidden="true"></span>
+                                            </a>
                                             Session&nbsp;1
                                         </h1>
                                         <h2 class="subtitle">
