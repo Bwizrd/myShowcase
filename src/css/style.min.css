@@ -7398,6 +7398,71 @@ label.panel-block {
       border-color: #ff3860;
       color: #cd0930; }
 
+.session-burger {
+  color: #4a4a4a;
+  cursor: pointer;
+  display: block;
+  height: 3.25rem;
+  position: relative;
+  width: 3.25rem;
+  margin-left: auto; }
+
+.session-burger span {
+  background-color: currentColor;
+  display: block;
+  height: 1px;
+  left: calc(50% - 8px);
+  position: absolute;
+  transform-origin: center;
+  transition-duration: 86ms;
+  transition-property: background-color, opacity, transform;
+  transition-timing-function: ease-out;
+  width: 16px; }
+
+.session-burger:hover {
+  background-color: rgba(0, 0, 0, 0.05); }
+
+.session-burger span:nth-child(1) {
+  top: calc(50% - 6px); }
+
+.session-burger span:nth-child(2) {
+  top: calc(50% - 1px); }
+
+.session-burger span:nth-child(3) {
+  top: calc(50% + 4px); }
+
+@media screen and (min-width: 769px) {
+  .session-burger {
+    display: none; } }
+
+@media screen and (max-width: 769px) {
+  .session-menu {
+    display: block !important;
+    width: 0% !important;
+    overflow-x: hidden;
+    padding: 0; }
+  .columns {
+    margin-left: 0;
+    margin-right: 0; }
+  .session-menu.menu-list-active {
+    width: 50% !important; }
+  .page > .columns > .column {
+    transition: width 0.3s; }
+  .session-content {
+    width: 100% !important;
+    padding: 0; }
+  .session-content.menu-list-active {
+    width: 50% !important; }
+  .menu-label {
+    color: white; }
+  .menu-list-active .menu-label {
+    color: #7a7a7a; }
+  .menu-label {
+    transition: color 0.3s; } }
+
+h1.title {
+  word-break: normal; }
+
 html {
   overflow-y: auto; }
 
