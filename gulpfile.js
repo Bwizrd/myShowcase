@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const scp = require('gulp-scp2');
+var exec = require('child_process').exec;
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync');
 // const reload = browserSync.reload;
@@ -116,28 +116,36 @@ function watch(){
 }
 
 //uploads dist folder to pans-house server
-function deploy(cb){
+function deploy(){
   /*var cmd = spawn('scp -P 18765 -r dist panshous@uk47.siteground.eu:/home/panshous/public_html/amexapp',[], {stdio: 'inherit'});
   cmd.on('close', function (code) {
     console.log('my-task exited with code ' + code);
     //cb(code);
   });*/
-  /*exec('scp -P 18765 -r dist panshous@uk47.siteground.eu:/home/panshous/public_html/amexapp', (err, stdout, stderr) => {
+
+  exec('scp -P 18765 -r dist panshous@uk47.siteground.eu:/home/panshous/public_html/amexapp -pw Netzach1', (err, stdout, stderr) => {
     if (err) {
       console.error(err);
       return;
     }
     console.log(stdout);
-  });*/
-  return gulp.src('**/*.js')
-    .pipe(scp({
-      host:'uk47.siteground.eu',
-      username:'panshous',
-      password: 'Netzach1',
-      port: 18765,
-      dest: '/home/panshous/public_html/amexapp'
-    }))
-    .on('error',function(err){console.log(err);})
+  });
+
+
+
+
+
+//   return gulp.src('**/*.js')
+//     .pipe(scp({
+//       host:'uk47.siteground.eu',
+//       username:'panshous',
+//       password: 'Netzach1',
+//       port: 18765,
+//       dest: '/home/panshous/public_html/amexapp',
+//       publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3vhlvfIPgZZT6Uu/+StvKOzUUa7GGq3LarXnj8NxkIoUZUKtPfDSTO1Y3E5mn9lEG7VuS3pFJIuJHtOIcFNCFtEPWVgbF/cdKcOtw2nIG3z/TKMIlW7KO5dDMNMgStXQ8RaxyUToMVGgBJvqk2E0FPl9c+/lpS07Zkq2B/LmmgtA2fTTD4Q+LBJSSp0Xu6Pep2EyJ290U/8VJNnDvBh8kZ0OVvZPRWJnIw+X6DQJgnNCsulAeVDOAuR5DeqouknLqpgCRJuErWaIUmYBuTuSObRcvlHQ5Nl7cAvdBcHS5RNIVOCkhBRciEkEJNb8+OAcPgV/snlQmCCQZrvuRx8hzbeFuFt6cYhxFKfijJnTn76Hu/GWGrvRGH+GfhltAaa6JPI2r+mSK+ylDvbR31noJ8Xhz+r/HNIUoeofx8W8TYUg3gjs98N78qib1FWGkZ6pE/oUbvuYN4OkdddIrVZAD4Qo/99YoLCtpP3kZ0crA+J8i/5MWwENePmOin7GBpmc= paul.leppard@PC00642'
+
+//     }))
+//     .on('error',function(err){console.log(err);})
 }
 
 gulp.task('watch', watch)

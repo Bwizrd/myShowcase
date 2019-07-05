@@ -7436,6 +7436,9 @@ a.navbar-item:focus {
 #trainingContent ol li {
   padding-bottom: 30px; }
 
+.training-content .ul-disc {
+  list-style: disc; }
+
 /*
    SPACING
 

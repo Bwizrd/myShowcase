@@ -15,7 +15,7 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"> -->
     <link rel="stylesheet" href="css/style.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/theme.css"> -->
 
@@ -508,38 +508,38 @@
             </div>
         </div>
         <script>
-          var oc=[
-            localStorage.getItem('outcomes0'),
-            localStorage.getItem('outcomes1'),
-            localStorage.getItem('outcomes2'),
-            localStorage.getItem('outcomes3'),
-            localStorage.getItem('outcomes4'),
-            localStorage.getItem('outcomes5')
-          ];
-          
-          $('#q1').val(oc[0]);
-          $('#q2').val(oc[1]);
-          $('#q3').val(oc[2]);
-          $('#q4').val(oc[3]);
-          $('#q5').val(oc[4]);
-          $('#q6').val(oc[5]);
-          function SaveLearningOutcomes(){
-            var oc=[
-              $('#q1').val(),
-              $('#q2').val(),
-              $('#q3').val(),
-              $('#q4').val(),
-              $('#q5').val(),
-              $('#q6').val()
-            ]
-            
-            localStorage.setItem('outcomes0', oc[0]);
-            localStorage.setItem('outcomes1', oc[1]);
-            localStorage.setItem('outcomes2', oc[2]);
-            localStorage.setItem('outcomes3', oc[3]);
-            localStorage.setItem('outcomes4', oc[4]);
-            localStorage.setItem('outcomes5', oc[5]);
-          }
+            var oc = [
+                localStorage.getItem('outcomes0'),
+                localStorage.getItem('outcomes1'),
+                localStorage.getItem('outcomes2'),
+                localStorage.getItem('outcomes3'),
+                localStorage.getItem('outcomes4'),
+                localStorage.getItem('outcomes5')
+            ];
+
+            $('#q1').val(oc[0]);
+            $('#q2').val(oc[1]);
+            $('#q3').val(oc[2]);
+            $('#q4').val(oc[3]);
+            $('#q5').val(oc[4]);
+            $('#q6').val(oc[5]);
+            function SaveLearningOutcomes() {
+                var oc = [
+                    $('#q1').val(),
+                    $('#q2').val(),
+                    $('#q3').val(),
+                    $('#q4').val(),
+                    $('#q5').val(),
+                    $('#q6').val()
+                ]
+
+                localStorage.setItem('outcomes0', oc[0]);
+                localStorage.setItem('outcomes1', oc[1]);
+                localStorage.setItem('outcomes2', oc[2]);
+                localStorage.setItem('outcomes3', oc[3]);
+                localStorage.setItem('outcomes4', oc[4]);
+                localStorage.setItem('outcomes5', oc[5]);
+            }
         </script>
 
         <!-- TRAINING MATERIALS PAGE -->
@@ -1538,21 +1538,18 @@
 
                         <ul class="menu-list">
                             <li class="menu-item-1 menu-item-active"><a
-                                    href="javascript:setTrainingContent(1)">Exercise&nbsp;1</a></li>
-                            <li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Exercise&nbsp;2</a></li>
-                            <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Exercise&nbsp;3</a></li>
-                            <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Exercise&nbsp;4</a></li>
-                            <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Exercise&nbsp;5</a></li>
-                            <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Exercise&nbsp;6</a></li>
-                            <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Exercise&nbsp;7</a></li>
-                            <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Exercise&nbsp;8</a></li>
-                            <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Exercise&nbsp;9</a></li>
-                            <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Exercise&nbsp;10</a>
+                                    href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li>
+                            <li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li>
+                            <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li>
+                            <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li>
+                            <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li>
+                            <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li>
+                            <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li>
+                            <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li>
+                            <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li>
+                            <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a>
                             </li>
-                            <li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Exercise&nbsp;11</a>
-                            </li>
-                            <li class="menu-item-12"><a href="javascript:setTrainingContent(12)">Exercise&nbsp;12</a>
-                            </li>
+                          
                         </ul>
 
                     </aside>
@@ -1572,22 +1569,28 @@
                                     </div>
                                 </div>
                             </section>
-                            <div class="columns">
-                                <div class="column is-half is-offset-2">
-                                    <div class="tile ptm pbm h30vh">
-                                        <article class="tile is-child notification is-info outer-flex">
-                                            <div class="column columns is-centered is-vertical-center">
-
-                                                <h1 class="title center">
-                                                    No Exercises for Introduction
-                                                </h1>
-
-
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
+                            <section class="mtl">
+                                    <p class="title is 4"><strong>No Exercises</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                        
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
+                            </section>
 
                         </div>
                         <div class="training-content item-2">
@@ -1604,30 +1607,41 @@
                                 </div>
                             </section>
                             <section class="mtl">
-                                <p class="title is 4"><strong>Teach to Learn – pairs activity</strong></p>
+                                    <p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                                                    <p class="mtm">Review your handouts and the notes you have taken and the
+                                                            content within the
+                                                            App.</p>
+                                                            <p>
+                                                                Stand up and find a partner and share three insights from the
+                                                            session
+                                                            and answer
+                                                            any questions they may have.
+                                                            </p>
+                                                            <p>
+                                                                Swap over and then move on to find a new partner
+                                                            and once again teach in your three insights
+                                                            </p>
 
-                                <p class="subtitle is-5 mtm">Review your handouts and the notes you have taken and the
-                                    content within the
-                                    App.</p>
-
-                                <div class="columns">
-                                    <div class="column is-half is-offset-2">
-                                        <div class="tile ptm pbm">
-                                            <article class="tile is-child notification is-info">
-                                                <ol class="is-size-3 pll">
-                                                    <li>Stand up and find a partner and share three insights from the
-                                                        session
-                                                        and answer
-                                                        any questions they may have. </li>
-
-                                                    <li>Swap over and then move on to find a new partner
-                                                        and once again teach in your three insights.</li>
-                                                </ol>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
                             </section>
+                               
                         </div>
                         <div class="training-content item-3">
                             <section class="hero is-info is-bold">
@@ -1643,31 +1657,175 @@
                                 </div>
                             </section>
                             <section class="mtl">
-                                <p class="title is 4"><strong>Uncovering the Beliefs, Practices and Results for each
+                                <p class="title"><strong>1. Uncovering the Beliefs, Practices and Results for each
                                         stage of the sales process </strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
 
-                                <p class="subtitle is-5 mtm">Trainer to split the group into three smaller groups.</p>
+                                            <th>Exercise Notes</th>
 
-                                <div class="columns">
-                                    <div class="column is-half is-offset-2">
-                                        <div class="tile ptm pbm">
-                                            <article class="tile is-child notification is-info">
-                                                <ul class="is-size-3 pll">
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr>
+
+
+                                            <td>
+                                                <p>Trainer to split the group into three
+                                                    smaller groups.</p>
+                                                <ul>
                                                     <li>Group 1 - Start at Greet </li>
 
                                                     <li>Group 2 - Start at Builds Value</li>
                                                     <li>Group 3 - Start at Close</li>
                                                 </ul>
-                                            </article>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p>Explain that each group will move around the three flip charts to discuss each of the
-                                    three stages of the sales process and identify the Be – Do – Win for each of them.
-                                </p>
 
-                                <p>Trainer states that this is timed activity and each group will have 15 mins at each
-                                    of the 3 stages before a whistle sounds and they move on to the next flip.</p>
+                                                <p class="mtm">Explain that each group will move around the three flip
+                                                    charts to discuss each of
+                                                    the
+                                                    three stages of the sales process and identify the Be – Do – Win for
+                                                    each of
+                                                    them.
+                                                </p>
+
+                                                <p>Trainer states that this is timed activity and each group will have
+                                                    15 mins at
+                                                    each
+                                                    of the 3 stages before a whistle sounds and they move on to the next
+                                                    flip.</p>
+
+                                                <p class="mtm"><strong>Round 1</strong> – the groups discuss the
+                                                    <em>first section
+                                                        only</em> on their flip chart –
+                                                    <strong>Being</strong>, and discuss the beliefs/attitude/mindset
+                                                    (the below the
+                                                    waterline
+                                                    areas) that the TLS consultant would need to adopt at this stage of
+                                                    the
+                                                    conversation with the customer.</p>
+
+                                                <p>After 12 mins the trainer blows the whistle and the groups move onto
+                                                    the next
+                                                    flip chart – Group 1 moves to Builds Value, Group 2 moves to Close
+                                                    and Group 3
+                                                    moves to Greet.</p>
+
+                                                <p class="mtm"><strong>Round 2</strong> - the groups review what their
+                                                    colleagues
+                                                    have entered on the flips
+                                                    and add in anything extra before moving on to discuss the
+                                                    <strong>Doing,</strong> and
+                                                    identify the actions and activities, skills and behaviours ( the
+                                                    above the
+                                                    waterline areas) that a TLS consultant would demonstrate for that
+                                                    stage of the
+                                                    sales process.</p>
+
+                                                <p>After 12 mins the trainer blows the whistle and the groups move onto
+                                                    their final
+                                                    flip chart.</p>
+
+                                                <p class="mtm"><strong>Round 3</strong> – the groups review what their
+                                                    colleagues
+                                                    have entered on the flips
+                                                    and add in anything extra before moving on to discussing the Winning
+                                                    and
+                                                    identify what achieving a winning result looks like/sounds
+                                                    like/feels like from
+                                                    the <em>card holder</em> and <em>TLS consultant’s</em> perspective
+                                                    for that
+                                                    stage of the sales
+                                                    process.</p>
+
+                                                <p>After 12 mins the trainer blows the whistle and the groups move back
+                                                    to their
+                                                    original starting point and review the completed flip chart and add
+                                                    in any final
+                                                    points.</p>
+
+                                                <p class="mtm"><strong>Round 4 –</strong> the groups then review each of
+                                                    the
+                                                    completed flip charts “art
+                                                    gallery style” and take pictures of each of the flip charts on their
+                                                    mobile
+                                                    phones to upload onto their App.</p>
+
+                                                <p>Plenary debrief session</p>
+
+                                                <p class="mtm"><strong>Ask</strong> – What have you discovered during
+                                                    this activity?
+                                                </p>
+
+                                                <p class="mtm"><strong>Look for</strong> – beliefs need to be empowering
+                                                    at each of
+                                                    the 3 stages/different
+                                                    actions and activities needed at the different stages/some
+                                                    behaviours are used
+                                                    constantly throughout – e.g. being present,
+                                                    communicating/listening/being clear
+                                                    on the win (from both perspectives) is super important and it would
+                                                    be good have
+                                                    this in mind from the outset.</p>
+
+                                                <p class="mtm">Trainer to state that the phrase <strong>“Begin with the
+                                                        end in
+                                                        Mind”</strong> – links to the Win
+                                                    of Be Do Win. When you are clear on what a winning result looks
+                                                    like/sounds
+                                                    like/feels like – you are setting the course for success.</p>
+
+                                                <p class="mtm"><strong>Trainer to highlight that Be- Do -Win is a
+                                                        powerful tool to
+                                                        adopt at each stage
+                                                        of the conversation with the customer.</p></strong>
+
+
+                                                <p class="mtm">It gives you a
+                                                    blueprint for personal
+                                                    success.</p>
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Exercise Notes</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+
+                                                <p>Review your learning for the session. Stand up and find a partner and
+                                                    share
+                                                    three insights from the session and answer any questions they may
+                                                    have. Swap
+                                                    over and then move on to find a new partner and once again teach in
+                                                    your three
+                                                    insights.</p>
+
+                                                <p>Trainer to signpost to the next session.</p>
+
+                                                <p>State – one of the key activities uncovered in this session was
+                                                    Communication.
+                                                    The next session will explore this topic and you will discover more
+                                                    about the
+                                                    way you personally communicate and how you can flex and adapt your
+                                                    style to make
+                                                    powerful connections with the card holders.</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
                             </section>
                         </div>
@@ -1684,19 +1842,197 @@
                                     </div>
                                 </div>
                             </section>
+                            <section class="mtl">
+                                <p class="title"><strong>1. Least Preferred Rep System </strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Exercise Notes</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr>
+
+
+                                            <td>
+                                                <p>Take a holiday/travel package and describe it to your partner in your
+                                                    least preferred rep system (the system you scored the lowest score
+                                                    on in the app). Partner listens. Then swap. Three minutes each, the
+                                                    quick group feedback</p>
+
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Exercise Notes</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <p>
+                                                    “A” and “B”
+                                                    “A” explains the basic Communication Model and the function of
+                                                    filters (talk about beliefs and how they shape our perception of
+                                                    reality)
+                                                    Then swap
+                                                    “B” explains representational systems to “A”
+
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </section>
                         </div>
                         <div class="training-content item-5">
                             <section class="hero is-info is-bold">
                                 <div class="hero-body">
                                     <div class="container">
                                         <h1 class="title">
-                                            Exercise&nbsp;5
+                                            Session&nbsp;5
                                         </h1>
                                         <h2 class="subtitle">
-                                            Exercise&nbsp;5 Subtitle
+                                            Exercises
                                         </h2>
                                     </div>
                                 </div>
+                            </section>
+                            <section class="mtl">
+                                <p class="title"><strong>1. Personal Greetings practice </strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Exercise Notes</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr>
+
+
+                                            <td>
+                                                <p class="mtm">
+                                                    Info supplied on customer predicates/experience with
+                                                    AMEX/data/other info on CRM
+                                                </p>
+
+                                                <ul class="mts ul-disc">
+                                                    <li>
+                                                        <p>Card Member scenario activities – trios (1 observer to
+                                                            feedback)</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>One is the Consultant; One is the Card Member and one is the
+                                                            observer</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Card Member and Consultant sit back-to-back so they cannot
+                                                            see each other
+                                                            but can hear each other</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Consultant takes a minute to remember empowering beliefs,
+                                                            create positive
+                                                            internal representations and a physiology of excellence.</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Consultant opens the call with a question: “Good
+                                                            morning/afternoon/evening,
+                                                            how can I help you?</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>CM responds as naturally as they can explaining they want to
+                                                            go on a
+                                                            vacation</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Consultant listens for any predicates or phrases. Make a
+                                                            mental note. If
+                                                            detected, follow up in appropriate rep system (AD if none
+                                                            detected)</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Continue conversation, Consultant asks the CM why they are
+                                                            going on the
+                                                            trip, what is important to them about the trip and the kind
+                                                            of experience
+                                                            they are looking for</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Note rep systems and respond appropriately</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Observer observes and takes notes</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Five minutes each and then swap around so everyone gets to be
+                                                            the
+                                                            Consultant, CM and observer</p>
+                                                    </li>
+
+                                                    <li>
+                                                        <p>Trainer collects feedback at the end and answers any
+                                                            questions</p>
+                                                    </li>
+                                                </ul>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Exercise Notes</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+
+
+                                                <p>Learners work in pairs “A” and “B”</p>
+
+                                                <p>“A” shares with “B” their three most important takeaways
+                                                    from the session</p>
+
+                                                <p>Then swap and repeat</p>
+
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </section>
                         </div>
                         <div class="training-content item-6">
@@ -1712,6 +2048,28 @@
                                     </div>
                                 </div>
                             </section>
+                            <section class="mtl">
+                                    <p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                        
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
+                            </section>
                         </div>
                         <div class="training-content item-7">
                             <section class="hero is-info is-bold">
@@ -1725,6 +2083,28 @@
                                         </h2>
                                     </div>
                                 </div>
+                            </section>
+                            <section class="mtl">
+                                    <p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                        
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
                             </section>
                         </div>
                         <div class="training-content item-8">
@@ -1740,6 +2120,28 @@
                                     </div>
                                 </div>
                             </section>
+                            <section class="mtl">
+                                    <p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                        
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
+                            </section>
                         </div>
                         <div class="training-content item-9">
                             <section class="hero is-info is-bold">
@@ -1753,6 +2155,28 @@
                                         </h2>
                                     </div>
                                 </div>
+                            </section>
+                            <section class="mtl">
+                                    <p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                        
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
                             </section>
                         </div>
                         <div class="training-content item-10">
@@ -1768,33 +2192,27 @@
                                     </div>
                                 </div>
                             </section>
-                        </div>
-                        <div class="training-content item-11">
-                            <section class="hero is-info is-bold">
-                                <div class="hero-body">
-                                    <div class="container">
-                                        <h1 class="title">
-                                            Exercise&nbsp;11
-                                        </h1>
-                                        <h2 class="subtitle">
-                                            Exercise&nbsp;11 Subtitle
-                                        </h2>
-                                    </div>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="training-content item-12">
-                            <section class="hero is-info is-bold">
-                                <div class="hero-body">
-                                    <div class="container">
-                                        <h1 class="title">
-                                            Exercise&nbsp;12
-                                        </h1>
-                                        <h2 class="subtitle">
-                                            Exercise&nbsp;12 Subtitle
-                                        </h2>
-                                    </div>
-                                </div>
+                            <section class="mtl">
+                                    <p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                                <table class="table mtl">
+                                    <thead>
+                                        <tr>
+                        
+                                            <th>Exercise Notes</th>
+                        
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                           <td>
+                                               <p>
+                        
+                                               </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        
                             </section>
                         </div>
                     </div>
@@ -2216,7 +2634,8 @@
     <!-- FOOTER -->
     <div class="footer">
         <div class="privacy">
-            By continuing to use our WebApp, you acknowledge that you have read and understand our <a href="privacy.html">Privacy Policy</a>.
+            By continuing to use our WebApp, you acknowledge that you have read and understand our <a
+                href="privacy.html">Privacy Policy</a>.
             <span class="delete mlm" onclick="$('.privacy').hide()"></span>
         </div>
         <nav class="navbar is-link" role="navigation">
