@@ -39,8 +39,9 @@
 
 </head>
 
-<body>
-    <div id="main" class="container-fluid fullscreen">
+<body></div>
+  <div class="main-container">
+    <div id="main" class="fullscreen">
 
         <!-- HOME PAGE -->
         <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -78,8 +79,8 @@
 
         <!-- QUIZ PAGE -->
         <div id="quiz" class="page quiz">
-            <div class="container">
-                <div class="notification has-background-white">
+            <div class="container fullscreen">
+                <div class="quiz-container">
                     <h1 class="subtitle is-1" id="quizTitle">Quiz</h1>
                     <div class="subtitle is-4" id="quizBox"></div>
                     <div id="quizButtons"></div>
@@ -554,6 +555,8 @@
                 $(".training-content.item-" + session).show();
                 $(".menu-item-active").removeClass("menu-item-active");
                 $(".menu-item-" + session).addClass("menu-item-active");
+                $(".page > .columns > .column").removeClass('menu-list-active');
+
             }
             function ToggleSessionMenu() {
               $(".page > .columns > .column").toggleClass('menu-list-active');
@@ -2814,6 +2817,7 @@
             <!-- </div> -->
         </nav>
     </div>
+  </div>
 
 
     <!-- <div class="footer">

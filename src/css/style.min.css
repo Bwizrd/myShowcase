@@ -30,6 +30,9 @@
   width: 100%;
   min-height: 35vh; }
 
+.quiz-container {
+  height: 90%; }
+
 .question {
   overflow-y: auto; }
 
@@ -130,7 +133,7 @@ body {
 
 .page {
   display: none;
-  height: 80%;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden; }
 
@@ -7397,6 +7400,17 @@ label.panel-block {
     .accordions .accordion.is-danger .accordion-content {
       border-color: #ff3860;
       color: #cd0930; }
+
+.main-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column; }
+
+#main {
+  overflow-y: auto; }
+
+.footer {
+  position: initial; }
 
 .session-burger {
   color: #4a4a4a;
