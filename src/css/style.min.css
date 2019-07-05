@@ -17,14 +17,11 @@
 .menu-list .menu-item-active a:hover {
   background-color: orange; }
 
-.footer {
-  padding: 0px !important; }
+.main-footer {
+  padding: 0px; }
 
 .privacy {
   padding: 5px; }
-
-#quizBox {
-  height: 80%; }
 
 .question, .question_container {
   width: 100%;
@@ -7474,7 +7471,7 @@ label.panel-block {
   .menu-label {
     transition: color 0.3s; } }
 
-h1.title {
+h1.title, h2.subtitle {
   word-break: normal; }
 
 html {
@@ -7486,6 +7483,11 @@ html {
 .is-vertical-center {
   display: flex;
   align-items: center; }
+
+.navbar-item {
+  width: 14.2857%;
+  padding: 0;
+  padding-top: 0.5rem; }
 
 a.navbar-item:hover {
   background-color: orange; }
