@@ -87,6 +87,36 @@ function SetPage(page){
 
 
 
+function setTrainingContent(session) {
+  //     window.carousels[0].show(session);
+  //    /*var jq = $(".carousel");
+  //    if (jq[0] && jq[0].bulmaCarousel){
+  //     jq[0].bulmaCarousel.show(session)
+  //    }*/
+  $(".training-content").hide();
+  $(".training-content.item-" + session).show();
+  $(".menu-item-active").removeClass("menu-item-active");
+  $(".menu-item-" + session).addClass("menu-item-active");
+  $(".page > .columns > .column").removeClass('menu-list-active');
+  $('video').each(function (id, dom) {
+    dom.pause();
+  });
+  /*window.currentSession=session;
+  switch (window.currentPage) {
+    case 'training':
+      window.location.hash = 'Session' + session
+      break;
+    case 'practice':
+      window.location.hash = 'Exercise' + session
+      break;
+  }*/
+}
+function ToggleSessionMenu() {
+  $(".page > .columns > .column").toggleClass('menu-list-active');
+}
+
+
+
 
 function fitToContainer(canvas){
     // Make it visually fill the positioned parent
