@@ -6,16 +6,18 @@ function loaded(d){
     if(toload.length==0){
         SetPage('home');
         $('.footer').show();
-        if(window.location.hash!==''){
-          if(window.location.hash.substr(1,7)=='Session'){
-            SetPage('training');
-            setTrainingContent(window.location.hash.substr(8,1))
+        //setInterval(function(){
+          if(window.location.hash!==''){
+            if(window.location.hash.substr(1,7).toLowerCase()=='session'){
+              SetPage('training');
+              setTrainingContent(window.location.hash.substr(8))
+            }
+            if(window.location.hash.substr(1,8).toLowerCase()=='exercise'){
+              SetPage('practice');
+              setTrainingContent(window.location.hash.substr(9))
+            }
           }
-          if(window.location.hash.substr(1,8)=='Exercise'){
-            SetPage('practice');
-            setTrainingContent(window.location.hash.substr(9,1))
-          }
-        }
+        //}, 300);
     }
 }
 
@@ -61,6 +63,26 @@ function SetPage(page){
     $('video').each(function(id,dom) {
       dom.pause();
     });
+    if(page!=window.currentPage){
+      /*switch (page) {
+        case 'training':
+            if(window.currentPage!='training' && window.currentPage!='practice')
+              window.location.hash='Session1';
+            else
+              window.location.hash='Session'+window.currentSession;
+            break;
+        case 'practice':
+            if(window.currentPage!='training' && window.currentPage!='practice')
+              window.location.hash='Exercise1';
+            else
+              window.location.hash='Exercise'+window.currentSession;
+            break;
+          break;
+        default:
+          window.location.hash='';
+      }*/
+      window.currentPage=page;
+    }
 }
 
 

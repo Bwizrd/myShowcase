@@ -44,17 +44,19 @@
   <div class="main-container">
     <div id="main" class="fullscreen">
 
+
+
+
+
+
+
+
+
+
+
+      
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- HOME PAGE -->
-      <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-              
-                  <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                  </a>
-                </div>
-              </nav> -->
       <div class="page home" id="home">
         <section class="hero">
           <div class="hero-body">
@@ -68,16 +70,617 @@
               </h1>
               <img class="subtitle wdrLogo" src="images/wdr.png" />
             </div>
-            <!-- <div class="container">
-                        <img class="amexLogo" src="images/amex.png" />
-                        <h1 class="title is-size-2"></h1>
-                        
-                  </div> -->
           </div>
         </section>
 
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <!-- OUTCOMES PAGE -->
+      <div class="page outcomes" id="outcomes">
+          <section class="hero is-info is-bold">
+            <div class="hero-body">
+              <div class="container">
+                <h1 class="title">
+                  Training Outcomes
+                </h1>
+                <h2 class="subtitle">
+                  What do you want to achieve from this training?
+                </h2>
+              </div>
+            </div>
+          </section>
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <div class="tile ptm pbm">
+                <article class="tile is-child notification is-info">
+                  <p class="title">Please provide 6 learing outcomes</p>
+                  <div class="field">
+                    <div class="control">
+                      <input id="q1" class="input" type="text" placeholder="Outcome 1" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input id="q2" class="input" type="text" placeholder="Outcome 2" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input id="q3" class="input" type="text" placeholder="Outcome 3" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input id="q4" class="input" type="text" placeholder="Outcome 4" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input id="q5" class="input" type="text" placeholder="Outcome 5" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control">
+                      <input id="q6" class="input" type="text" placeholder="Outcome 6" />
+                    </div>
+                  </div>
+  
+                  <a href="javascript:SaveLearningOutcomes()" class="button is-large is-danger is-right mtl">Save</a>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          var oc = [
+            localStorage.getItem('outcomes0'),
+            localStorage.getItem('outcomes1'),
+            localStorage.getItem('outcomes2'),
+            localStorage.getItem('outcomes3'),
+            localStorage.getItem('outcomes4'),
+            localStorage.getItem('outcomes5')
+          ];
+  
+          $('#q1').val(oc[0]);
+          $('#q2').val(oc[1]);
+          $('#q3').val(oc[2]);
+          $('#q4').val(oc[3]);
+          $('#q5').val(oc[4]);
+          $('#q6').val(oc[5]);
+          function SaveLearningOutcomes() {
+            var oc = [
+              $('#q1').val(),
+              $('#q2').val(),
+              $('#q3').val(),
+              $('#q4').val(),
+              $('#q5').val(),
+              $('#q6').val()
+            ]
+  
+            localStorage.setItem('outcomes0', oc[0]);
+            localStorage.setItem('outcomes1', oc[1]);
+            localStorage.setItem('outcomes2', oc[2]);
+            localStorage.setItem('outcomes3', oc[3]);
+            localStorage.setItem('outcomes4', oc[4]);
+            localStorage.setItem('outcomes5', oc[5]);
+          }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <!-- TRAINING MATERIALS PAGE -->
+      <script>
+          function setTrainingContent(session) {
+            //     window.carousels[0].show(session);
+            //    /*var jq = $(".carousel");
+            //    if (jq[0] && jq[0].bulmaCarousel){
+            //     jq[0].bulmaCarousel.show(session)
+            //    }*/
+            $(".training-content").hide();
+            $(".training-content.item-" + session).show();
+            $(".menu-item-active").removeClass("menu-item-active");
+            $(".menu-item-" + session).addClass("menu-item-active");
+            $(".page > .columns > .column").removeClass('menu-list-active');
+            $('video').each(function (id, dom) {
+              dom.pause();
+            });
+            window.currentSession=session;
+            switch (window.currentPage) {
+              case 'training':
+                window.location.hash = 'Session' + session
+                break;
+              case 'practice':
+                window.location.hash = 'Exercise' + session
+                break;
+            }
+          }
+          function ToggleSessionMenu() {
+            $(".page > .columns > .column").toggleClass('menu-list-active');
+          }
+        </script>
+        <div class="page training" id="training">
+  
+  
+          <div class="columns is-mobile mlm-ns">
+            <div class="column is-one-fifth-desktop is-two-fifths-touch session-menu">
+              <aside class="menu">
+                <br />
+                <br />
+                <p class="menu-label is-size-6">
+                  Training Materials
+                </p>
+                <br />
+                <br />
+  
+                <ul class="menu-list">
+                  <li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a>
+                  </li>
+                  <li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a>
+                  </li>
+                  <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a>
+                  </li>
+                  <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a>
+                  </li>
+                  <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a>
+                  </li>
+                  <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a>
+                  </li>
+                  <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a>
+                  </li>
+                  <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a>
+                  </li>
+                  <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a>
+                  </li>
+                  <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a>
+                  </li>
+                  <li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Session&nbsp;11</a>
+                  </li>
+                  <!-- <li class="menu-item-12"><a href="javascript:setTrainingContent(12)">Session&nbsp;12</a></li> -->
+                </ul>
+  
+              </aside>
+            </div>
+            <div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content">
+              <div class="carousel">
+                <div class="training-content item-1">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;1
+                        </h1>
+                        <h2 class="subtitle">
+                          Introduction
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="video-container mtm">
+                          <video width="853" height="480" controls allowfullscreen>
+                            <source src="#" type="video/mp4">
+                          </video>
+                        </div>
+                        <br />
+                        <div class="column is-10">
+                          <div class="box video-meta">
+                            <div class="video-title">Session 1 Video - Placeholder</div>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-2">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;2
+                          </h2>
+                          <h2 class="subtitle">
+                            Developing New Habits
+                          </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="video-container mtm">
+                          <video width="853" height="480" controls allowfullscreen>
+                            <source src="assets/Session2Animation.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <br>
+                        <div class="column is-10">
+                          <div class="box video-meta">
+                            <div class="video-title">Session 2 Video - Developing New Habits
+                            </div>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-3">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;3
+                        </h1>
+                        <h2 class="subtitle">
+                          The TLS 3-Step Sales Process
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
+                            <source src="assets/Session3Animation.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <br>
+                        <div class="column is-10">
+                          <div class="box video-meta">
+                            <div class="video-title">Session 3 Video - Exploring the Three
+                              Stages of the TLS 3-Step Sales Process. <strong> Greet, Build
+                                Value, Close. </strong>
+                            </div>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-4">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;4
+                        </h1>
+                        <h2 class="subtitle">
+                          Model of Effective Communication
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
+                            <source src="assets/Session4BAnimation.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <br>
+                        <div class="column is-10">
+                          <div class="box video-meta">
+                            <div class="video-title">Session 4B Video - Representational Systems
+                            </div>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-5">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;5
+                        </h1>
+                        <h2 class="subtitle">
+                          Greet - Powerful First Impressions
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
+                            <source src="assets/Session5Animation.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <br>
+                        <div class="column is-10">
+                          <div class="box video-meta">
+                            <div class="video-title">Session 5 Video - Powerful First
+                              Impressions
+                            </div>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-6">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;6
+                        </h1>
+                        <h2 class="subtitle">
+                          Greet - Developing a Positive Connection to Hold the Card Member's
+                          Attention
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
+                            <source src="assets/Session6Animation.mp4" type="video/mp4">
+                          </video>
+                        </div>
+                        <br>
+                        <div class="column is-10">
+                          <div class="box video-meta">
+                            <div class="video-title">Session 6 Video - Develop A Positive
+                              Connection
+                            </div>
+                            <br>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-7">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;7
+                        </h1>
+                        <h2 class="subtitle">
+                          Building Value - Values & Motivation Strategies
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="image">
+                          <img src="https://placehold.it/800x500">
+                        </div>
+                        <br>
+                        <div class="box video-meta">
+                          <div class="video-title">Video Title</div>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-8">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;8
+                        </h1>
+                        <h2 class="subtitle">
+                          Build Value - Understanding Through Active Listening & Powerful
+                          Questioning
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="image">
+                          <img src="https://placehold.it/800x500">
+                        </div>
+                        <br>
+                        <div class="box video-meta">
+                          <div class="video-title">Video Title</div>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-9">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;9
+                        </h1>
+                        <h2 class="subtitle">
+                          Presenting a Winning Solution
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="image">
+                          <img src="https://placehold.it/800x500">
+                        </div>
+                        <br>
+                        <div class="box video-meta">
+                          <div class="video-title">Video Title</div>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-10">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Session&nbsp;10
+                        </h1>
+                        <h2 class="subtitle">
+                          Handling concerns and objections to build confidence
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                  <div class="container mts">
+                    <div class="columns">
+                      <div class="column is-12">
+                        <div class="image">
+                          <img src="https://placehold.it/800x500">
+                        </div>
+                        <br>
+                        <div class="box video-meta">
+                          <div class="video-title">Video Title</div>
+                          <br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="training-content item-11">
+                  <section class="hero is-info is-bold">
+                    <div class="hero-body">
+                      <div class="container">
+                        <h1 class="title">
+                          <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          Final Session
+                        </h1>
+                        <h2 class="subtitle">
+                          Learning Review
+                        </h2>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+                <!-- <div class="training-content item-12">
+                              <section class="hero is-info is-bold">
+                                  <div class="hero-body">
+                                      <div class="container">
+                                          <h1 class="title">
+                                              Session&nbsp;12
+                                          </h1>
+                                          <h2 class="subtitle">
+                                              Session&nbsp;12 Subtitle
+                                          </h2>
+                                      </div>
+                                  </div>
+                              </section>
+                          </div> -->
+              </div>
+            </div>
+  
+          </div>
+        </div>
+
+        
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- QUIZ PAGE -->
       <div id="quiz" class="page quiz">
         <div class="container fullscreen">
@@ -451,579 +1054,31 @@
           }
         });
       </script>
-
-      <!-- OUTCOMES PAGE -->
-      <div class="page outcomes" id="outcomes">
-        <section class="hero is-info is-bold">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                Training Outcomes
-              </h1>
-              <h2 class="subtitle">
-                What do you want to achieve from this training?
-              </h2>
-            </div>
-          </div>
-        </section>
-        <div class="columns is-centered">
-          <div class="column is-half">
-            <div class="tile ptm pbm">
-              <article class="tile is-child notification is-info">
-                <p class="title">Please provide 6 learing outcomes</p>
-                <div class="field">
-                  <div class="control">
-                    <input id="q1" class="input" type="text" placeholder="Outcome 1" />
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input id="q2" class="input" type="text" placeholder="Outcome 2" />
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input id="q3" class="input" type="text" placeholder="Outcome 3" />
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input id="q4" class="input" type="text" placeholder="Outcome 4" />
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input id="q5" class="input" type="text" placeholder="Outcome 5" />
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="control">
-                    <input id="q6" class="input" type="text" placeholder="Outcome 6" />
-                  </div>
-                </div>
-
-                <a href="javascript:SaveLearningOutcomes()" class="button is-large is-danger is-right mtl">Save</a>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script>
-        var oc = [
-          localStorage.getItem('outcomes0'),
-          localStorage.getItem('outcomes1'),
-          localStorage.getItem('outcomes2'),
-          localStorage.getItem('outcomes3'),
-          localStorage.getItem('outcomes4'),
-          localStorage.getItem('outcomes5')
-        ];
-
-        $('#q1').val(oc[0]);
-        $('#q2').val(oc[1]);
-        $('#q3').val(oc[2]);
-        $('#q4').val(oc[3]);
-        $('#q5').val(oc[4]);
-        $('#q6').val(oc[5]);
-        function SaveLearningOutcomes() {
-          var oc = [
-            $('#q1').val(),
-            $('#q2').val(),
-            $('#q3').val(),
-            $('#q4').val(),
-            $('#q5').val(),
-            $('#q6').val()
-          ]
-
-          localStorage.setItem('outcomes0', oc[0]);
-          localStorage.setItem('outcomes1', oc[1]);
-          localStorage.setItem('outcomes2', oc[2]);
-          localStorage.setItem('outcomes3', oc[3]);
-          localStorage.setItem('outcomes4', oc[4]);
-          localStorage.setItem('outcomes5', oc[5]);
-        }
-      </script>
-
-      <!-- TRAINING MATERIALS PAGE -->
-      <script>
-        function setTrainingContent(session) {
-          //     window.carousels[0].show(session);
-          //    /*var jq = $(".carousel");
-          //    if (jq[0] && jq[0].bulmaCarousel){
-          //     jq[0].bulmaCarousel.show(session)
-          //    }*/
-          $(".training-content").hide();
-          $(".training-content.item-" + session).show();
-          $(".menu-item-active").removeClass("menu-item-active");
-          $(".menu-item-" + session).addClass("menu-item-active");
-          $(".page > .columns > .column").removeClass('menu-list-active');
-          $('video').each(function (id, dom) {
-            dom.pause();
-          });
-        }
-        function ToggleSessionMenu() {
-          $(".page > .columns > .column").toggleClass('menu-list-active');
-        }
-      </script>
-      <div class="page training" id="training">
+      
 
 
-        <div class="columns is-mobile mlm-ns">
-          <div class="column is-one-fifth-desktop is-two-fifths-touch session-menu">
-            <aside class="menu">
-              <br />
-              <br />
-              <p class="menu-label is-size-6">
-                Training Materials
-              </p>
-              <br />
-              <br />
 
-              <ul class="menu-list">
-                <li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a>
-                </li>
-                <li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a>
-                </li>
-                <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a>
-                </li>
-                <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a>
-                </li>
-                <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a>
-                </li>
-                <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a>
-                </li>
-                <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a>
-                </li>
-                <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a>
-                </li>
-                <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a>
-                </li>
-                <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a>
-                </li>
-                <li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Session&nbsp;11</a>
-                </li>
-                <!-- <li class="menu-item-12"><a href="javascript:setTrainingContent(12)">Session&nbsp;12</a></li> -->
-              </ul>
 
-            </aside>
-          </div>
-          <div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content">
-            <div class="carousel">
-              <div class="training-content item-1">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;1
-                      </h1>
-                      <h2 class="subtitle">
-                        Introduction
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="video-container mtm">
-                        <video width="853" height="480" controls allowfullscreen>
-                          <source src="#" type="video/mp4">
-                        </video>
-                      </div>
-                      <br />
-                      <div class="column is-10">
-                        <div class="box video-meta">
-                          <div class="video-title">Session 1 Video - Placeholder</div>
-                          <br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-2">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;2
-                        </h2>
-                        <h2 class="subtitle">
-                          Developing New Habits
-                        </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="video-container mtm">
-                        <video width="853" height="480" controls allowfullscreen>
-                          <source src="assets/Session2Animation.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <br>
-                      <div class="column is-10">
-                        <div class="box video-meta">
-                          <div class="video-title">Session 2 Video - Developing New Habits
-                          </div>
-                          <br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-3">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;3
-                      </h1>
-                      <h2 class="subtitle">
-                        The TLS 3-Step Sales Process
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
-                          <source src="assets/Session3Animation.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <br>
-                      <div class="column is-10">
-                        <div class="box video-meta">
-                          <div class="video-title">Session 3 Video - Exploring the Three
-                            Stages of the TLS 3-Step Sales Process. <strong> Greet, Build
-                              Value, Close. </strong>
-                          </div>
-                          <br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-4">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;4
-                      </h1>
-                      <h2 class="subtitle">
-                        Model of Effective Communication
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
-                          <source src="assets/Session4BAnimation.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <br>
-                      <div class="column is-10">
-                        <div class="box video-meta">
-                          <div class="video-title">Session 4B Video - Representational Systems
-                          </div>
-                          <br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-5">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;5
-                      </h1>
-                      <h2 class="subtitle">
-                        Greet - Powerful First Impressions
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
-                          <source src="assets/Session5Animation.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <br>
-                      <div class="column is-10">
-                        <div class="box video-meta">
-                          <div class="video-title">Session 5 Video - Powerful First
-                            Impressions
-                          </div>
-                          <br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-6">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;6
-                      </h1>
-                      <h2 class="subtitle">
-                        Greet - Developing a Positive Connection to Hold the Card Member's
-                        Attention
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="video-container mtm"><video width="853" height="480" controls allowfullscreen>
-                          <source src="assets/Session6Animation.mp4" type="video/mp4">
-                        </video>
-                      </div>
-                      <br>
-                      <div class="column is-10">
-                        <div class="box video-meta">
-                          <div class="video-title">Session 6 Video - Develop A Positive
-                            Connection
-                          </div>
-                          <br>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-7">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;7
-                      </h1>
-                      <h2 class="subtitle">
-                        Building Value - Values & Motivation Strategies
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="image">
-                        <img src="https://placehold.it/800x500">
-                      </div>
-                      <br>
-                      <div class="box video-meta">
-                        <div class="video-title">Video Title</div>
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-8">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;8
-                      </h1>
-                      <h2 class="subtitle">
-                        Build Value - Understanding Through Active Listening & Powerful
-                        Questioning
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="image">
-                        <img src="https://placehold.it/800x500">
-                      </div>
-                      <br>
-                      <div class="box video-meta">
-                        <div class="video-title">Video Title</div>
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-9">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;9
-                      </h1>
-                      <h2 class="subtitle">
-                        Presenting a Winning Solution
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="image">
-                        <img src="https://placehold.it/800x500">
-                      </div>
-                      <br>
-                      <div class="box video-meta">
-                        <div class="video-title">Video Title</div>
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-10">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Session&nbsp;10
-                      </h1>
-                      <h2 class="subtitle">
-                        Handling concerns and objections to build confidence
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-                <div class="container mts">
-                  <div class="columns">
-                    <div class="column is-12">
-                      <div class="image">
-                        <img src="https://placehold.it/800x500">
-                      </div>
-                      <br>
-                      <div class="box video-meta">
-                        <div class="video-title">Video Title</div>
-                        <br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="training-content item-11">
-                <section class="hero is-info is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title">
-                        <a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false"
-                          onclick="ToggleSessionMenu()">
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                          <span aria-hidden="true"></span>
-                        </a>
-                        Final Session
-                      </h1>
-                      <h2 class="subtitle">
-                        Learning Review
-                      </h2>
-                    </div>
-                  </div>
-                </section>
-              </div>
-              <!-- <div class="training-content item-12">
-                            <section class="hero is-info is-bold">
-                                <div class="hero-body">
-                                    <div class="container">
-                                        <h1 class="title">
-                                            Session&nbsp;12
-                                        </h1>
-                                        <h2 class="subtitle">
-                                            Session&nbsp;12 Subtitle
-                                        </h2>
-                                    </div>
-                                </div>
-                            </section>
-                        </div> -->
-            </div>
-          </div>
 
-        </div>
-      </div>
 
+
+
+
+
+
+
+
+
+      
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- RESOURCES PAGE -->
       <!-- <div id="resources" class="page resources">
         <iframe src="https://player.vimeo.com/video/337154019" style="width:100%;height:100%" frameborder="0"
           allow="autoplay; fullscreen" allowfullscreen></iframe>
       </div> -->
+
+      
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- PREDICATES PAGE -->
       <div id="predicates" class="page predicates">
         <section class="section">
@@ -1172,7 +1227,7 @@
 					</div>
 				</div>
 			</div>
-		</div> -->
+		</div> 
       <script>
         var words = {
           "visual": [
@@ -1407,10 +1462,17 @@
             var jq = $('#' + cat + 'Words' + c);
             jq.append($('<li>' + words[cat][y] + '</li>'));
           }
-        }
+        }-->
       </script>
 
 
+
+
+
+
+      
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- PRACTICE PAGE -->
       <div class="page practice" id="practice">
 
@@ -2217,118 +2279,10 @@
 
         </div>
       </div>
-      <!-- <div id="practice" class="row page practice">
-            <div id="gamesHome" class="col game">
-                <h1>Choose one of the games below to practice your skills.</h1>
-                <button class="btn-primary btn-lg btn-block" onclick="SetGame('pairs')">Pairs</button>
-            </div>
-            <div id="pairsGame" class="col game game-container">
-                <h1>Pairs</h1>
-            </div>
-            <div id="gamesNav" class="col">
-                <button class="btn btn-primary btn-lg gamesBack" onclick="SetGame('home')">Back to Games</button>
-            </div>
-        </div>
-        <script>
-            var step = 0;
-            function SetGame(game) {
-                $('.game').hide();
-                switch (game) {
-                    case 'home':
-                        $('#gamesHome').show();
-                        $('#gamesNav').hide();
-                        break;
-                    case 'pairs':
-                        $('#pairsGame').show();
-                        $('#gamesNav').show();
-                        step = 0;
-                        SetStep(step);
-                        break;
-                }
-            }
-            function SetStep(step) {
-                $('.step').hide();
-                $('#pairsStep' + step).show();
-            }
-            function SetAlice(name) {
-                $('.alice').html(name);
-                $('#alice').val(name);
-            }
-            function SetBob(name) {
-                $('.bob').html(name);
-                $('#bob').val(name);
-            }
-            function SetTopic(topic) {
-                $('.topic').html(topic);
-                $('#topic').val(topic);
-            }
-            var doneSwap = false;
-            function SwapPairs() {
-                var a = $('#alice').val();
-                var b = $('#bob').val();
-                SetAlice(b);
-                SetBob(a);
-                if (doneSwap)
-                    SetStep(0);
-                else
-                    SetStep(2);
-                doneSwap = !doneSwap;
-                if (doneSwap)
-                    $('#swapButton').html('Reset');
-                else
-                    $('#swapButton').html('Swap Roles');
-            }
-            (function BuildPairs(steps) {
-                var jq = $('#pairsGame');
-                for (var step in steps) {
-                    step = parseInt(step);
-                    var sContainer = $('<div id="pairsStep' + step + '" class="step"></div>');
-                    jq.append(sContainer);
+      
 
 
-                    var hContainer = $('<div class="stepInstructions"></div>');
-                    sContainer.append(hContainer);
-                    hContainer.append(steps[step].html);
-
-
-                    var bContainer = $('<div class="row" class="step"></div>');
-                    sContainer.append(bContainer);
-
-                    if (step == 0)
-                        bContainer.append('<div class="col-6"></div>');
-                    else
-                        bContainer.append('<div class="col-6"><button class="btn btn-success btn-lg btn-block" onclick="SetStep(' + (step - 1) + ')">Go Back</button></div>');
-                    if (step == steps.length - 1)
-                        bContainer.append('<div class="col-6"></div>');
-                    else
-                        bContainer.append('<div class="col-6"><button class="btn btn-success btn-lg btn-block" onclick="SetStep(' + (step + 1) + ')">OK, Next</button></div>');
-                }
-                SetAlice('Alice');
-                SetBob('Bob');
-            })([
-                {
-                    'html': `
-			<h2>In this practice, two people need to work together.</h2>
-			<h3>Their names could be:</h3>
-			<input id="alice" type="text" value="Alice" oninput="SetAlice(value)"/>
-			<h3>and</h3>
-			<input id="bob" type="text" value="Bob" oninput="SetBob(value)"/>
-		`},
-                { 'html': `<h2><span class="alice"/> and <span class="bob"/> need to discover their preferred representation systems.</h2>` },
-                { 'html': `<h2><span class="alice"/> describes a travel package/vacation to <span class="bob"/> as they usually would.</h2>` },
-                { 'html': `<h2><span class="alice"/> describes a travel package/vacation to <span class="bob"/>, <b>using <span class="bob"/>'s preferred representation system.</b></h2>` },
-                {
-                    'html': `
-			<h2>Note your responses in each case:</h2>
-			<ul>
-				<li>In which situation was it easier to understand the other person?</li>
-				<li>Do you feel more or less likely to go on a travel package/vacation?</li>
-			</ul>
-		`},
-                { 'html': `<h2><a id="swapButton" class="btn btn-primary btn-lg" href="javascript:SwapPairs();">Swap Roles</a></h2>` },
-            ])
-        </script> -->
-
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- FEEDBACK PAGE -->
       <div id="feedback" class="page feedback">
         <div class="container">
@@ -2602,8 +2556,6 @@
               </fieldset>
 
 
-
-
               <input type="submit" class="button is-info" />
 
             </form>
@@ -2615,6 +2567,25 @@
 
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
     <!-- FOOTER -->
     <div class="main-footer">
       <div class="privacy">
@@ -2670,18 +2641,6 @@
   </div>
 
 
-  <!-- <div class="footer">
-		<a class="navbar-item is-expanded  is-block has-text-centered navLink" href="javascript:SetPage('quiz');"><img class="navIcon"
-				src="images/Quiz.svg" /><br />Quiz</a>
-		<a class="navbar-item is-expanded  is-block has-text-centered navLink" href="javascript:SetPage('model')"><img class="navIcon"
-				src="images/NLP Model.svg" /><br />NLP&nbsp;Model</a>
-		<a class="navbar-item is-expanded  is-block has-text-centered navLink" href="javascript:SetPage('predicates')"><img class="navIcon"
-				src="images/Predicates.svg" /><br />Predicates</a>
-		<a class="navbar-item is-expanded  is-block has-text-centered navLink" href="javascript:SetPage('practice')"><img class="navIcon"
-				src="images/Practice.svg" /><br />Practice</a>
-		<a class="navbar-item is-expanded  is-block has-text-centered navLink" href="javascript:SetPage('feedback')"><img class="navIcon"
-				src="images/Feedback.svg" /><br />Feedback</a>
-	</div> -->
   <!-- Latest Sortable -->
   <script src="js/Sortable.js"></script>
   <!-- <script src="/AmexApp/scripts/Sortable.js"></script> -->
