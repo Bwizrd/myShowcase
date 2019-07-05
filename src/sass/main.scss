@@ -117,7 +117,7 @@ $navbar-breakpoint: 0;
     transition: color 0.3s;
   }
 }
-h1.title{
+h1.title, h2.subtitle{
   word-break: normal;
 }
 html{
@@ -135,12 +135,15 @@ overflow-y: auto;
     align-items: center;
   }
 
-///
-
+////
+.navbar-item{
+  width: 14.2857%;
+  padding: 0;
+  padding-top: 0.5rem;
+}
 a.navbar-item:hover{
     background-color: orange;
 }
-
 a.navbar-item:focus{
     background-color: orange;
 }
