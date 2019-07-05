@@ -19,6 +19,8 @@ function DrawGraph(r) {
   ctx = ctx.getContext('2d');
   if (!ctx) return;
   fitToContainer(ctx.canvas);
+  if(ctx.canvas.width==0 || ctx.canvas.height==0)
+    return;
   ctx.fillStyle = bgColorCanvas;
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   var m = Math.min(ctx.canvas.width, ctx.canvas.height) - 2,
@@ -90,7 +92,7 @@ function DrawGraph(r) {
   }
 
   ctx.restore();
-  $(window).unbind('resize').resize(function () { DrawGraph(r); });
+  $(window).unbind('resize').resize(function () { DrawGraph(window.results); });
 
 }
 
@@ -129,16 +131,16 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
       }
 
       var html = '';
-      var r = [
+      window.results = [
         { "type": "A", "count": res.A / res.T },
         { "type": "V", "count": res.V / res.T },
         { "type": "K", "count": res.K / res.T },
         { "type": "D", "count": res.D / res.T }
       ];
-      r.sort(function (a, b) { return b.count - a.count });
+      window.results.sort(function (a, b) { return b.count - a.count });
       var pt = 0, p = 0;
-      for (var g in r) {
-        switch (r[g].type) {
+      for (var g in window.results) {
+        switch (window.results[g].type) {
           case 'D':
             html += 'Digital: ';
             break;
@@ -152,9 +154,9 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
             html += 'Kinaesthetic ';
             break;
         }
-        p = Math.round(r[g].count * 100);
+        p = Math.round(window.results[g].count * 100);
         pt += p;
-        if (g == r.length - 1) {
+        if (g == window.results.length - 1) {
           if (pt != 100) {
             //alert('arp..!! ' + (pt-100) + '%');
             p -= (pt - 100);
@@ -166,7 +168,7 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
       $('#textResults').html(html);
       $('#quizTitle').html('Your prefered representation system');
 
-      DrawGraph(r);
+      DrawGraph(window.results);
     }
     //console.log(jq.data('question').sortable("toArray"));
   });

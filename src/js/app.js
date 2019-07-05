@@ -82,6 +82,10 @@ function SetPage(page){
           window.location.hash='';
       }*/
       window.currentPage=page;
+      switch(window.currentPage){
+        case 'quiz':
+          DrawGraph(window.results);
+      }
     }
 }
 
