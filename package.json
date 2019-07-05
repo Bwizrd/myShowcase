@@ -40,6 +40,7 @@
     "bulma-extensions": "^6.2.7",
     "gulp-run-command": "0.0.9",
     "gulp-scp2": "^0.2.0",
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "scp": "0.0.3"
   }
 }

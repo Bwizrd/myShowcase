@@ -48,6 +48,9 @@ function SetPage(page){
     $('#'+page).show();
     $('.navbar-item').removeClass('navLink-active');
     $('#nav'+page).addClass('navLink-active');
+    $('video').each(function(id,dom) {
+      dom.pause();
+    });
 }
 
 

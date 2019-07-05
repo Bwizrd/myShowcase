@@ -1,641 +1,645 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta property="og:image" content="images/wdr.png"><meta name="keywords" content="sortable, reorder, list, javascript, html5, drag and drop, dnd, animation, groups, dnd, sortableJS"><meta name="description" content="Sortable — is a JavaScript library for reorderable drag-and-drop lists on modern browsers and touch devices. No jQuery required. Supports Meteor, AngularJS, React, Polymer, Vue, Knockout and any CSS library, e.g. Bootstrap."><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="images/wdr.png"><title>American Express Rep Systems</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"><link rel="stylesheet" href="css/style.min.css"><script src="js/mjquery.js"></script><script type="text/javascript" src="js/bulma-accordion.min.js"></script></head><body><div id="main" class="container-fluid fullscreen"><div class="page home" id="home"><section class="hero"><div class="hero-body"><div class="container has-text-centered mbl"><img class="amexLogo" src="images/amex.png"><h1 class="title">Consultative Sales Training for Travel Consultants</h1><img class="subtitle wdrLogo" src="images/wdr.png"></div></div></section></div><div id="quiz" class="page quiz"><div class="container"><div class="notification has-background-white"><h1 class="subtitle is-1" id="quizTitle">Quiz</h1><div class="subtitle is-4" id="quizBox"></div><div id="quizButtons"></div></div></div></div><script>var bgColorCanvas = '#fff',
-                dColorFill = '#333',
-                aColorFill = '#338',
-                vColorFill = '#383',
-                kColorFill = '#833'
-            dTextColorFill = '#888',//digital text colour
-                aTextColorFill = '#33d',//auditry text colour
-                vTextColorFill = '#3d3',
-                kTextColorFill = '#d33'
-                ;
-            var blurb = `<p></p>`;
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta property="og:image" content="images/wdr.png"><meta name="keywords" content="sortable, reorder, list, javascript, html5, drag and drop, dnd, animation, groups, dnd, sortableJS"><meta name="description" content="Sortable — is a JavaScript library for reorderable drag-and-drop lists on modern browsers and touch devices. No jQuery required. Supports Meteor, AngularJS, React, Polymer, Vue, Knockout and any CSS library, e.g. Bootstrap."><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="images/wdr.png"><title>American Express Rep Systems</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"><link rel="stylesheet" href="css/style.min.css"><script src="js/mjquery.js"></script><script type="text/javascript" src="js/bulma-accordion.min.js"></script></head><body><div class="main-container"><div id="main" class="fullscreen"><div class="page home" id="home"><section class="hero"><div class="hero-body"><div class="container has-text-centered mbl"><img class="amexLogo" src="images/amex.png"><h1 class="title">Consultative Sales Training for Travel Consultants</h1><img class="subtitle wdrLogo" src="images/wdr.png"></div></div></section></div><div id="quiz" class="page quiz"><div class="container fullscreen"><div class="quiz-container"><h1 class="subtitle is-1" id="quizTitle">Quiz</h1><div class="subtitle is-4" id="quizBox"></div><div id="quizButtons"></div></div></div></div><script>var bgColorCanvas = '#fff',
+          dColorFill = '#333',
+          aColorFill = '#338',
+          vColorFill = '#383',
+          kColorFill = '#833'
+        dTextColorFill = '#888',//digital text colour
+          aTextColorFill = '#33d',//auditry text colour
+          vTextColorFill = '#3d3',
+          kTextColorFill = '#d33'
+          ;
+        var blurb = `<p></p>`;
 
 
-            var currentQuestion = 1;
+        var currentQuestion = 1;
 
-            function DrawGraph(r) {
-                var ctx = document.getElementById('canvasResults');
-                if (!ctx) return;
-                ctx = ctx.getContext('2d');
-                if (!ctx) return;
-                fitToContainer(ctx.canvas);
-                ctx.fillStyle = bgColorCanvas;
-                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-                var m = Math.min(ctx.canvas.width, ctx.canvas.height) - 2,
-                    m2 = m / 2,
-                    m4 = m / 4;;
+        function DrawGraph(r) {
+          var ctx = document.getElementById('canvasResults');
+          if (!ctx) return;
+          ctx = ctx.getContext('2d');
+          if (!ctx) return;
+          fitToContainer(ctx.canvas);
+          ctx.fillStyle = bgColorCanvas;
+          ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+          var m = Math.min(ctx.canvas.width, ctx.canvas.height) - 2,
+            m2 = m / 2,
+            m4 = m / 4;;
 
-                ctx.save();
-                ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
+          ctx.save();
+          ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
 
-                ctx.strokeStyle = '#000';
-                ctx.beginPath();
-                ctx.arc(0, 0, m2, 0, Math.PI * 2);
-                ctx.stroke();
-                //draw pie
-                var ang = 0;
-                for (var g in r) {
-                    switch (r[g].type) {
-                        case 'D':
-                            ctx.fillStyle = dColorFill;
-                            break;
-                        case 'A':
-                            ctx.fillStyle = aColorFill;
-                            break;
-                        case 'V':
-                            ctx.fillStyle = vColorFill;
-                            break;
-                        case 'K':
-                            ctx.fillStyle = kColorFill;
-                            break;
-                    }
-                    ctx.beginPath();
-                    var an = r[g].count * Math.PI * 2;
-                    ctx.moveTo(0, 0);
-                    ctx.arc(0, 0, m2, ang, ang + an);
+          ctx.strokeStyle = '#000';
+          ctx.beginPath();
+          ctx.arc(0, 0, m2, 0, Math.PI * 2);
+          ctx.stroke();
+          //draw pie
+          var ang = 0;
+          for (var g in r) {
+            switch (r[g].type) {
+              case 'D':
+                ctx.fillStyle = dColorFill;
+                break;
+              case 'A':
+                ctx.fillStyle = aColorFill;
+                break;
+              case 'V':
+                ctx.fillStyle = vColorFill;
+                break;
+              case 'K':
+                ctx.fillStyle = kColorFill;
+                break;
+            }
+            ctx.beginPath();
+            var an = r[g].count * Math.PI * 2;
+            ctx.moveTo(0, 0);
+            ctx.arc(0, 0, m2, ang, ang + an);
 
-                    ctx.fill();
-                    ctx.stroke();
-                    ang += an;
+            ctx.fill();
+            ctx.stroke();
+            ang += an;
+          }
+          //write labels
+          ctx.font = (m * 0.1) + 'px serif';
+          ctx.textBaseline = 'middle';
+          var ang = 0, txt = '';
+          for (var g in r) {
+            switch (r[g].type) {
+              case 'D':
+                ctx.fillStyle = dTextColorFill;
+                txt = 'Digital';
+                break;
+              case 'A':
+                ctx.fillStyle = aTextColorFill;
+                txt = 'Auditory';
+                break;
+              case 'V':
+                ctx.fillStyle = vTextColorFill;
+                txt = 'Visual';
+                break;
+              case 'K':
+                ctx.fillStyle = kTextColorFill;
+                txt = 'Kinaesthetic';
+                break;
+            }
+            txt += ' ' + Math.round(r[g].count * 100) + '%';
+            var an = r[g].count * Math.PI * 2, a2 = ang + an / 2;
+
+            var text = ctx.measureText(txt);
+            ctx.fillText(txt, Math.cos(a2) * m4 - text.width / 2, Math.sin(a2) * m4);
+            ang += an;
+          }
+
+          ctx.restore();
+          $(window).unbind('resize').resize(function () { DrawGraph(r); });
+
+        }
+
+        function CreateQuestionButton(it, label, questions, bAllButtons) {
+          var cz = '';
+          if (!bAllButtons) cz = ' onlyNext';
+          var qb = $('<a id="qb' + it + '" class="button is-large is-info qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
+            $('#quiz').scrollTop(0);
+            //SlowReload();
+            var jq = $('#question_container' + currentQuestion);
+            $('.question_container').hide();
+            //$('.qbtn').removeClass('btn-');
+            var i = $(event.target)/*.removeClass('btn-outline-primary').addClass('btn-success')*/.data('it');
+            currentQuestion = i;
+            if (!bAllButtons) $('.qbtn').hide();
+            $('#qb' + (currentQuestion + 1)).show();
+            $('#question_container' + (currentQuestion)).show();
+            if (i == questions.length) {
+              /*update results page*/
+              var res = {
+                "A": 0,
+                "V": 0,
+                "K": 0,
+                "D": 0,
+                "T": 0
+              };
+              var as = $('.question'), n = 0;
+              for (var a = 0; a < as.length; a++) {
+                var answers = $('#question' + (a + 1)).children();
+                for (var o = 0; o < answers.length; o++) {
+                  n = 4 - o;
+                  n *= n;
+                  res[$(answers[o]).data('type')] += n;
+                  res.T += n;
                 }
-                //write labels
-                ctx.font = (m * 0.1) + 'px serif';
-                ctx.textBaseline = 'middle';
-                var ang = 0, txt = '';
-                for (var g in r) {
-                    switch (r[g].type) {
-                        case 'D':
-                            ctx.fillStyle = dTextColorFill;
-                            txt = 'Digital';
-                            break;
-                        case 'A':
-                            ctx.fillStyle = aTextColorFill;
-                            txt = 'Auditory';
-                            break;
-                        case 'V':
-                            ctx.fillStyle = vTextColorFill;
-                            txt = 'Visual';
-                            break;
-                        case 'K':
-                            ctx.fillStyle = kTextColorFill;
-                            txt = 'Kinaesthetic';
-                            break;
-                    }
-                    txt += ' ' + Math.round(r[g].count * 100) + '%';
-                    var an = r[g].count * Math.PI * 2, a2 = ang + an / 2;
+              }
 
-                    var text = ctx.measureText(txt);
-                    ctx.fillText(txt, Math.cos(a2) * m4 - text.width / 2, Math.sin(a2) * m4);
-                    ang += an;
+              var html = '';
+              var r = [
+                { "type": "A", "count": res.A / res.T },
+                { "type": "V", "count": res.V / res.T },
+                { "type": "K", "count": res.K / res.T },
+                { "type": "D", "count": res.D / res.T }
+              ];
+              r.sort(function (a, b) { return b.count - a.count });
+              var pt = 0, p = 0;
+              for (var g in r) {
+                switch (r[g].type) {
+                  case 'D':
+                    html += 'Digital: ';
+                    break;
+                  case 'A':
+                    html += 'Auditory: ';
+                    break;
+                  case 'V':
+                    html += 'Visual: ';
+                    break;
+                  case 'K':
+                    html += 'Kinaesthetic ';
+                    break;
                 }
+                p = Math.round(r[g].count * 100);
+                pt += p;
+                if (g == r.length - 1) {
+                  if (pt != 100) {
+                    //alert('arp..!! ' + (pt-100) + '%');
+                    p -= (pt - 100);
+                  }
+                }
+                html += +p + '% <br/>';
+              }
+              //$('#question_container'+(i+1))
+              $('#textResults').html(html);
+              $('#quizTitle').html('Your prefered representation system');
 
-                ctx.restore();
-                $(window).unbind('resize').resize(function () { DrawGraph(r); });
+              DrawGraph(r);
+            }
+            //console.log(jq.data('question').sortable("toArray"));
+          });
+          return qb;
+        }
 
+        $(function () {
+          var questions =
+            [
+              {
+                "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom.",
+                "a": {}
+              },
+              {
+                "q": "I base important decisions on:",
+                "a": {
+                  "K": "A gut feeling.",
+                  "A": "What sounds the best.",
+                  "V": "What looks best to me.",
+                  "D": "Precise review and study of the issues.",
+                }
+              },
+              {
+                "q": "During a disagreement, I am most likely to be influenced by:",
+                "a": {
+                  "A": "The other person’s tone of voice.",
+                  "V": "Whether or not I can see the other person’s point of view.",
+                  "D": "Understanding the other person’s process.",
+                  "K": "Whether or not I feel I am in touch with the other person’s true feelings.",
+                }
+              },
+              {
+
+                "q": "I most easily communicate what is going on with me by:",
+                "a": {
+                  "V": "The way I dress and look.",
+                  "K": "The feelings I share.",
+                  "D": "The words I choose.",
+                  "A": "The tone of my voice.",
+                }
+              },
+              {
+                "q": "It is easiest for me to:",
+                "a": {
+                  "A": "Find the ideal volume and tuning on a stereo system.",
+                  "D": "Select the most intellectually relevant point concerning an interesting subject.",
+                  "K": "Select the most comfortable furniture.",
+                  "V": "Select rich, attractive colour combinations.",
+                }
+              },
+              {
+                "q": "Order the following statements from most accurate at the top, to least accurate at the bottom.",
+                "a": {
+                  "A": "I am very attuned to the sounds of my surroundings.",
+                  "D": "I am very adept at making sense of new facts and data.",
+                  "K": "I am very sensitive to the way articles of clothing feel on my body.",
+                  "V": "I have a strong response to colours and to the way a room looks.",
+                }
+              },
+              {
+                "q": "People really know me best when they…",
+                "a": {
+                  "K": "Experience what I am feeling.",
+                  "V": "See at my perspective.",
+                  "A": "Listen carefully to what I have to say and how it is said.",
+                  "D": "Are interested in the meaning of what I’m doing or saying.",
+                }
+              },
+              {
+                "q": "I am more likely to:",
+                "a": {
+                  "A": "Want understanding of the facts you tell me.",
+                  "V": "Picture the overview or plan.",
+                  "D": "Sequence the information you give me to make sense of it all.",
+                  "K": "Get a handle on the feeling of the project.",
+                }
+              },
+              {
+                "q": "Describing myself I'd say…",
+                "a": {
+                  "V": "Showing it to me makes it believable.",
+                  "A": "The sincere tone of your voice makes it believable.",
+                  "K": "When it feels right, it’s believable.",
+                  "D": "When it makes sense, it’s believable.",
+                }
+              },
+              {
+                "q": "In times of stress I'm most challenged with…",
+                "a": {
+                  "D": "Trusting the people or situation.",
+                  "A": "Being diplomatic.",
+                  "K": "Separating what my feelings are from what other people are feeling.",
+                  "V": "Being flexible and changing plans easily.",
+                }
+              },
+              {
+                "q": "Order the following statements from most accurate at the top, to least accurate at the bottom.",
+                "a": {
+                  "D": "I easily receive inner inspirations.",
+                  "A": "I can tell easily where new ideas fit.",
+                  "K": "I easily follow the direction of the tried and true methods.",
+                  "V": "I easily organize and plan the timing of things.",
+                }
+              },
+              {
+                "q": "I decide which gym to join because:",
+                "a": {
+                  "A": "The music sounds good.",
+                  "D": "It makes sense based on the location.",
+                  "K": "I get a good feeling when I walk in the door.",
+                  "V": "I like the looks of the equipment.",
+                }
+              },
+              {
+                "q": "When meeting new people I prefer to:",
+                "a": {
+                  "V": "Meet someone face to face.",
+                  "A": "Over the telephone.",
+                  "D": "Get a sense of who they are.",
+                  "K": "Touch base to get a feeling of who they are.",
+                },
+              }
+            ]
+            ;
+          //loop questions json
+          //for(var question in questions){
+          for (var it = 0; it <= questions.length; it++) {
+            //add next buttons
+            var bAllButtons = false;
+            if (it > 0) {
+              if (bAllButtons) {
+                var label = it;
+              } else {
+                var label = 'Submit Answer and Continue';
+                if (it == 1) label = 'Start';
+              }
+              if (it == questions.length) label = 'Results';
+              qb = CreateQuestionButton(it, label, questions, bAllButtons);
+              $('#quizButtons').append(qb);
+              if (it > 1) qb.hide();
+              if (it == questions.length) qb.addClass('qbtn-end');
             }
 
-            function CreateQuestionButton(it, label, questions, bAllButtons) {
-                var cz = '';
-                if (!bAllButtons) cz = ' onlyNext';
-                var qb = $('<a id="qb' + it + '" class="button is-large is-info qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
-                    $('#quiz').scrollTop(0);
-                    //SlowReload();
-                    var jq = $('#question_container' + currentQuestion);
-                    $('.question_container').hide();
-                    //$('.qbtn').removeClass('btn-');
-                    var i = $(event.target)/*.removeClass('btn-outline-primary').addClass('btn-success')*/.data('it');
-                    currentQuestion = i;
-                    if (!bAllButtons) $('.qbtn').hide();
-                    $('#qb' + (currentQuestion + 1)).show();
-                    $('#question_container' + (currentQuestion)).show();
-                    if (i == questions.length) {
-                        /*update results page*/
-                        var res = {
-                            "A": 0,
-                            "V": 0,
-                            "K": 0,
-                            "D": 0,
-                            "T": 0
-                        };
-                        var as = $('.question'), n = 0;
-                        for (var a = 0; a < as.length; a++) {
-                            var answers = $('#question' + (a + 1)).children();
-                            for (var o = 0; o < answers.length; o++) {
-                                n = 4 - o;
-                                n *= n;
-                                res[$(answers[o]).data('type')] += n;
-                                res.T += n;
-                            }
-                        }
+            if (it == questions.length) {
+              //add results container
+              var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
+              if (it > 1) qContainer.hide();
+              qContainer.append($('<div class="results"><canvas id="canvasResults"></canvas><p id="textResults"></p></div>'));
+              $('#quizBox').append(qContainer);
+              continue;
+            }
+            var question = questions[it].q;
+            //options in question
+            var options = questions[it].a;
 
-                        var html = '';
-                        var r = [
-                            { "type": "A", "count": res.A / res.T },
-                            { "type": "V", "count": res.V / res.T },
-                            { "type": "K", "count": res.K / res.T },
-                            { "type": "D", "count": res.D / res.T }
-                        ];
-                        r.sort(function (a, b) { return b.count - a.count });
-                        var pt = 0, p = 0;
-                        for (var g in r) {
-                            switch (r[g].type) {
-                                case 'D':
-                                    html += 'Digital: ';
-                                    break;
-                                case 'A':
-                                    html += 'Auditory: ';
-                                    break;
-                                case 'V':
-                                    html += 'Visual: ';
-                                    break;
-                                case 'K':
-                                    html += 'Kinaesthetic ';
-                                    break;
-                            }
-                            p = Math.round(r[g].count * 100);
-                            pt += p;
-                            if (g == r.length - 1) {
-                                if (pt != 100) {
-                                    //alert('arp..!! ' + (pt-100) + '%');
-                                    p -= (pt - 100);
-                                }
-                            }
-                            html += +p + '% <br/>';
-                        }
-                        //$('#question_container'+(i+1))
-                        $('#textResults').html(html);
-                        $('#quizTitle').html('Your prefered representation system');
+            //create question container
+            var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
+            if (it > 0) qContainer.hide();//hide if not first question
 
-                        DrawGraph(r);
-                    }
-                    //console.log(jq.data('question').sortable("toArray"));
-                });
-                return qb;
+            var row = $('<div class="row qrow"></div>');
+            qContainer.append(row);
+
+            row.append($('<h1>' + question + '</h1>'));
+
+            //create list group
+            var q = $('<div id="question' + it + '" class="question list-group col is-size-6-touch">');
+            qContainer.data('it', it);
+            row.append(q);
+
+            //add options
+            for (var type in options) {
+              q.append($('<div class="list-group-item"><i class="fas fa-arrows-alt-v"></i><h2>' + options[type] + '</h2></div>').data('type', type));
             }
 
-            $(function () {
-                var questions =
-                    [
-                        {
-                            "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom",
-                            "a": {}
-                        },
-                        {
-                            "q": "I base important decisions on:",
-                            "a": {
-                                "K": "A gut feeling",
-                                "A": "What sounds the best.",
-                                "V": "What looks best to me.",
-                                "D": "Precise review and study of the issues.",
-                            }
-                        },
-                        {
-                            "q": "During a disagreement, I am most likely to be influenced by:",
-                            "a": {
-                                "A": "The other person’s tone of voice.",
-                                "V": "Whether or not I can see the other person’s point of view.",
-                                "D": "Understanding the other person’s process.",
-                                "K": "Whether or not I feel I am in touch with the other person’s true feelings.",
-                            }
-                        },
-                        {
+            $('#quizBox').append(qContainer);
 
-                            "q": "I most easily communicate what is going on with me by:",
-                            "a": {
-                                "V": "The way I dress and look.",
-                                "K": "The feelings I share.",
-                                "D": "The words I choose.",
-                                "A": "The tone of my voice.",
-                            }
-                        },
-                        {
-                            "q": "It is easiest for me to:",
-                            "a": {
-                                "A": "Find the ideal volume and tuning on a stereo system.",
-                                "D": "Select the most intellectually relevant point concerning an interesting subject.",
-                                "K": "Select the most comfortable furniture.",
-                                "V": "Select rich, attractive colour combinations.",
-                            }
-                        },
-                        {
-                            "q": "Order the following statements from most accurate at the top, to least accurate at the bottom",
-                            "a": {
-                                "A": "I am very attuned to the sounds of my surroundings.",
-                                "D": "I am very adept at making sense of new facts and data.",
-                                "K": "I am very sensitive to the way articles of clothing feel on my body.",
-                                "V": "I have a strong response to colours and to the way a room looks.",
-                            }
-                        },
-                        {
-                            "q": "People really know me best when they…",
-                            "a": {
-                                "K": "Experience what I am feeling.",
-                                "V": "See at my perspective.",
-                                "A": "Listen carefully to what I have to say and how it is said.",
-                                "D": "Are interested in the meaning of what I’m doing or saying.",
-                            }
-                        },
-                        {
-                            "q": "I am more likely to:",
-                            "a": {
-                                "A": "Want understanding of the facts you tell me.",
-                                "V": "Picture the overview or plan",
-                                "D": "Sequence the information you give me to make sense of it all.",
-                                "K": "Get a handle on the feeling of the project.",
-                            }
-                        },
-                        {
-                            "q": "Describing myself I'd say…",
-                            "a": {
-                                "V": "Showing it to me makes it believable.",
-                                "A": "The sincere tone of your voice makes it believable.",
-                                "K": "When it feels right it’s believable.",
-                                "D": "When it makes sense it’s believable.",
-                            }
-                        },
-                        {
-                            "q": "In times of stress I'm most challenged with…",
-                            "a": {
-                                "D": "Trusting the people or situation.",
-                                "A": "Being diplomatic.",
-                                "K": "Separating what my feelings are from what other people are feeling.",
-                                "V": "Being flexible and changing plans easily.",
-                            }
-                        },
-                        {
-                            "q": "Order the following statements from most accurate at the top, to least accurate at the bottom",
-                            "a": {
-                                "D": "I easily receive inner inspirations.",
-                                "A": "I can tell easily where new ideas fit.",
-                                "K": "I easily follow the direction of the tried and true methods.",
-                                "V": "I easily organize and plan the timing of things.",
-                            }
-                        },
-                        {
-                            "q": "I decide which gym to join because:",
-                            "a": {
-                                "A": "The music sounds good.",
-                                "D": "It makes sense based on the location.",
-                                "K": "I get a good feeling when I walk in the door.",
-                                "V": "I like the looks of the equipment.",
-                            }
-                        },
-                        {
-                            "q": "When meeting new people I prefer to:",
-                            "a": {
-                                "V": "Meet someone face to face",
-                                "A": "Over the telephone",
-                                "D": "Get a sense of who they are",
-                                "K": "Touch base to get a feeling of who they are",
-                            },
-                        }
-                    ]
-                    ;
-                //loop questions json
-                //for(var question in questions){
-                for (var it = 0; it <= questions.length; it++) {
-                    //add next buttons
-                    var bAllButtons = false;
-                    if (it > 0) {
-                        if (bAllButtons) {
-                            var label = it;
-                        } else {
-                            var label = 'Submit Answer and Continue';
-                            if (it == 1) label = 'Start';
-                        }
-                        if (it == questions.length) label = 'Results';
-                        qb = CreateQuestionButton(it, label, questions, bAllButtons);
-                        $('#quizButtons').append(qb);
-                        if (it > 1) qb.hide();
-                        if (it == questions.length) qb.addClass('qbtn-end');
-                    }
-
-                    if (it == questions.length) {
-                        //add results container
-                        var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
-                        if (it > 1) qContainer.hide();
-                        qContainer.append($('<div class="results"><canvas id="canvasResults"></canvas><p id="textResults"></p></div>'));
-                        $('#quizBox').append(qContainer);
-                        continue;
-                    }
-                    var question = questions[it].q;
-                    //options in question
-                    var options = questions[it].a;
-
-                    //create question container
-                    var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
-                    if (it > 0) qContainer.hide();//hide if not first question
-
-                    var row = $('<div class="row qrow"></div>');
-                    qContainer.append(row);
-
-                    row.append($('<h1 class="col-12">' + question + '</h1>'));
-
-                    //create list group
-                    var q = $('<div id="question' + it + '" class="question list-group col is-size-6-touch">');
-                    qContainer.data('it', it);
-                    row.append(q);
-
-                    //add options
-                    for (var type in options) {
-                        q.append($('<div class="list-group-item"><i class="fas fa-arrows-alt-v"></i><h2>' + options[type] + '</h2></div>').data('type', type));
-                    }
-
-                    $('#quizBox').append(qContainer);
-
-                    if (it == 0) {
-                        q.append($(blurb));
-                        continue;
-                    }
-
-                    var questionDom = document.getElementById('question' + it);
-
-                    // Example 1 - Simple list
-                    new Sortable(questionDom, {
-                        animation: 150,
-                        ghostClass: 'blue-background-class'
-                    });
-                }
-            });</script><div class="page outcomes" id="outcomes"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title">Training Outcomes</h1><h2 class="subtitle">What do you want to achieve from this training?</h2></div></div></section><div class="columns is-centered"><div class="column is-half"><div class="tile ptm pbm"><article class="tile is-child notification is-info"><p class="title">Please provide 6 learing outcomes</p><div class="field"><div class="control"><input id="q1" class="input" type="text" placeholder="Outcome 1"></div></div><div class="field"><div class="control"><input id="q2" class="input" type="text" placeholder="Outcome 2"></div></div><div class="field"><div class="control"><input id="q3" class="input" type="text" placeholder="Outcome 3"></div></div><div class="field"><div class="control"><input id="q4" class="input" type="text" placeholder="Outcome 4"></div></div><div class="field"><div class="control"><input id="q5" class="input" type="text" placeholder="Outcome 5"></div></div><div class="field"><div class="control"><input id="q6" class="input" type="text" placeholder="Outcome 6"></div></div><a href="javascript:SaveLearningOutcomes()" class="button is-large is-danger is-right mtl">Save</a></article></div></div></div></div><script>var oc = [
-                localStorage.getItem('outcomes0'),
-                localStorage.getItem('outcomes1'),
-                localStorage.getItem('outcomes2'),
-                localStorage.getItem('outcomes3'),
-                localStorage.getItem('outcomes4'),
-                localStorage.getItem('outcomes5')
-            ];
-
-            $('#q1').val(oc[0]);
-            $('#q2').val(oc[1]);
-            $('#q3').val(oc[2]);
-            $('#q4').val(oc[3]);
-            $('#q5').val(oc[4]);
-            $('#q6').val(oc[5]);
-            function SaveLearningOutcomes() {
-                var oc = [
-                    $('#q1').val(),
-                    $('#q2').val(),
-                    $('#q3').val(),
-                    $('#q4').val(),
-                    $('#q5').val(),
-                    $('#q6').val()
-                ]
-
-                localStorage.setItem('outcomes0', oc[0]);
-                localStorage.setItem('outcomes1', oc[1]);
-                localStorage.setItem('outcomes2', oc[2]);
-                localStorage.setItem('outcomes3', oc[3]);
-                localStorage.setItem('outcomes4', oc[4]);
-                localStorage.setItem('outcomes5', oc[5]);
-            }</script><script>function setTrainingContent(session) {
-                //     window.carousels[0].show(session);
-                //    /*var jq = $(".carousel");
-                //    if (jq[0] && jq[0].bulmaCarousel){
-                //     jq[0].bulmaCarousel.show(session)
-                //    }*/
-                $(".training-content").hide();
-                $(".training-content.item-" + session).show();
-                $(".menu-item-active").removeClass("menu-item-active");
-                $(".menu-item-" + session).addClass("menu-item-active");
+            if (it == 0) {
+              q.append($(blurb));
+              continue;
             }
-            function ToggleSessionMenu() {
-                $(".page > .columns > .column").toggleClass('menu-list-active');
-            }</script><div class="page training" id="training"><div class="columns is-mobile mlm-ns"><div class="column is-one-fifth-desktop is-two-fifths-touch session-menu"><aside class="menu"><br><br><p class="menu-label is-size-6">Training Materials</p><br><br><ul class="menu-list"><li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li><li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li><li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li><li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li><li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li><li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li><li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li><li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li><li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li><li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a></li><li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Session&nbsp;11</a></li></ul></aside></div><div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content"><div class="carousel"><div class="training-content item-1"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;1</h1><h2 class="subtitle">Introduction</h2></div></div></section><table class="table mtl"><thead><tr><th>Time</th><th>Session Notes</th><th>Slide</th><th>Learning Resources/Facilitator Resources</th></tr></thead><tbody><tr><th>9:15am</th><td><p><strong>Why are we all here today</strong>?</p><p><strong>State</strong> that there will be a short message from one of the AMEX senior leadership about the importance of us all being together for these 2 day.</p><p><strong>Ask</strong> the group to make some brief notes on what they heard the senior leader share in the 3 key areas of:</p><ul><li><p><strong>Why</strong> this is important to TLS?</p></li><li><p><strong>What</strong> we are looking to achieve?</p></li><li><p><strong>How</strong> we are going to achieve this?</p></li></ul><blockquote><p>Play the video.</p><p>Plenary debrief to share the observations and thoughts about the video from the group.</p><p>Facilitator to flip up the learner’s observations on a pre-prepared flip chart.</p><p><strong>Ask</strong> and tease out specifics using <em>embedded questions</em> where relevant – “Tell me more..”, “Describe…” “Explain..”</p><p>Keep flip at the front of the room as an anchor for the 2 days.</p></blockquote></td><td>1</td><td><p>Opening Slide (<strong>everything in bold in notes is on slide/handout)</strong></p><p>Pre-prepared flip – Why/What/How.</p><p>Upbeat and motivational video clip from AMEX Senior Leader</p><p>3 mins max to cover the Why/What/How of the TLS project.</p><p>Completed flip – Why/What/How.</p></td></tr><tr><th>9:25am</th><td><p><strong>Share the Secret of Success - Strength Spotting Activity</strong></p><p><em>“Across the board, having the opportunity to develop our strengths is more important to our success than our role, our title or even our pay”</em></p><p><em>ref Strengths Finder 2.0</em></p><p>State the approach we will be taking over the next 2 days is “strengths based” and based around the following principles:</p><p><img src="media/ec1d5c43d9c15dfee6a45c73e4dc6f90.png" alt=""></p><blockquote><p>Ref: Strengths Based Leadership – T Rath &amp; B Conchie – Gallup Press NY 2008</p><p>Strength Spotting Pairs Activity</p><p>Ask the learners to find a partner they don’t know as well as others and to sit together to discuss the following questions:</p></blockquote><ol><li><p>What do I most enjoy in my day to day activities at TLS?</p></li><li><p>What part of my current role energises me?</p></li><li><p>What were my greatest accomplishments in the past 6 months?</p></li></ol><blockquote><p>The partner asks the questions of their colleague, makes a note what they say and then they swap over.</p></blockquote></td><td>2</td><td><p>Facilitator resource:</p><a href="https://psychlopaedia.org/work-and-performance/strengths-based-leadership-create-thriving-workplace-culture/">https://psychlopaedia.org/work-and-performance/strengths-based-leadership-create-thriving-workplace-culture/</a><p></p><p>Handout/In App Handout/In App</p><p></p></td></tr><tr><th>9:35am</th><td><p><strong>Personal Learning Goal</strong></p><p>Learners then review the notes taken by their partner and craft their own personal learning goal for the workshop following the three principles of:</p><ul><li><strong>Your personal learning goal should be positive in nature</strong>. <strong>Goals stated in the positive are much more effective than goals stated in the negative and provide a sound basis for planning future actions.</strong></li></ul><p>(e.g. “<em>I want to listen more actively to the card members so I can really tune in to their needs and understand what’s important to them v I’m not very good at listening to card members and I miss what’s important to them and they often close the call on me”)</em></p><ul><li><p><strong>Your goal should be based on reality and be possible to achieve.</strong></p></li><li><p><strong>You intend to support your goal through energy and effort.</strong></p></li></ul></td><td>3</td><td><p>Handout/In App Handout/In App</p></td></tr><tr><th>9:45am</th><td><blockquote><p>Ask the learners to share their personal learning goal with their partners.</p><p>Facilitator to check in with learners during this activity to ensure their personal learning goal meets the above principles.</p><p>Facilitator to sign post session 2.</p></blockquote></td><td></td><td></td></tr></tbody></table></div><div class="training-content item-2"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;2<h2 class="subtitle">Developing New Habits</h2></h1></div></div></section><div class="container mts"><div class="columns"><div class="column is-9"><div class="mtm"><div class="video-container"><video width="853" height="480" controls allowfullscreen><source src="assets/Session2Animation.mp4" type="video/mp4"></video></div></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 2 Video - Developing New Habits</div><br></div></div></div></div></div><table class="table mtl"><thead><tr><th>Time</th><th>Session Notes</th><th>Slide</th><th>Learning Resources/Facilitator Resources</th></tr></thead><tbody><tr><th>9:15am</th><td><p><strong>Developing New Habits</strong></p></td><td>1</td><td></td></tr></tbody></table></div><div class="training-content item-3"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;3</h1><h2 class="subtitle">The TLS 3-Step Sales Process</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-4"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;4</h1><h2 class="subtitle">Model of Effective Communication</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-5"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;5</h1><h2 class="subtitle">Greet - Powerful First Impressions</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-6"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;6</h1><h2 class="subtitle">Greet - Developing a Positive Connection to Hold the Card Member's Attention</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-7"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;7</h1><h2 class="subtitle">Building Value - Values & Motivation Strategies</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-8"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;8</h1><h2 class="subtitle">Build Value - Understanding Through Active Listening & Powerful Questioning</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-9"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;9</h1><h2 class="subtitle">Presenting a Winning Solution</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-10"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;10</h1><h2 class="subtitle">Handling concerns and objections to build confidence</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-8"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-11"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Final Session</h1><h2 class="subtitle">Learning Review</h2></div></div></section></div></div></div></div></div><div id="resources" class="page resources"><iframe src="https://player.vimeo.com/video/337154019" style="width:100%;height:100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><div id="predicates" class="page predicates"><section class="section"><div class="container"><h1 class="title">Predicates</h1><h2 class="subtitle">NLP Predicates</h2><section class="accordions"><article class="accordion"><div class="accordion-header toggle"><p>Visual</p></div><div class="accordion-body"><div class="accordion-content"><p id="visualWords1"></p></div></div></article><article class="accordion"><div class="accordion-header toggle"><p>Auditory</p></div><div class="accordion-body"><div class="accordion-content"><p id="auditoryWords1"></p></div></div></article><article class="accordion"><div class="accordion-header toggle"><p>Kinaesthetic</p></div><div class="accordion-body"><div class="accordion-content"><p id="kinaestheticWords1"></p></div></div></article><article class="accordion"><div class="accordion-header toggle"><p>Auditory Digital</p></div><div class="accordion-body"><div class="accordion-content"><p id="digitalWords1"></p></div></div></article></section></div></section></div><script>var words = {
-                "visual": [
-                    "See",
-                    "Look",
-                    "Appear",
-                    "View",
-                    "Show",
-                    "Dawn",
-                    "Reveal",
-                    "Envision",
-                    "Illuminate",
-                    "Twinkle",
-                    "Clear",
-                    "Foggy",
-                    "Focused",
-                    "Hazy",
-                    "Crystal Clear",
-                    "Flash",
-                    "Imagine",
-                    "Picture",
-                    "Sparkling",
-                    "Snap Shot",
-                    "Vivid",
-                    "Perceive",
-                    "Light",
-                    "Ray",
-                    "Mesmerize",
-                    "Watch",
-                    "Perspective",
-                    "Frame",
-                    "Shine",
-                    "Dim",
-                    "Image",
-                    "Vision",
-                    "Observe",
-                    "An eyeful",
-                    "Appears to me",
-                    "Beyond a shadow of a doubt",
-                    "Birds eye view",
-                    "Catch a glimpse of",
-                    "Clear cut",
-                    "Dim view",
-                    "Eye to eye",
-                    "Flashed on",
-                    "Get a perspective on",
-                    "Get a scope on",
-                    "Hazy idea",
-                    "Horse of a different colour",
-                    "In light of",
-                    "In view of",
-                    "In person",
-                    "Make a sense",
-                    "Mental image",
-                    "Mental picture",
-                    "Mind’s eye",
-                    "Naked eye",
-                    "Paint a picture",
-                    "Photographic memory",
-                    "Plainly seen",
-                    "Pretty as a picture",
-                    "See to it",
-                    "Short sighted",
-                    "Showing off",
-                    "Sight for sore eyes",
-                    "Staring off into space",
-                    "Take a peak",
-                    "Tunnel vision",
-                    "Under your nose",
-                    "Well defined",
-                ],
-                "auditory": [
-                    "Hear ",
-                    "Listen",
-                    "Sound (s)",
-                    "Make music",
-                    "Harmonize",
-                    "Tune In/Out",
-                    "Be All Ears",
-                    "Rings A Bell",
-                    "Silence",
-                    "Be Heard",
-                    "Resonate",
-                    "Deaf",
-                    "Mellifluous",
-                    "Dissonance",
-                    "Attune",
-                    "Outspoken",
-                    "Tell",
-                    "Announce",
-                    "Overtones",
-                    "Unheard of",
-                    "Talk ",
-                    "Speak",
-                    "State",
-                    "Whine",
-                    "Babble",
-                    "Echo",
-                    "Orchestrate",
-                    "Whisper",
-                    "Snap",
-                    "Hum",
-                    "Loud",
-                    "Dialogue",
-                    "Blabber mouth",
-                    "Clear as a bell",
-                    "Clearly expressed",
-                    "Call on",
-                    "Describe in detail",
-                    "Earful",
-                    "Express yourself",
-                    "Give an account of",
-                    "Give me your ear",
-                    "Grant an audience",
-                    "Heard voices",
-                    "Hidden message",
-                    "Hold your tongue",
-                    "Idle talk",
-                    "Inquire into",
-                    "Key note speaker",
-                    "Loud and clear",
-                    "Manner of speaking",
-                    "Pay attention to",
-                    "Power of speech",
-                    "Purrs like a kitten",
-                    "Outspoken",
-                    "Rap session",
-                    "Rings a bell",
-                    "State your purpose",
-                    "Tattle-tale",
-                    "To tell the truth",
-                    "Tongue-tied",
-                    "Tune in/tune out",
-                    "Utterly",
-                    "Unheard of",
-                    "Voice an opinion",
-                    "Well formed",
-                    "Word for word",
-                ],
-                "kinaesthetic": [
-                    "Feel",
-                    "Touch",
-                    "Grasp",
-                    "Get hold of ",
-                    "Slip through",
-                    "Catch on",
-                    "Tap into",
-                    "Make contact",
-                    "Throw out",
-                    "Turn around",
-                    "Hard",
-                    "Unfeeling",
-                    "Concrete",
-                    "Scrape",
-                    "Get a handle",
-                    "Solid",
-                    "Suffer",
-                    "Unbudging",
-                    "Impression",
-                    "Touch base",
-                    "Rub",
-                    "Smooth",
-                    "Pushy",
-                    "Stumble",
-                    "In touch",
-                    "Relaxed",
-                    "Loose",
-                    "Cool",
-                    "Tepid",
-                    "Heavy",
-                    "All washed up",
-                    "Boils down to",
-                    "Chip off the old block",
-                    "Come to grips with",
-                    "Connect with",
-                    "Control yourself",
-                    "Cool/calm/collected",
-                    "Firm foundations",
-                    "Floating on thin air",
-                    "Get a handle on",
-                    "Get a load of this",
-                    "Get in touch with",
-                    "Get the drift of",
-                    "Hand in hand",
-                    "Hang in there",
-                    "Heated argument",
-                    "Hold it - hold on",
-                    "Hot-head",
-                    "Keep you shirt on",
-                    "Know-how",
-                    "Lay the cards on the table",
-                    "Light headed",
-                    "Moment of panic",
-                    "Pain-in-the-neck",
-                    "Pull some strings",
-                    "Sharp as a tack",
-                    "Slipped my mind",
-                    "Smooth operator",
-                    "Start from scratch",
-                    "Stiff upper lip",
-                    "Topsy-turvy",
-                    "Underhanded",
-                    "Under pressure",
-                ],
-                "digital": [
-                    "Sense",
-                    "Experience",
-                    "Understand",
-                    "Think",
-                    "Learn",
-                    "Process",
-                    "Decide",
-                    "Motivate",
-                    "Consider",
-                    "Change",
-                    "Perceive",
-                    "Insensitive",
-                    "Distinct",
-                    "Conceive",
-                    "Know",
-                    "Question",
-                    "Be conscious",
-                    "Remember",
-                    "Logic",
-                    "Reasonable",
-                    "Statistically",
-                ],
-            };
-            for (var cat in words) {
-                for (var y in words[cat]) {
-                    var c = y % 1 + 1;//Math.floor(y/(words[cat].length/3))+1;
-                    var jq = $('#' + cat + 'Words' + c);
-                    jq.append($('<li>' + words[cat][y] + '</li>'));
-                }
-            }</script><div class="page practice" id="practice"><div class="columns is-mobile mlm-ns"><div class="column is-one-fifths-desktop is-two-fifths-mobile session-menu"><aside class="menu"><br><br><p class="menu-label is-size-6">Practice Exercises</p><br><br><ul class="menu-list"><li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li><li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li><li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li><li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li><li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li><li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li><li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li><li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li><li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li><li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a></li></ul></aside></div><div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content"><div class="carousel"><div class="training-content item-1"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;1</h1><h2 class="subtitle">Introduction</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>No Exercises</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-2"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;2<h2 class="subtitle">Teach to Learn – pairs activity</h2></h1></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p><p class="mtm">Review your handouts and the notes you have taken and the content within the App.</p><p>Stand up and find a partner and share three insights from the session and answer any questions they may have.</p><p>Swap over and then move on to find a new partner and once again teach in your three insights</p><p></p></td></tr></tbody></table></section></div><div class="training-content item-3"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;3</h1><h2 class="subtitle">Exercise&nbsp;3 Subtitle</h2></div></div></section><section class="mtl"><p class="title"><strong>1. Uncovering the Beliefs, Practices and Results for each stage of the sales process</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Trainer to split the group into three smaller groups.</p><ul><li>Group 1 - Start at Greet</li><li>Group 2 - Start at Builds Value</li><li>Group 3 - Start at Close</li></ul><p class="mtm">Explain that each group will move around the three flip charts to discuss each of the three stages of the sales process and identify the Be – Do – Win for each of them.</p><p>Trainer states that this is timed activity and each group will have 15 mins at each of the 3 stages before a whistle sounds and they move on to the next flip.</p><p class="mtm"><strong>Round 1</strong> – the groups discuss the <em>first section only</em> on their flip chart – <strong>Being</strong>, and discuss the beliefs/attitude/mindset (the below the waterline areas) that the TLS consultant would need to adopt at this stage of the conversation with the customer.</p><p>After 12 mins the trainer blows the whistle and the groups move onto the next flip chart – Group 1 moves to Builds Value, Group 2 moves to Close and Group 3 moves to Greet.</p><p class="mtm"><strong>Round 2</strong> - the groups review what their colleagues have entered on the flips and add in anything extra before moving on to discuss the <strong>Doing,</strong> and identify the actions and activities, skills and behaviours ( the above the waterline areas) that a TLS consultant would demonstrate for that stage of the sales process.</p><p>After 12 mins the trainer blows the whistle and the groups move onto their final flip chart.</p><p class="mtm"><strong>Round 3</strong> – the groups review what their colleagues have entered on the flips and add in anything extra before moving on to discussing the Winning and identify what achieving a winning result looks like/sounds like/feels like from the <em>card holder</em> and <em>TLS consultant’s</em> perspective for that stage of the sales process.</p><p>After 12 mins the trainer blows the whistle and the groups move back to their original starting point and review the completed flip chart and add in any final points.</p><p class="mtm"><strong>Round 4 –</strong> the groups then review each of the completed flip charts “art gallery style” and take pictures of each of the flip charts on their mobile phones to upload onto their App.</p><p>Plenary debrief session</p><p class="mtm"><strong>Ask</strong> – What have you discovered during this activity?</p><p class="mtm"><strong>Look for</strong> – beliefs need to be empowering at each of the 3 stages/different actions and activities needed at the different stages/some behaviours are used constantly throughout – e.g. being present, communicating/listening/being clear on the win (from both perspectives) is super important and it would be good have this in mind from the outset.</p><p class="mtm">Trainer to state that the phrase <strong>“Begin with the end in Mind”</strong> – links to the Win of Be Do Win. When you are clear on what a winning result looks like/sounds like/feels like – you are setting the course for success.</p><p class="mtm"><strong>Trainer to highlight that Be- Do -Win is a powerful tool to adopt at each stage of the conversation with the customer.</strong></p><p class="mtm">It gives you a blueprint for personal success.</p></td></tr></tbody></table><p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Review your learning for the session. Stand up and find a partner and share three insights from the session and answer any questions they may have. Swap over and then move on to find a new partner and once again teach in your three insights.</p><p>Trainer to signpost to the next session.</p><p>State – one of the key activities uncovered in this session was Communication. The next session will explore this topic and you will discover more about the way you personally communicate and how you can flex and adapt your style to make powerful connections with the card holders.</p></td></tr></tbody></table></section></div><div class="training-content item-4"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;4</h1><h2 class="subtitle">Exercise&nbsp;4 Subtitle</h2></div></div></section><section class="mtl"><p class="title"><strong>1. Least Preferred Rep System</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Take a holiday/travel package and describe it to your partner in your least preferred rep system (the system you scored the lowest score on in the app). Partner listens. Then swap. Three minutes each, the quick group feedback</p></td></tr></tbody></table><p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>“A” and “B” “A” explains the basic Communication Model and the function of filters (talk about beliefs and how they shape our perception of reality) Then swap “B” explains representational systems to “A”</p></td></tr></tbody></table></section></div><div class="training-content item-5"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;5</h1><h2 class="subtitle">Exercises</h2></div></div></section><section class="mtl"><p class="title"><strong>1. Personal Greetings practice</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p class="mtm">Info supplied on customer predicates/experience with AMEX/data/other info on CRM</p><ul class="mts ul-disc"><li><p>Card Member scenario activities – trios (1 observer to feedback)</p></li><li><p>One is the Consultant; One is the Card Member and one is the observer</p></li><li><p>Card Member and Consultant sit back-to-back so they cannot see each other but can hear each other</p></li><li><p>Consultant takes a minute to remember empowering beliefs, create positive internal representations and a physiology of excellence.</p></li><li><p>Consultant opens the call with a question: “Good morning/afternoon/evening, how can I help you?</p></li><li><p>CM responds as naturally as they can explaining they want to go on a vacation</p></li><li><p>Consultant listens for any predicates or phrases. Make a mental note. If detected, follow up in appropriate rep system (AD if none detected)</p></li><li><p>Continue conversation, Consultant asks the CM why they are going on the trip, what is important to them about the trip and the kind of experience they are looking for</p></li><li><p>Note rep systems and respond appropriately</p></li><li><p>Observer observes and takes notes</p></li><li><p>Five minutes each and then swap around so everyone gets to be the Consultant, CM and observer</p></li><li><p>Trainer collects feedback at the end and answers any questions</p></li></ul></td></tr></tbody></table><p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Learners work in pairs “A” and “B”</p><p>“A” shares with “B” their three most important takeaways from the session</p><p>Then swap and repeat</p></td></tr></tbody></table></section></div><div class="training-content item-6"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;6</h1><h2 class="subtitle">Exercise&nbsp;6 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-7"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;7</h1><h2 class="subtitle">Exercise&nbsp;7 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-8"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;8</h1><h2 class="subtitle">Exercise&nbsp;8 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-9"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;9</h1><h2 class="subtitle">Exercise&nbsp;9 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-10"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;10</h1><h2 class="subtitle">Exercise&nbsp;10 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div></div></div></div></div><div id="feedback" class="page feedback"><div class="container"><div class="notification"><h1 class="title is-size-3">Feedback</h1><form method="POST" action="feedback.php"><fieldset><legend>1. On a scale of 1-5, with one lowest and five highest, please rate the relevance and value of each of these Session&nbsp;segments to your business needs:</legend><fieldset class="rating"><legend>Introduction – What is NLP &amp; Why Learn It?</legend><input type="radio" id="star115" name="rating11" value="5"><label for="star115" title="Rocks!">5 stars</label> <input type="radio" id="star114" name="rating11" value="4"><label for="star114" title="Pretty good">4 stars</label> <input type="radio" id="star113" name="rating11" value="3"><label for="star113" title="Meh">3 stars</label> <input type="radio" id="star112" name="rating11" value="2"><label for="star112" title="Kinda bad">2 stars</label> <input type="radio" id="star111" name="rating11" value="1"><label for="star111" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>The NLP Communication Model</legend><input type="radio" id="star125" name="rating12" value="5"><label for="star125" title="Rocks!">5 stars</label> <input type="radio" id="star124" name="rating12" value="4"><label for="star124" title="Pretty good">4 stars</label> <input type="radio" id="star123" name="rating12" value="3"><label for="star123" title="Meh">3 stars</label> <input type="radio" id="star122" name="rating12" value="2"><label for="star122" title="Kinda bad">2 stars</label> <input type="radio" id="star121" name="rating12" value="1"><label for="star121" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Representational Skills</legend><input type="radio" id="star135" name="rating13" value="5"><label for="star135" title="Rocks!">5 stars</label> <input type="radio" id="star134" name="rating13" value="4"><label for="star134" title="Pretty good">4 stars</label> <input type="radio" id="star133" name="rating13" value="3"><label for="star133" title="Meh">3 stars</label> <input type="radio" id="star132" name="rating13" value="2"><label for="star132" title="Kinda bad">2 stars</label> <input type="radio" id="star131" name="rating13" value="1"><label for="star131" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Practical Exercises</legend><input type="radio" id="star145" name="rating14" value="5"><label for="star145" title="Rocks!">5 stars</label> <input type="radio" id="star144" name="rating14" value="4"><label for="star144" title="Pretty good">4 stars</label> <input type="radio" id="star143" name="rating14" value="3"><label for="star143" title="Meh">3 stars</label> <input type="radio" id="star142" name="rating14" value="2"><label for="star142" title="Kinda bad">2 stars</label> <input type="radio" id="star141" name="rating14" value="1"><label for="star141" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Usefulness of the supporting app</legend><input type="radio" id="star155" name="rating15" value="5"><label for="star155" title="Rocks!">5 stars</label> <input type="radio" id="star154" name="rating15" value="4"><label for="star154" title="Pretty good">4 stars</label> <input type="radio" id="star153" name="rating15" value="3"><label for="star153" title="Meh">3 stars</label> <input type="radio" id="star152" name="rating15" value="2"><label for="star152" title="Kinda bad">2 stars</label> <input type="radio" id="star151" name="rating15" value="1"><label for="star151" title="Sucks big time">1 star</label></fieldset></fieldset><fieldset><legend>2. On a scale of 1-5, with one the least and five the most, please indicate which of these course topics should receive more or less time and depth of coverage in the future:</legend><fieldset class="rating"><legend>Introduction – What is NLP &amp; Why Learn It?</legend><input type="radio" id="star215" name="rating21" value="5"><label for="star215" title="Rocks!">5 stars</label> <input type="radio" id="star214" name="rating21" value="4"><label for="star214" title="Pretty good">4 stars</label> <input type="radio" id="star213" name="rating21" value="3"><label for="star213" title="Meh">3 stars</label> <input type="radio" id="star212" name="rating21" value="2"><label for="star212" title="Kinda bad">2 stars</label> <input type="radio" id="star211" name="rating21" value="1"><label for="star211" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>The NLP Communication Model</legend><input type="radio" id="star225" name="rating22" value="5"><label for="star225" title="Rocks!">5 stars</label> <input type="radio" id="star224" name="rating22" value="4"><label for="star224" title="Pretty good">4 stars</label> <input type="radio" id="star223" name="rating22" value="3"><label for="star223" title="Meh">3 stars</label> <input type="radio" id="star222" name="rating22" value="2"><label for="star222" title="Kinda bad">2 stars</label> <input type="radio" id="star221" name="rating22" value="1"><label for="star221" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Representational Skills</legend><input type="radio" id="star235" name="rating23" value="5"><label for="star235" title="Rocks!">5 stars</label> <input type="radio" id="star234" name="rating23" value="4"><label for="star234" title="Pretty good">4 stars</label> <input type="radio" id="star233" name="rating23" value="3"><label for="star233" title="Meh">3 stars</label> <input type="radio" id="star232" name="rating23" value="2"><label for="star232" title="Kinda bad">2 stars</label> <input type="radio" id="star231" name="rating23" value="1"><label for="star231" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Practical Exercises</legend><input type="radio" id="star245" name="rating24" value="5"><label for="star245" title="Rocks!">5 stars</label> <input type="radio" id="star244" name="rating24" value="4"><label for="star244" title="Pretty good">4 stars</label> <input type="radio" id="star243" name="rating24" value="3"><label for="star243" title="Meh">3 stars</label> <input type="radio" id="star242" name="rating24" value="2"><label for="star242" title="Kinda bad">2 stars</label> <input type="radio" id="star241" name="rating24" value="1"><label for="star241" title="Sucks big time">1 star</label></fieldset></fieldset><fieldset><legend>3. Please indicate your opinion on the presentation of the course</legend><fieldset class="rating"><legend>Fluency &amp; presentation skills of trainer</legend><input type="radio" id="star315" name="rating31" value="5"><label for="star315" title="Rocks!">5 stars</label> <input type="radio" id="star314" name="rating31" value="4"><label for="star314" title="Pretty good">4 stars</label> <input type="radio" id="star313" name="rating31" value="3"><label for="star313" title="Meh">3 stars</label> <input type="radio" id="star312" name="rating31" value="2"><label for="star312" title="Kinda bad">2 stars</label> <input type="radio" id="star311" name="rating31" value="1"><label for="star311" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Subject knowledge of trainer</legend><input type="radio" id="star325" name="rating32" value="5"><label for="star325" title="Rocks!">5 stars</label> <input type="radio" id="star324" name="rating32" value="4"><label for="star324" title="Pretty good">4 stars</label> <input type="radio" id="star323" name="rating32" value="3"><label for="star323" title="Meh">3 stars</label> <input type="radio" id="star322" name="rating32" value="2"><label for="star322" title="Kinda bad">2 stars</label> <input type="radio" id="star321" name="rating32" value="1"><label for="star321" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Approachability of trainer</legend><input type="radio" id="star335" name="rating33" value="5"><label for="star335" title="Rocks!">5 stars</label> <input type="radio" id="star334" name="rating33" value="4"><label for="star334" title="Pretty good">4 stars</label> <input type="radio" id="star333" name="rating33" value="3"><label for="star333" title="Meh">3 stars</label> <input type="radio" id="star332" name="rating33" value="2"><label for="star332" title="Kinda bad">2 stars</label> <input type="radio" id="star331" name="rating33" value="1"><label for="star331" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Amount of time given to questions</legend><input type="radio" id="star345" name="rating34" value="5"><label for="star345" title="Rocks!">5 stars</label> <input type="radio" id="star344" name="rating34" value="4"><label for="star344" title="Pretty good">4 stars</label> <input type="radio" id="star343" name="rating34" value="3"><label for="star343" title="Meh">3 stars</label> <input type="radio" id="star342" name="rating34" value="2"><label for="star342" title="Kinda bad">2 stars</label> <input type="radio" id="star341" name="rating34" value="1"><label for="star341" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Quality of visual aids</legend><input type="radio" id="star355" name="rating35" value="5"><label for="star355" title="Rocks!">5 stars</label> <input type="radio" id="star354" name="rating35" value="4"><label for="star354" title="Pretty good">4 stars</label> <input type="radio" id="star353" name="rating35" value="3"><label for="star353" title="Meh">3 stars</label> <input type="radio" id="star352" name="rating35" value="2"><label for="star352" title="Kinda bad">2 stars</label> <input type="radio" id="star351" name="rating35" value="1"><label for="star351" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Quality of the supplied app</legend><input type="radio" id="star365" name="rating36" value="5"><label for="star365" title="Rocks!">5 stars</label> <input type="radio" id="star364" name="rating36" value="4"><label for="star364" title="Pretty good">4 stars</label> <input type="radio" id="star363" name="rating36" value="3"><label for="star363" title="Meh">3 stars</label> <input type="radio" id="star362" name="rating36" value="2"><label for="star362" title="Kinda bad">2 stars</label> <input type="radio" id="star361" name="rating36" value="1"><label for="star361" title="Sucks big time">1 star</label></fieldset></fieldset><fieldset><legend>4. Would you recommend this Session&nbsp;to a colleague?</legend><input name="recommend" type="radio"><label>Yes</label> <input name="recommend" type="radio"><label>No</label><br><br><label class="mtm">Why or why not?</label> <input class="input" name="why_recommend" type="text"></fieldset><fieldset class="mtm"><legend>5. Optional:</legend><div class="field"><div class="control"><label for="name">Name</label> <input class="input" id="name" name="name" type="text"></div></div><br><div class="field"><div class="control"><label for="title">Job title</label> <input class="input" id="title" name="title" type="text"></div></div><br><div class="field"><div class="control"><label for="dept">Dept</label> <input class="input" id="dept" name="dept" type="text"></div></div><br><div class="field"><div class="control"><label for="location">Location</label> <input class="input" id="location" name="location" type="text"></div></div></fieldset><input type="submit" class="button is-info"></form></div></div></div></div><div class="footer"><div class="privacy">By continuing to use our WebApp, you acknowledge that you have read and understand our <a href="privacy.html">Privacy Policy</a>. <span class="delete mlm" onclick="$('.privacy').hide()"></span></div><nav class="navbar is-link" role="navigation"><a id="navhome" href="javascript:SetPage('home');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Home.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Introduction</p></a><a id="navoutcomes" href="javascript:SetPage('outcomes');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Learning.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Learning Outcomes</p></a><a id="navtraining" href="javascript:SetPage('training');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Training.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Training Materials</p></a><a id="navquiz" href="javascript:SetPage('quiz');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Quiz.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Quiz</p></a><a id="navresources" href="javascript:SetPage('resources');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Resources.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Resources</p></a><a id="navpractice" href="javascript:SetPage('practice');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Practice.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Practice</p></a><a id="navfeedback" href="javascript:SetPage('feedback');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Feedback.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Feedback</p></a></nav></div><script src="js/Sortable.js"></script><script src="js/app.js"></script><script>$(function () {
-            var accordions = bulmaAccordion.attach();
-            $(".training-content").hide();
-            $(".training-content.item-1").show();
-            // window.carousels = bulmaCarousel.attach();
-        });</script></body></html>
+
+            var questionDom = document.getElementById('question' + it);
+
+            // Example 1 - Simple list
+            new Sortable(questionDom, {
+              animation: 150,
+              ghostClass: 'blue-background-class'
+            });
+          }
+        });</script><div class="page outcomes" id="outcomes"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title">Training Outcomes</h1><h2 class="subtitle">What do you want to achieve from this training?</h2></div></div></section><div class="columns is-centered"><div class="column is-half"><div class="tile ptm pbm"><article class="tile is-child notification is-info"><p class="title">Please provide 6 learing outcomes</p><div class="field"><div class="control"><input id="q1" class="input" type="text" placeholder="Outcome 1"></div></div><div class="field"><div class="control"><input id="q2" class="input" type="text" placeholder="Outcome 2"></div></div><div class="field"><div class="control"><input id="q3" class="input" type="text" placeholder="Outcome 3"></div></div><div class="field"><div class="control"><input id="q4" class="input" type="text" placeholder="Outcome 4"></div></div><div class="field"><div class="control"><input id="q5" class="input" type="text" placeholder="Outcome 5"></div></div><div class="field"><div class="control"><input id="q6" class="input" type="text" placeholder="Outcome 6"></div></div><a href="javascript:SaveLearningOutcomes()" class="button is-large is-danger is-right mtl">Save</a></article></div></div></div></div><script>var oc = [
+          localStorage.getItem('outcomes0'),
+          localStorage.getItem('outcomes1'),
+          localStorage.getItem('outcomes2'),
+          localStorage.getItem('outcomes3'),
+          localStorage.getItem('outcomes4'),
+          localStorage.getItem('outcomes5')
+        ];
+
+        $('#q1').val(oc[0]);
+        $('#q2').val(oc[1]);
+        $('#q3').val(oc[2]);
+        $('#q4').val(oc[3]);
+        $('#q5').val(oc[4]);
+        $('#q6').val(oc[5]);
+        function SaveLearningOutcomes() {
+          var oc = [
+            $('#q1').val(),
+            $('#q2').val(),
+            $('#q3').val(),
+            $('#q4').val(),
+            $('#q5').val(),
+            $('#q6').val()
+          ]
+
+          localStorage.setItem('outcomes0', oc[0]);
+          localStorage.setItem('outcomes1', oc[1]);
+          localStorage.setItem('outcomes2', oc[2]);
+          localStorage.setItem('outcomes3', oc[3]);
+          localStorage.setItem('outcomes4', oc[4]);
+          localStorage.setItem('outcomes5', oc[5]);
+        }</script><script>function setTrainingContent(session) {
+          //     window.carousels[0].show(session);
+          //    /*var jq = $(".carousel");
+          //    if (jq[0] && jq[0].bulmaCarousel){
+          //     jq[0].bulmaCarousel.show(session)
+          //    }*/
+          $(".training-content").hide();
+          $(".training-content.item-" + session).show();
+          $(".menu-item-active").removeClass("menu-item-active");
+          $(".menu-item-" + session).addClass("menu-item-active");
+          $(".page > .columns > .column").removeClass('menu-list-active');
+          $('video').each(function (id, dom) {
+            dom.pause();
+          });
+        }
+        function ToggleSessionMenu() {
+          $(".page > .columns > .column").toggleClass('menu-list-active');
+        }</script><div class="page training" id="training"><div class="columns is-mobile mlm-ns"><div class="column is-one-fifth-desktop is-two-fifths-touch session-menu"><aside class="menu"><br><br><p class="menu-label is-size-6">Training Materials</p><br><br><ul class="menu-list"><li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li><li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li><li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li><li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li><li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li><li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li><li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li><li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li><li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li><li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a></li><li class="menu-item-11"><a href="javascript:setTrainingContent(11)">Session&nbsp;11</a></li></ul></aside></div><div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content"><div class="carousel"><div class="training-content item-1"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;1</h1><h2 class="subtitle">Introduction</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="video-container mtm"><video width="853" height="480" controls allowfullscreen><source src="#" type="video/mp4"></video></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 1 Video - Placeholder</div><br></div></div></div></div></div></div><div class="training-content item-2"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;2<h2 class="subtitle">Developing New Habits</h2></h1></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="video-container mtm"><video width="853" height="480" controls allowfullscreen><source src="assets/Session2Animation.mp4" type="video/mp4"></video></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 2 Video - Developing New Habits</div><br></div></div></div></div></div></div><div class="training-content item-3"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;3</h1><h2 class="subtitle">The TLS 3-Step Sales Process</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="video-container mtm"><video width="853" height="480" controls allowfullscreen><source src="assets/Session3Animation.mp4" type="video/mp4"></video></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 3 Video - Exploring the Three Stages of the TLS 3-Step Sales Process. <strong>Greet, Build Value, Close.</strong></div><br></div></div></div></div></div></div><div class="training-content item-4"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;4</h1><h2 class="subtitle">Model of Effective Communication</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="video-container mtm"><video width="853" height="480" controls allowfullscreen><source src="assets/Session4BAnimation.mp4" type="video/mp4"></video></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 4B Video - Representational Systems</div><br></div></div></div></div></div></div><div class="training-content item-5"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;5</h1><h2 class="subtitle">Greet - Powerful First Impressions</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="video-container mtm"><video width="853" height="480" controls allowfullscreen><source src="assets/Session5Animation.mp4" type="video/mp4"></video></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 5 Video - Powerful First Impressions</div><br></div></div></div></div></div></div><div class="training-content item-6"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;6</h1><h2 class="subtitle">Greet - Developing a Positive Connection to Hold the Card Member's Attention</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="video-container mtm"><video width="853" height="480" controls allowfullscreen><source src="assets/Session6Animation.mp4" type="video/mp4"></video></div><br><div class="column is-10"><div class="box video-meta"><div class="video-title">Session 6 Video - Develop A Positive Connection</div><br></div></div></div></div></div></div><div class="training-content item-7"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;7</h1><h2 class="subtitle">Building Value - Values & Motivation Strategies</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-8"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;8</h1><h2 class="subtitle">Build Value - Understanding Through Active Listening & Powerful Questioning</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-9"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;9</h1><h2 class="subtitle">Presenting a Winning Solution</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-10"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;10</h1><h2 class="subtitle">Handling concerns and objections to build confidence</h2></div></div></section><div class="container mts"><div class="columns"><div class="column is-12"><div class="image"><img src="https://placehold.it/800x500"></div><br><div class="box video-meta"><div class="video-title">Video Title</div><br></div></div></div></div></div><div class="training-content item-11"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Final Session</h1><h2 class="subtitle">Learning Review</h2></div></div></section></div></div></div></div></div><div id="resources" class="page resources"><iframe src="https://player.vimeo.com/video/337154019" style="width:100%;height:100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><div id="predicates" class="page predicates"><section class="section"><div class="container"><h1 class="title">Predicates</h1><h2 class="subtitle">NLP Predicates</h2><section class="accordions"><article class="accordion"><div class="accordion-header toggle"><p>Visual</p></div><div class="accordion-body"><div class="accordion-content"><p id="visualWords1"></p></div></div></article><article class="accordion"><div class="accordion-header toggle"><p>Auditory</p></div><div class="accordion-body"><div class="accordion-content"><p id="auditoryWords1"></p></div></div></article><article class="accordion"><div class="accordion-header toggle"><p>Kinaesthetic</p></div><div class="accordion-body"><div class="accordion-content"><p id="kinaestheticWords1"></p></div></div></article><article class="accordion"><div class="accordion-header toggle"><p>Auditory Digital</p></div><div class="accordion-body"><div class="accordion-content"><p id="digitalWords1"></p></div></div></article></section></div></section></div><script>var words = {
+          "visual": [
+            "See",
+            "Look",
+            "Appear",
+            "View",
+            "Show",
+            "Dawn",
+            "Reveal",
+            "Envision",
+            "Illuminate",
+            "Twinkle",
+            "Clear",
+            "Foggy",
+            "Focused",
+            "Hazy",
+            "Crystal Clear",
+            "Flash",
+            "Imagine",
+            "Picture",
+            "Sparkling",
+            "Snap Shot",
+            "Vivid",
+            "Perceive",
+            "Light",
+            "Ray",
+            "Mesmerize",
+            "Watch",
+            "Perspective",
+            "Frame",
+            "Shine",
+            "Dim",
+            "Image",
+            "Vision",
+            "Observe",
+            "An eyeful",
+            "Appears to me",
+            "Beyond a shadow of a doubt",
+            "Birds eye view",
+            "Catch a glimpse of",
+            "Clear cut",
+            "Dim view",
+            "Eye to eye",
+            "Flashed on",
+            "Get a perspective on",
+            "Get a scope on",
+            "Hazy idea",
+            "Horse of a different colour",
+            "In light of",
+            "In view of",
+            "In person",
+            "Make a sense",
+            "Mental image",
+            "Mental picture",
+            "Mind’s eye",
+            "Naked eye",
+            "Paint a picture",
+            "Photographic memory",
+            "Plainly seen",
+            "Pretty as a picture",
+            "See to it",
+            "Short sighted",
+            "Showing off",
+            "Sight for sore eyes",
+            "Staring off into space",
+            "Take a peak",
+            "Tunnel vision",
+            "Under your nose",
+            "Well defined",
+          ],
+          "auditory": [
+            "Hear ",
+            "Listen",
+            "Sound (s)",
+            "Make music",
+            "Harmonize",
+            "Tune In/Out",
+            "Be All Ears",
+            "Rings A Bell",
+            "Silence",
+            "Be Heard",
+            "Resonate",
+            "Deaf",
+            "Mellifluous",
+            "Dissonance",
+            "Attune",
+            "Outspoken",
+            "Tell",
+            "Announce",
+            "Overtones",
+            "Unheard of",
+            "Talk ",
+            "Speak",
+            "State",
+            "Whine",
+            "Babble",
+            "Echo",
+            "Orchestrate",
+            "Whisper",
+            "Snap",
+            "Hum",
+            "Loud",
+            "Dialogue",
+            "Blabber mouth",
+            "Clear as a bell",
+            "Clearly expressed",
+            "Call on",
+            "Describe in detail",
+            "Earful",
+            "Express yourself",
+            "Give an account of",
+            "Give me your ear",
+            "Grant an audience",
+            "Heard voices",
+            "Hidden message",
+            "Hold your tongue",
+            "Idle talk",
+            "Inquire into",
+            "Key note speaker",
+            "Loud and clear",
+            "Manner of speaking",
+            "Pay attention to",
+            "Power of speech",
+            "Purrs like a kitten",
+            "Outspoken",
+            "Rap session",
+            "Rings a bell",
+            "State your purpose",
+            "Tattle-tale",
+            "To tell the truth",
+            "Tongue-tied",
+            "Tune in/tune out",
+            "Utterly",
+            "Unheard of",
+            "Voice an opinion",
+            "Well formed",
+            "Word for word",
+          ],
+          "kinaesthetic": [
+            "Feel",
+            "Touch",
+            "Grasp",
+            "Get hold of ",
+            "Slip through",
+            "Catch on",
+            "Tap into",
+            "Make contact",
+            "Throw out",
+            "Turn around",
+            "Hard",
+            "Unfeeling",
+            "Concrete",
+            "Scrape",
+            "Get a handle",
+            "Solid",
+            "Suffer",
+            "Unbudging",
+            "Impression",
+            "Touch base",
+            "Rub",
+            "Smooth",
+            "Pushy",
+            "Stumble",
+            "In touch",
+            "Relaxed",
+            "Loose",
+            "Cool",
+            "Tepid",
+            "Heavy",
+            "All washed up",
+            "Boils down to",
+            "Chip off the old block",
+            "Come to grips with",
+            "Connect with",
+            "Control yourself",
+            "Cool/calm/collected",
+            "Firm foundations",
+            "Floating on thin air",
+            "Get a handle on",
+            "Get a load of this",
+            "Get in touch with",
+            "Get the drift of",
+            "Hand in hand",
+            "Hang in there",
+            "Heated argument",
+            "Hold it - hold on",
+            "Hot-head",
+            "Keep you shirt on",
+            "Know-how",
+            "Lay the cards on the table",
+            "Light headed",
+            "Moment of panic",
+            "Pain-in-the-neck",
+            "Pull some strings",
+            "Sharp as a tack",
+            "Slipped my mind",
+            "Smooth operator",
+            "Start from scratch",
+            "Stiff upper lip",
+            "Topsy-turvy",
+            "Underhanded",
+            "Under pressure",
+          ],
+          "digital": [
+            "Sense",
+            "Experience",
+            "Understand",
+            "Think",
+            "Learn",
+            "Process",
+            "Decide",
+            "Motivate",
+            "Consider",
+            "Change",
+            "Perceive",
+            "Insensitive",
+            "Distinct",
+            "Conceive",
+            "Know",
+            "Question",
+            "Be conscious",
+            "Remember",
+            "Logic",
+            "Reasonable",
+            "Statistically",
+          ],
+        };
+        for (var cat in words) {
+          for (var y in words[cat]) {
+            var c = y % 1 + 1;//Math.floor(y/(words[cat].length/3))+1;
+            var jq = $('#' + cat + 'Words' + c);
+            jq.append($('<li>' + words[cat][y] + '</li>'));
+          }
+        }</script><div class="page practice" id="practice"><div class="columns is-mobile mlm-ns"><div class="column is-one-fifths-desktop is-two-fifths-mobile session-menu"><aside class="menu"><br><br><p class="menu-label is-size-6">Practice Exercises</p><br><br><ul class="menu-list"><li class="menu-item-1 menu-item-active"><a href="javascript:setTrainingContent(1)">Session&nbsp;1</a></li><li class="menu-item-2"><a href="javascript:setTrainingContent(2)">Session&nbsp;2</a></li><li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a></li><li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a></li><li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a></li><li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a></li><li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a></li><li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a></li><li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a></li><li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a></li></ul></aside></div><div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content"><div class="carousel"><div class="training-content item-1"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;1</h1><h2 class="subtitle">Introduction</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>No Exercises</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-2"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;2<h2 class="subtitle">Teach to Learn – pairs activity</h2></h1></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p><p class="mtm">Review your handouts and the notes you have taken and the content within the App.</p><p>Stand up and find a partner and share three insights from the session and answer any questions they may have.</p><p>Swap over and then move on to find a new partner and once again teach in your three insights</p><p></p></td></tr></tbody></table></section></div><div class="training-content item-3"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;3</h1><h2 class="subtitle">Exercise&nbsp;3 Subtitle</h2></div></div></section><section class="mtl"><p class="title"><strong>1. Uncovering the Beliefs, Practices and Results for each stage of the sales process</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Trainer to split the group into three smaller groups.</p><ul><li>Group 1 - Start at Greet</li><li>Group 2 - Start at Builds Value</li><li>Group 3 - Start at Close</li></ul><p class="mtm">Explain that each group will move around the three flip charts to discuss each of the three stages of the sales process and identify the Be – Do – Win for each of them.</p><p>Trainer states that this is timed activity and each group will have 15 mins at each of the 3 stages before a whistle sounds and they move on to the next flip.</p><p class="mtm"><strong>Round 1</strong> – the groups discuss the <em>first section only</em> on their flip chart – <strong>Being</strong>, and discuss the beliefs/attitude/mindset (the below the waterline areas) that the TLS consultant would need to adopt at this stage of the conversation with the customer.</p><p>After 12 mins the trainer blows the whistle and the groups move onto the next flip chart – Group 1 moves to Builds Value, Group 2 moves to Close and Group 3 moves to Greet.</p><p class="mtm"><strong>Round 2</strong> - the groups review what their colleagues have entered on the flips and add in anything extra before moving on to discuss the <strong>Doing,</strong> and identify the actions and activities, skills and behaviours ( the above the waterline areas) that a TLS consultant would demonstrate for that stage of the sales process.</p><p>After 12 mins the trainer blows the whistle and the groups move onto their final flip chart.</p><p class="mtm"><strong>Round 3</strong> – the groups review what their colleagues have entered on the flips and add in anything extra before moving on to discussing the Winning and identify what achieving a winning result looks like/sounds like/feels like from the <em>card holder</em> and <em>TLS consultant’s</em> perspective for that stage of the sales process.</p><p>After 12 mins the trainer blows the whistle and the groups move back to their original starting point and review the completed flip chart and add in any final points.</p><p class="mtm"><strong>Round 4 –</strong> the groups then review each of the completed flip charts “art gallery style” and take pictures of each of the flip charts on their mobile phones to upload onto their App.</p><p>Plenary debrief session</p><p class="mtm"><strong>Ask</strong> – What have you discovered during this activity?</p><p class="mtm"><strong>Look for</strong> – beliefs need to be empowering at each of the 3 stages/different actions and activities needed at the different stages/some behaviours are used constantly throughout – e.g. being present, communicating/listening/being clear on the win (from both perspectives) is super important and it would be good have this in mind from the outset.</p><p class="mtm">Trainer to state that the phrase <strong>“Begin with the end in Mind”</strong> – links to the Win of Be Do Win. When you are clear on what a winning result looks like/sounds like/feels like – you are setting the course for success.</p><p class="mtm"><strong>Trainer to highlight that Be- Do -Win is a powerful tool to adopt at each stage of the conversation with the customer.</strong></p><p class="mtm">It gives you a blueprint for personal success.</p></td></tr></tbody></table><p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Review your learning for the session. Stand up and find a partner and share three insights from the session and answer any questions they may have. Swap over and then move on to find a new partner and once again teach in your three insights.</p><p>Trainer to signpost to the next session.</p><p>State – one of the key activities uncovered in this session was Communication. The next session will explore this topic and you will discover more about the way you personally communicate and how you can flex and adapt your style to make powerful connections with the card holders.</p></td></tr></tbody></table></section></div><div class="training-content item-4"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;4</h1><h2 class="subtitle">Exercise&nbsp;4 Subtitle</h2></div></div></section><section class="mtl"><p class="title"><strong>1. Least Preferred Rep System</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Take a holiday/travel package and describe it to your partner in your least preferred rep system (the system you scored the lowest score on in the app). Partner listens. Then swap. Three minutes each, the quick group feedback</p></td></tr></tbody></table><p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>“A” and “B” “A” explains the basic Communication Model and the function of filters (talk about beliefs and how they shape our perception of reality) Then swap “B” explains representational systems to “A”</p></td></tr></tbody></table></section></div><div class="training-content item-5"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Session&nbsp;5</h1><h2 class="subtitle">Exercises</h2></div></div></section><section class="mtl"><p class="title"><strong>1. Personal Greetings practice</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p class="mtm">Info supplied on customer predicates/experience with AMEX/data/other info on CRM</p><ul class="mts ul-disc"><li><p>Card Member scenario activities – trios (1 observer to feedback)</p></li><li><p>One is the Consultant; One is the Card Member and one is the observer</p></li><li><p>Card Member and Consultant sit back-to-back so they cannot see each other but can hear each other</p></li><li><p>Consultant takes a minute to remember empowering beliefs, create positive internal representations and a physiology of excellence.</p></li><li><p>Consultant opens the call with a question: “Good morning/afternoon/evening, how can I help you?</p></li><li><p>CM responds as naturally as they can explaining they want to go on a vacation</p></li><li><p>Consultant listens for any predicates or phrases. Make a mental note. If detected, follow up in appropriate rep system (AD if none detected)</p></li><li><p>Continue conversation, Consultant asks the CM why they are going on the trip, what is important to them about the trip and the kind of experience they are looking for</p></li><li><p>Note rep systems and respond appropriately</p></li><li><p>Observer observes and takes notes</p></li><li><p>Five minutes each and then swap around so everyone gets to be the Consultant, CM and observer</p></li><li><p>Trainer collects feedback at the end and answers any questions</p></li></ul></td></tr></tbody></table><p class="title"><strong>2. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p>Learners work in pairs “A” and “B”</p><p>“A” shares with “B” their three most important takeaways from the session</p><p>Then swap and repeat</p></td></tr></tbody></table></section></div><div class="training-content item-6"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;6</h1><h2 class="subtitle">Exercise&nbsp;6 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-7"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;7</h1><h2 class="subtitle">Exercise&nbsp;7 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-8"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;8</h1><h2 class="subtitle">Exercise&nbsp;8 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-9"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;9</h1><h2 class="subtitle">Exercise&nbsp;9 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div><div class="training-content item-10"><section class="hero is-info is-bold"><div class="hero-body"><div class="container"><h1 class="title"><a role="button" class="session-burger is-pulled-left" aria-label="menu" aria-expanded="false" onclick="ToggleSessionMenu()"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span> </a>Exercise&nbsp;10</h1><h2 class="subtitle">Exercise&nbsp;10 Subtitle</h2></div></div></section><section class="mtl"><p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p><table class="table mtl"><thead><tr><th>Exercise Notes</th></tr></thead><tbody><tr><td><p></p></td></tr></tbody></table></section></div></div></div></div></div><div id="feedback" class="page feedback"><div class="container"><div class="notification"><h1 class="title is-size-3">Feedback</h1><form method="POST" action="feedback.php"><fieldset><legend>1. On a scale of 1-5, with one lowest and five highest, please rate the relevance and value of each of these Session&nbsp;segments to your business needs:</legend><fieldset class="rating"><legend>Introduction – What is NLP &amp; Why Learn It?</legend><input type="radio" id="star115" name="rating11" value="5"><label for="star115" title="Rocks!">5 stars</label> <input type="radio" id="star114" name="rating11" value="4"><label for="star114" title="Pretty good">4 stars</label> <input type="radio" id="star113" name="rating11" value="3"><label for="star113" title="Meh">3 stars</label> <input type="radio" id="star112" name="rating11" value="2"><label for="star112" title="Kinda bad">2 stars</label> <input type="radio" id="star111" name="rating11" value="1"><label for="star111" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>The NLP Communication Model</legend><input type="radio" id="star125" name="rating12" value="5"><label for="star125" title="Rocks!">5 stars</label> <input type="radio" id="star124" name="rating12" value="4"><label for="star124" title="Pretty good">4 stars</label> <input type="radio" id="star123" name="rating12" value="3"><label for="star123" title="Meh">3 stars</label> <input type="radio" id="star122" name="rating12" value="2"><label for="star122" title="Kinda bad">2 stars</label> <input type="radio" id="star121" name="rating12" value="1"><label for="star121" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Representational Skills</legend><input type="radio" id="star135" name="rating13" value="5"><label for="star135" title="Rocks!">5 stars</label> <input type="radio" id="star134" name="rating13" value="4"><label for="star134" title="Pretty good">4 stars</label> <input type="radio" id="star133" name="rating13" value="3"><label for="star133" title="Meh">3 stars</label> <input type="radio" id="star132" name="rating13" value="2"><label for="star132" title="Kinda bad">2 stars</label> <input type="radio" id="star131" name="rating13" value="1"><label for="star131" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Practical Exercises</legend><input type="radio" id="star145" name="rating14" value="5"><label for="star145" title="Rocks!">5 stars</label> <input type="radio" id="star144" name="rating14" value="4"><label for="star144" title="Pretty good">4 stars</label> <input type="radio" id="star143" name="rating14" value="3"><label for="star143" title="Meh">3 stars</label> <input type="radio" id="star142" name="rating14" value="2"><label for="star142" title="Kinda bad">2 stars</label> <input type="radio" id="star141" name="rating14" value="1"><label for="star141" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Usefulness of the supporting app</legend><input type="radio" id="star155" name="rating15" value="5"><label for="star155" title="Rocks!">5 stars</label> <input type="radio" id="star154" name="rating15" value="4"><label for="star154" title="Pretty good">4 stars</label> <input type="radio" id="star153" name="rating15" value="3"><label for="star153" title="Meh">3 stars</label> <input type="radio" id="star152" name="rating15" value="2"><label for="star152" title="Kinda bad">2 stars</label> <input type="radio" id="star151" name="rating15" value="1"><label for="star151" title="Sucks big time">1 star</label></fieldset></fieldset><fieldset><legend>2. On a scale of 1-5, with one the least and five the most, please indicate which of these course topics should receive more or less time and depth of coverage in the future:</legend><fieldset class="rating"><legend>Introduction – What is NLP &amp; Why Learn It?</legend><input type="radio" id="star215" name="rating21" value="5"><label for="star215" title="Rocks!">5 stars</label> <input type="radio" id="star214" name="rating21" value="4"><label for="star214" title="Pretty good">4 stars</label> <input type="radio" id="star213" name="rating21" value="3"><label for="star213" title="Meh">3 stars</label> <input type="radio" id="star212" name="rating21" value="2"><label for="star212" title="Kinda bad">2 stars</label> <input type="radio" id="star211" name="rating21" value="1"><label for="star211" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>The NLP Communication Model</legend><input type="radio" id="star225" name="rating22" value="5"><label for="star225" title="Rocks!">5 stars</label> <input type="radio" id="star224" name="rating22" value="4"><label for="star224" title="Pretty good">4 stars</label> <input type="radio" id="star223" name="rating22" value="3"><label for="star223" title="Meh">3 stars</label> <input type="radio" id="star222" name="rating22" value="2"><label for="star222" title="Kinda bad">2 stars</label> <input type="radio" id="star221" name="rating22" value="1"><label for="star221" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Representational Skills</legend><input type="radio" id="star235" name="rating23" value="5"><label for="star235" title="Rocks!">5 stars</label> <input type="radio" id="star234" name="rating23" value="4"><label for="star234" title="Pretty good">4 stars</label> <input type="radio" id="star233" name="rating23" value="3"><label for="star233" title="Meh">3 stars</label> <input type="radio" id="star232" name="rating23" value="2"><label for="star232" title="Kinda bad">2 stars</label> <input type="radio" id="star231" name="rating23" value="1"><label for="star231" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Practical Exercises</legend><input type="radio" id="star245" name="rating24" value="5"><label for="star245" title="Rocks!">5 stars</label> <input type="radio" id="star244" name="rating24" value="4"><label for="star244" title="Pretty good">4 stars</label> <input type="radio" id="star243" name="rating24" value="3"><label for="star243" title="Meh">3 stars</label> <input type="radio" id="star242" name="rating24" value="2"><label for="star242" title="Kinda bad">2 stars</label> <input type="radio" id="star241" name="rating24" value="1"><label for="star241" title="Sucks big time">1 star</label></fieldset></fieldset><fieldset><legend>3. Please indicate your opinion on the presentation of the course</legend><fieldset class="rating"><legend>Fluency &amp; presentation skills of trainer</legend><input type="radio" id="star315" name="rating31" value="5"><label for="star315" title="Rocks!">5 stars</label> <input type="radio" id="star314" name="rating31" value="4"><label for="star314" title="Pretty good">4 stars</label> <input type="radio" id="star313" name="rating31" value="3"><label for="star313" title="Meh">3 stars</label> <input type="radio" id="star312" name="rating31" value="2"><label for="star312" title="Kinda bad">2 stars</label> <input type="radio" id="star311" name="rating31" value="1"><label for="star311" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Subject knowledge of trainer</legend><input type="radio" id="star325" name="rating32" value="5"><label for="star325" title="Rocks!">5 stars</label> <input type="radio" id="star324" name="rating32" value="4"><label for="star324" title="Pretty good">4 stars</label> <input type="radio" id="star323" name="rating32" value="3"><label for="star323" title="Meh">3 stars</label> <input type="radio" id="star322" name="rating32" value="2"><label for="star322" title="Kinda bad">2 stars</label> <input type="radio" id="star321" name="rating32" value="1"><label for="star321" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Approachability of trainer</legend><input type="radio" id="star335" name="rating33" value="5"><label for="star335" title="Rocks!">5 stars</label> <input type="radio" id="star334" name="rating33" value="4"><label for="star334" title="Pretty good">4 stars</label> <input type="radio" id="star333" name="rating33" value="3"><label for="star333" title="Meh">3 stars</label> <input type="radio" id="star332" name="rating33" value="2"><label for="star332" title="Kinda bad">2 stars</label> <input type="radio" id="star331" name="rating33" value="1"><label for="star331" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Amount of time given to questions</legend><input type="radio" id="star345" name="rating34" value="5"><label for="star345" title="Rocks!">5 stars</label> <input type="radio" id="star344" name="rating34" value="4"><label for="star344" title="Pretty good">4 stars</label> <input type="radio" id="star343" name="rating34" value="3"><label for="star343" title="Meh">3 stars</label> <input type="radio" id="star342" name="rating34" value="2"><label for="star342" title="Kinda bad">2 stars</label> <input type="radio" id="star341" name="rating34" value="1"><label for="star341" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Quality of visual aids</legend><input type="radio" id="star355" name="rating35" value="5"><label for="star355" title="Rocks!">5 stars</label> <input type="radio" id="star354" name="rating35" value="4"><label for="star354" title="Pretty good">4 stars</label> <input type="radio" id="star353" name="rating35" value="3"><label for="star353" title="Meh">3 stars</label> <input type="radio" id="star352" name="rating35" value="2"><label for="star352" title="Kinda bad">2 stars</label> <input type="radio" id="star351" name="rating35" value="1"><label for="star351" title="Sucks big time">1 star</label></fieldset><fieldset class="rating"><legend>Quality of the supplied app</legend><input type="radio" id="star365" name="rating36" value="5"><label for="star365" title="Rocks!">5 stars</label> <input type="radio" id="star364" name="rating36" value="4"><label for="star364" title="Pretty good">4 stars</label> <input type="radio" id="star363" name="rating36" value="3"><label for="star363" title="Meh">3 stars</label> <input type="radio" id="star362" name="rating36" value="2"><label for="star362" title="Kinda bad">2 stars</label> <input type="radio" id="star361" name="rating36" value="1"><label for="star361" title="Sucks big time">1 star</label></fieldset></fieldset><fieldset><legend>4. Would you recommend this Session&nbsp;to a colleague?</legend><input name="recommend" type="radio"><label>Yes</label> <input name="recommend" type="radio"><label>No</label><br><br><label class="mtm">Why or why not?</label> <input class="input" name="why_recommend" type="text"></fieldset><fieldset class="mtm"><legend>5. Optional:</legend><div class="field"><div class="control"><label for="name">Name</label> <input class="input" id="name" name="name" type="text"></div></div><br><div class="field"><div class="control"><label for="title">Job title</label> <input class="input" id="title" name="title" type="text"></div></div><br><div class="field"><div class="control"><label for="dept">Dept</label> <input class="input" id="dept" name="dept" type="text"></div></div><br><div class="field"><div class="control"><label for="location">Location</label> <input class="input" id="location" name="location" type="text"></div></div></fieldset><input type="submit" class="button is-info"></form></div></div></div></div><div class="main-footer"><div class="privacy">By continuing to use our WebApp, you acknowledge that you have read and understand our <a href="privacy.html">Privacy Policy</a>. <span class="delete mlm" onclick="$('.privacy').hide()"></span></div><nav class="navbar is-link" role="navigation"><a id="navhome" href="javascript:SetPage('home');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Home.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Introduction</p></a><a id="navoutcomes" href="javascript:SetPage('outcomes');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Learning.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Learning Outcomes</p></a><a id="navtraining" href="javascript:SetPage('training');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Training.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Training Materials</p></a><a id="navquiz" href="javascript:SetPage('quiz');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Quiz.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Quiz</p></a><a id="navresources" href="javascript:SetPage('resources');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Resources.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Resources</p></a><a id="navpractice" href="javascript:SetPage('practice');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Practice.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Practice</p></a><a id="navfeedback" href="javascript:SetPage('feedback');" class="navbar-item is-expanded is-block has-text-centered"><p class="is-size-5 has-text-white is-size-6-touch"><img src="images/Feedback.png"></p><p class="is-size-5 has-text-white is-size-6-touch is-hidden-mobile">Feedback</p></a></nav></div></div><script src="js/Sortable.js"></script><script src="js/app.js"></script><script>$(function () {
+      var accordions = bulmaAccordion.attach();
+      $(".training-content").hide();
+      $(".training-content.item-1").show();
+      // window.carousels = bulmaCarousel.attach();
+    });</script></body></html>

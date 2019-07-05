@@ -7524,6 +7524,12 @@ a.navbar-item:focus {
 .training-content .ul-disc {
   list-style: disc; }
 
+.video-container {
+  width: 100%; }
+
+video {
+  width: 100%; }
+
 /*
    SPACING
 
