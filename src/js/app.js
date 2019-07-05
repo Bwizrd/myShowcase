@@ -7,10 +7,13 @@ function loaded(d){
         SetPage('home');
         $('.footer').show();
         if(window.location.hash!==''){
-          console.log(window.location.hash.substr(1,7));
           if(window.location.hash.substr(1,7)=='Session'){
             SetPage('training');
             setTrainingContent(window.location.hash.substr(8,1))
+          }
+          if(window.location.hash.substr(1,8)=='Exercise'){
+            SetPage('practice');
+            setTrainingContent(window.location.hash.substr(9,1))
           }
         }
     }
