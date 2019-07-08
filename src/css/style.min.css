@@ -246,6 +246,14 @@ fieldset {
   max-height: 8vh;
   max-width: 15vw; }
 
+@font-face {
+  font-family: BentonSansBlack;
+  src: url("/src/assets/fonts/BentonSansBlack.otf"); }
+
+@font-face {
+  font-family: BentonSansRegular;
+  src: url("/src/assets/fonts/BentonSansRegular.otf"); }
+
 /*
 // 1. Import the initial variables
 @import "../node_modules/bulma/sass/utilities/initial-variables";
@@ -7401,6 +7409,9 @@ label.panel-block {
     .accordions .accordion.is-danger .accordion-content {
       border-color: #ff3860;
       color: #cd0930; }
+
+#home {
+  background: black url("/src/images/Amex_BG_pattern.png") cover/contain; }
 
 .main-container {
   height: 100%;
