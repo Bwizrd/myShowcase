@@ -385,7 +385,10 @@ video {
 }
 
 .LearningOutcomes-Icon{
-  width: 4%;
-  height: 0%;
+  width: 5vh;
+  height: 5vh;
+  border: 2px white solid;
+  border-radius: 50%;
+  padding: 5px;
 }
 $navbar-breakpoint: 0;
