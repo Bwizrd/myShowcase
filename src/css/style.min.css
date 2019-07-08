@@ -1,4 +1,11 @@
 @charset "UTF-8";
+.legend {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  border: solid 1px #787878; }
+
 .home {
   text-align: center; }
 
@@ -188,9 +195,7 @@ fieldset {
   text-shadow: 1px 1px goldenrod, 2px 2px #B57340, 0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5); }
 
 .rating > label:active {
-  position: relative;
-  top: 2px;
-  left: 2px; }
+  position: relative; }
 
 .footer {
   display: none;

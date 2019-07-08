@@ -25,6 +25,67 @@ function DrawGraph(r) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   var m = Math.min(ctx.canvas.width, ctx.canvas.height) - 2,
     m2 = m / 2,
+    m4 = m / 4;
+
+  ctx.save();
+  ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
+
+  ctx.strokeStyle = '#0ff';
+
+  ctx.beginPath();
+  ctx.arc(0, 0, m2, 0, Math.PI * 2);
+  ctx.stroke();
+  //draw pie
+  var ang = 0;
+  for (var g in r) {
+    switch (r[g].type) {
+      case 'D':
+        ctx.fillStyle = dColorFill;
+        break;
+      case 'A':
+        ctx.fillStyle = aColorFill;
+        break;
+      case 'V':
+        ctx.fillStyle = vColorFill;
+        break;
+      case 'K':
+        ctx.fillStyle = kColorFill;
+        break;
+    }
+    var an = r[g].count * Math.PI * 2;
+
+    var er=m4/2;
+    ctx.strokeStyle = '#000';
+    ctx.beginPath();
+    ctx.arc(m2-er, 0, er, 0, Math.PI);
+    ctx.arc(0, 0, m2-er*2, 0, -an, true);
+    ctx.rotate(-an);
+    ctx.arc(m2-er, 0, er, Math.PI, 0, true);
+    ctx.arc(0, 0, m2, 0, an, false);
+    ctx.stroke();
+
+    ctx.fill();
+    
+    ang += an;
+  }
+
+  ctx.restore();
+  $(window).unbind('resize').resize(function () { DrawGraph(window.results); });
+
+}
+
+function DrawGraph2(r) {
+  var ctx = document.getElementById('canvasResults');
+  if (!ctx) return;
+  ctx = ctx.getContext('2d');
+  if (!ctx) return;
+  fitToContainer(ctx.canvas);
+  if(ctx.canvas.width==0 || ctx.canvas.height==0)
+    return;
+  ctx.fillStyle = bgColorCanvas;
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  var m = Math.min(ctx.canvas.width, ctx.canvas.height) - 2,
+    m2 = m / 2,
     m4 = m / 4;;
 
   ctx.save();
@@ -142,16 +203,16 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
       for (var g in window.results) {
         switch (window.results[g].type) {
           case 'D':
-            html += 'Digital: ';
+            html += '<span class="legend" style="background-color: '+dColorFill+'"/>Digital: ';
             break;
           case 'A':
-            html += 'Auditory: ';
+            html += '<span class="legend" style="background-color: '+aColorFill+'"/>Auditory: ';
             break;
           case 'V':
-            html += 'Visual: ';
+            html += '<span class="legend" style="background-color: '+vColorFill+'"/>Visual: ';
             break;
           case 'K':
-            html += 'Kinaesthetic ';
+            html += '<span class="legend" style="background-color: '+kColorFill+'"/>Kinaesthetic ';
             break;
         }
         p = Math.round(window.results[g].count * 100);
