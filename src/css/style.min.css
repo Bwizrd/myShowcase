@@ -159,7 +159,8 @@ fieldset {
    it doesn’t make the test unnecessarily selective */
 .rating:not(:checked) > input {
   position: absolute;
-  clip: rect(0, 0, 0, 0); }
+  clip: rect(0, 0, 0, 0);
+  visibility: hidden; }
 
 .rating:not(:checked) > label {
   float: right;
