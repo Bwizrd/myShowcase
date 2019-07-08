@@ -248,13 +248,19 @@ fieldset {
 
 @font-face {
   font-family: BentonSansBlack;
-  src: url("/src/assets/fonts/BentonSansBlack.otf"); }
+  src: url("../assets/fonts/BentonSansBlack.otf"); }
 
 @font-face {
   font-family: BentonSansRegular;
-  src: url("/src/assets/fonts/BentonSansRegular.otf"); }
+  src: url("../assets/fonts/BentonSansRegular.otf"); }
 
 p {
+  font-family: BentonSansRegular; }
+
+.title {
+  font-family: BentonSansBlack; }
+
+.subtitle {
   font-family: BentonSansRegular; }
 
 /*
@@ -1422,6 +1428,27 @@ p {
   .mhxxl-l {
     margin-left: 16rem;
     margin-right: 16rem; } }
+
+body {
+  display: flex;
+  height: 100%;
+  flex-direction: column; }
+
+.outer-flex {
+  display: flex; }
+
+.is-flex-column {
+  flex-direction: column; }
+
+.is-flex-row {
+  flex-direction: row; }
+
+.is-horizontal-center {
+  justify-content: center; }
+
+.is-vertical-center {
+  display: flex;
+  align-items: center; }
 
 /*
 // 1. Import the initial variables
@@ -8580,7 +8607,7 @@ label.panel-block {
       color: #cd0930; }
 
 #home {
-  background: url("/src/images/Amex_BG_pattern.png") rgba(0, 0, 0, 0.5);
+  background: url("../images/Amex_BG_pattern.png") rgba(0, 0, 0, 0.5);
   background-size: cover;
   background-blend-mode: multiply; }
 
@@ -8664,27 +8691,6 @@ h2.subtitle {
 html {
   overflow-y: auto; }
 
-body {
-  display: flex;
-  height: 100%;
-  flex-direction: column; }
-
-.outer-flex {
-  display: flex; }
-
-.is-flex-column {
-  flex-direction: column; }
-
-.is-flex-row {
-  flex-direction: row; }
-
-.is-horizontal-center {
-  justify-content: center; }
-
-.is-vertical-center {
-  display: flex;
-  align-items: center; }
-
 .navbar-item {
   width: 14.2857%;
   padding: 0;
@@ -8695,37 +8701,37 @@ a.navbar-item:hover {
 
 a.navbar-item .Introduction {
   height: 25px;
-  background: url("/src/images/Home.png") center/contain;
+  background: url("../images/Home.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item .LearningOutcomes {
   height: 25px;
-  background: url("/src/images/Learning.png") center/contain;
+  background: url("../images/Learning.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item .TrainingMaterials {
   height: 25px;
-  background: url("/src/images/Training.png") center/contain;
+  background: url("../images/Training.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item .Quiz {
   height: 25px;
-  background: url("/src/images/Quiz.png") center/contain;
+  background: url("../images/Quiz.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item .Resources {
   height: 25px;
-  background: url("/src/images/Resources.png") center/contain;
+  background: url("../images/Resources.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item .Practice {
   height: 25px;
-  background: url("/src/images/Practice.png") center/contain;
+  background: url("../images/Practice.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item .Feedback {
   height: 25px;
-  background: url("/src/images/Feedback.png") center/contain;
+  background: url("../images/Feedback.png") center/contain;
   background-repeat: no-repeat; }
 
 a.navbar-item:focus {
@@ -8733,31 +8739,31 @@ a.navbar-item:focus {
   color: #ffffff; }
   a.navbar-item:focus .Introduction {
     height: 25px;
-    background: url("/src/images/icons_hover/Home.png") center/contain;
+    background: url("../images/icons_hover/Home.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:focus .LearningOutcomes {
     height: 25px;
-    background: url("/src/images/icons_hover/Learning.png") center/contain;
+    background: url("../images/icons_hover/Learning.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:focus .TrainingMaterials {
     height: 25px;
-    background: url("/src/images/icons_hover/Training.png") center/contain;
+    background: url("../images/icons_hover/Training.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:focus .Quiz {
     height: 25px;
-    background: url("/src/images/icons_hover/Quiz.png") center/contain;
+    background: url("../images/icons_hover/Quiz.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:focus .Resources {
     height: 25px;
-    background: url("/src/images/icons_hover/Resources.png") center/contain;
+    background: url("../images/icons_hover/Resources.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:focus .Practice {
     height: 25px;
-    background: url("/src/images/icons_hover/Practice.png") center/contain;
+    background: url("../images/icons_hover/Practice.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:focus .Feedback {
     height: 25px;
-    background: url("/src/images/icons_hover/Feedback.png") center/contain;
+    background: url("../images/icons_hover/Feedback.png") center/contain;
     background-repeat: no-repeat; }
 
 a.navLink-active {
@@ -8765,31 +8771,31 @@ a.navLink-active {
   color: #ffffff; }
   a.navLink-active .Introduction {
     height: 25px;
-    background: url("/src/images/icons_hover/Home.png") center/contain;
+    background: url("../images/icons_hover/Home.png") center/contain;
     background-repeat: no-repeat; }
   a.navLink-active .LearningOutcomes {
     height: 25px;
-    background: url("/src/images/icons_hover/Learning.png") center/contain;
+    background: url("../images/icons_hover/Learning.png") center/contain;
     background-repeat: no-repeat; }
   a.navLink-active .TrainingMaterials {
     height: 25px;
-    background: url("/src/images/icons_hover/Training.png") center/contain;
+    background: url("../images/icons_hover/Training.png") center/contain;
     background-repeat: no-repeat; }
   a.navLink-active .Quiz {
     height: 25px;
-    background: url("/src/images/icons_hover/Quiz.png") center/contain;
+    background: url("../images/icons_hover/Quiz.png") center/contain;
     background-repeat: no-repeat; }
   a.navLink-active .Resources {
     height: 25px;
-    background: url("/src/images/icons_hover/Resources.png") center/contain;
+    background: url("../images/icons_hover/Resources.png") center/contain;
     background-repeat: no-repeat; }
   a.navLink-active .Practice {
     height: 25px;
-    background: url("/src/images/icons_hover/Practice.png") center/contain;
+    background: url("../images/icons_hover/Practice.png") center/contain;
     background-repeat: no-repeat; }
   a.navLink-active .Feedback {
     height: 25px;
-    background: url("/src/images/icons_hover/Feedback.png") center/contain;
+    background: url("../images/icons_hover/Feedback.png") center/contain;
     background-repeat: no-repeat; }
 
 a.navbar-item:hover {
@@ -8797,31 +8803,31 @@ a.navbar-item:hover {
   color: #ffffff; }
   a.navbar-item:hover .Introduction {
     height: 25px;
-    background: url("/src/images/icons_hover/Home.png") center/contain;
+    background: url("../images/icons_hover/Home.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:hover .LearningOutcomes {
     height: 25px;
-    background: url("/src/images/icons_hover/Learning.png") center/contain;
+    background: url("../images/icons_hover/Learning.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:hover .TrainingMaterials {
     height: 25px;
-    background: url("/src/images/icons_hover/Training.png") center/contain;
+    background: url("../images/icons_hover/Training.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:hover .Quiz {
     height: 25px;
-    background: url("/src/images/icons_hover/Quiz.png") center/contain;
+    background: url("../images/icons_hover/Quiz.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:hover .Resources {
     height: 25px;
-    background: url("/src/images/icons_hover/Resources.png") center/contain;
+    background: url("../images/icons_hover/Resources.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:hover .Practice {
     height: 25px;
-    background: url("/src/images/icons_hover/Practice.png") center/contain;
+    background: url("../images/icons_hover/Practice.png") center/contain;
     background-repeat: no-repeat; }
   a.navbar-item:hover .Feedback {
     height: 25px;
-    background: url("/src/images/icons_hover/Feedback.png") center/contain;
+    background: url("../images/icons_hover/Feedback.png") center/contain;
     background-repeat: no-repeat; }
 
 .navbar-item:hover {
@@ -8841,7 +8847,7 @@ a.navbar-item:hover {
 .navbar-item p:hover {
   color: #ffffff; }
 
-.nav-border {
+.navbar-item:not(:last-child) > .nav-border {
   border-right: 1px solid #787878; }
 
 .nav-border {
@@ -8852,7 +8858,7 @@ a.navbar-item:hover {
   flex-direction: column; }
 
 .amexLogo {
-  max-width: 30%; }
+  max-width: 20%; }
 
 #trainingContent table p {
   padding-bottom: 10px; }
@@ -8868,3 +8874,7 @@ a.navbar-item:hover {
 
 video {
   width: 100%; }
+
+.LearningOutcomes-Icon {
+  width: 4%;
+  height: 0%; }

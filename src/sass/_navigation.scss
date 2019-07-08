@@ -1,0 +1,216 @@
+//not loading in main...???
+
+.navbar-item {
+    width: 14.2857%;
+    padding: 0;
+    padding-top: 0.5rem;
+  }
+  a.navbar-item:hover {
+    color: #787878;
+  }
+  
+  a.navbar-item{
+    .Introduction {
+      height: 25px;
+      background: url("../images/Home.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .LearningOutcomes {
+      height: 25px;
+      background: url("../images/Learning.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .TrainingMaterials{
+      height: 25px;
+      background: url("../images/Training.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Quiz{
+      height: 25px;
+      background: url("../images/Quiz.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Resources{
+      height: 25px;
+      background: url("../images/Resources.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Practice{
+      height: 25px;
+      background: url("../images/Practice.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Feedback{
+      height: 25px;
+      background: url("../images/Feedback.png") center / contain;
+      background-repeat: no-repeat;
+    }
+  }
+  
+  
+  a.navbar-item:focus {
+    background-color: $hover-color;
+    color: #ffffff;
+    .Introduction {
+      height: 25px;
+      background: url("../images/icons_hover/Home.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .LearningOutcomes {
+      height: 25px;
+      background: url("../images/icons_hover/Learning.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .TrainingMaterials{
+      height: 25px;
+      background: url("../images/icons_hover/Training.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Quiz{
+      height: 25px;
+      background: url("../images/icons_hover/Quiz.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Resources{
+      height: 25px;
+      background: url("../images/icons_hover/Resources.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Practice{
+      height: 25px;
+      background: url("../images/icons_hover/Practice.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Feedback{
+      height: 25px;
+      background: url("../images/icons_hover/Feedback.png") center / contain;
+      background-repeat: no-repeat;
+    }
+  }
+  
+  a.navLink-active {
+    background-color: $hover-color;
+    color: #ffffff;
+    .Introduction {
+      height: 25px;
+      background: url("../images/icons_hover/Home.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .LearningOutcomes {
+      height: 25px;
+      background: url("../images/icons_hover/Learning.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .TrainingMaterials{
+      height: 25px;
+      background: url("../images/icons_hover/Training.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Quiz{
+      height: 25px;
+      background: url("../images/icons_hover/Quiz.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Resources{
+      height: 25px;
+      background: url("../images/icons_hover/Resources.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Practice{
+      height: 25px;
+      background: url("../images/icons_hover/Practice.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Feedback{
+      height: 25px;
+      background: url("../images/icons_hover/Feedback.png") center / contain;
+      background-repeat: no-repeat;
+    }
+  }
+  
+  a.navbar-item:hover {
+    background-color: $hover-color;
+    color: #ffffff;
+    .Introduction {
+      height: 25px;
+      background: url("../images/icons_hover/Home.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .LearningOutcomes {
+      height: 25px;
+      background: url("../images/icons_hover/Learning.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .TrainingMaterials{
+      height: 25px;
+      background: url("../images/icons_hover/Training.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Quiz{
+      height: 25px;
+      background: url("../images/icons_hover/Quiz.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Resources{
+      height: 25px;
+      background: url("../images/icons_hover/Resources.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Practice{
+      height: 25px;
+      background: url("../images/icons_hover/Practice.png") center / contain;
+      background-repeat: no-repeat;
+    }
+    .Feedback{
+      height: 25px;
+      background: url("../images/icons_hover/Feedback.png") center / contain;
+      background-repeat: no-repeat;
+    }
+  }
+  // .navLink-active:focus{
+  //     background-color: $hover-color;
+  // }
+  // .navLink-active{
+  //     background-color: $hover-color;
+  // }
+  
+  // a.navbar-item:active{
+  //     background-color: $hover-color;
+  // }
+  
+  .navbar-item:hover {
+    background-color: $hover-color;
+  }
+  
+  .navbar.is-link {
+    background-color: #ffffff;
+  }
+  
+  .icon-holding-div {
+    width: 20%;
+    margin: 0 auto;
+    
+  }
+  .icon-holding-div:hover {
+    .Introduction {
+      height: 25px;
+      background: url("/src/images/icons_hover/Home.png") center / contain;
+    }
+  }
+  
+  .navbar-item p:hover {
+    color: #ffffff;
+  }
+  
+  // .navbar a:hover{
+  //     background-color: $hover-color;
+  // }
+  
+  
+  
+  .navbar-item:not(:last-child) > .nav-border{
+    border-right: 1px solid #787878;
+  }
+  .nav-border {
+    margin: 10px 0px;
+  }

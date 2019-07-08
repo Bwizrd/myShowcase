@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  
+  .outer-flex {
+    display: flex;
+  }
+  
+  .is-flex-column {
+    flex-direction: column;
+  }
+  
+  .is-flex-row {
+    flex-direction: row;
+  }
+  
+  .is-horizontal-center {
+    justify-content: center;
+  }
+  
+  .is-vertical-center {
+    display: flex;
+    align-items: center;
+  }

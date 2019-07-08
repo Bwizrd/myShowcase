@@ -1,14 +1,22 @@
 @font-face {
     font-family: BentonSansBlack;
-    src: url('/src/assets/fonts/BentonSansBlack.otf');
+    src: url('../assets/fonts/BentonSansBlack.otf');
   }
 
   @font-face {
     font-family: BentonSansRegular;
-    src: url('/src/assets/fonts/BentonSansRegular.otf');
+    src: url('../assets/fonts/BentonSansRegular.otf');
   }
 
   p {
     font-family: BentonSansRegular;
 
+  }
+
+  .title {
+    font-family: BentonSansBlack;
+  }
+
+  .subtitle{
+    font-family: BentonSansRegular;
   }
