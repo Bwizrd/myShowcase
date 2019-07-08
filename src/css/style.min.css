@@ -93,7 +93,8 @@
   background-color: #C8EBFB; }
 
 .results {
-  height: 45vh; }
+  height: 45vh;
+  margin-top: 15px; }
 
 #wordGroups {
   height: 100%; }
@@ -8873,8 +8874,13 @@ a.navbar-item:hover {
   width: 100%; }
 
 video {
+<<<<<<< HEAD
   width: 100%; }
 
 .LearningOutcomes-Icon {
   width: 4%;
   height: 0%; }
+=======
+  width: 100%;
+  max-height: 75vh; }
+>>>>>>> 22c905ebc44e3c23ecf509d09250fa257de7c124
