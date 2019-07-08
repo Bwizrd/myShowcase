@@ -178,26 +178,115 @@ a.navbar-item{
     background-repeat: no-repeat;
   }
   .LearningOutcomes {
-    height: 35px;
+    height: 25px;
     background: url("/src/images/Learning.png") center / contain;
     background-repeat: no-repeat;
   }
+  .TrainingMaterials{
+    height: 25px;
+    background: url("/src/images/Training.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Quiz{
+    height: 25px;
+    background: url("/src/images/Quiz.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Resources{
+    height: 25px;
+    background: url("/src/images/Resources.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Practice{
+    height: 25px;
+    background: url("/src/images/Practice.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Feedback{
+    height: 25px;
+    background: url("/src/images/Feedback.png") center / contain;
+    background-repeat: no-repeat;
+  }
 }
+
+
 a.navbar-item:focus {
   background-color: $hover-color;
   color: #ffffff;
   .Introduction {
     height: 25px;
     background: url("/src/images/icons_hover/Home.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .LearningOutcomes {
+    height: 25px;
+    background: url("/src/images/icons_hover/Learning.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .TrainingMaterials{
+    height: 25px;
+    background: url("/src/images/icons_hover/Training.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Quiz{
+    height: 25px;
+    background: url("/src/images/icons_hover/Quiz.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Resources{
+    height: 25px;
+    background: url("/src/images/icons_hover/Resources.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Practice{
+    height: 25px;
+    background: url("/src/images/icons_hover/Practice.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Feedback{
+    height: 25px;
+    background: url("/src/images/icons_hover/Feedback.png") center / contain;
+    background-repeat: no-repeat;
   }
 }
 
-.navLink-active {
+a.navLink-active {
   background-color: $hover-color;
   color: #ffffff;
   .Introduction {
     height: 25px;
     background: url("/src/images/icons_hover/Home.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .LearningOutcomes {
+    height: 25px;
+    background: url("/src/images/icons_hover/Learning.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .TrainingMaterials{
+    height: 25px;
+    background: url("/src/images/icons_hover/Training.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Quiz{
+    height: 25px;
+    background: url("/src/images/icons_hover/Quiz.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Resources{
+    height: 25px;
+    background: url("/src/images/icons_hover/Resources.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Practice{
+    height: 25px;
+    background: url("/src/images/icons_hover/Practice.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Feedback{
+    height: 25px;
+    background: url("/src/images/icons_hover/Feedback.png") center / contain;
+    background-repeat: no-repeat;
   }
 }
 
@@ -207,6 +296,37 @@ a.navbar-item:hover {
   .Introduction {
     height: 25px;
     background: url("/src/images/icons_hover/Home.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .LearningOutcomes {
+    height: 25px;
+    background: url("/src/images/icons_hover/Learning.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .TrainingMaterials{
+    height: 25px;
+    background: url("/src/images/icons_hover/Training.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Quiz{
+    height: 25px;
+    background: url("/src/images/icons_hover/Quiz.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Resources{
+    height: 25px;
+    background: url("/src/images/icons_hover/Resources.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Practice{
+    height: 25px;
+    background: url("/src/images/icons_hover/Practice.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .Feedback{
+    height: 25px;
+    background: url("/src/images/icons_hover/Feedback.png") center / contain;
+    background-repeat: no-repeat;
   }
 }
 // .navLink-active:focus{
@@ -229,7 +349,7 @@ a.navbar-item:hover {
 }
 
 .icon-holding-div {
-  width: 11%;
+  width: 20%;
   margin: 0 auto;
   
 }
@@ -249,7 +369,7 @@ a.navbar-item:hover {
 // }
 
 .nav-border {
-  border-right: 1px solid gray;
+  border-right: 1px solid #787878;
 }
 .nav-border {
   margin: 10px 0px;
