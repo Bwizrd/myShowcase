@@ -8656,7 +8656,8 @@ label.panel-block {
   .menu-label {
     transition: color 0.3s; } }
 
-h1.title, h2.subtitle {
+h1.title,
+h2.subtitle {
   word-break: normal; }
 
 html {
@@ -8691,9 +8692,36 @@ body {
 a.navbar-item:hover {
   color: #787878; }
 
+a.navbar-item .Introduction {
+  height: 25px;
+  background: url("/src/images/Home.png") center/contain;
+  background-repeat: no-repeat; }
+
+a.navbar-item .LearningOutcomes {
+  height: 35px;
+  background: url("/src/images/Learning.png") center/contain;
+  background-repeat: no-repeat; }
+
 a.navbar-item:focus {
   background-color: #98d4f5;
-  color: #787878; }
+  color: #ffffff; }
+  a.navbar-item:focus .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center/contain; }
+
+.navLink-active {
+  background-color: #98d4f5;
+  color: #ffffff; }
+  .navLink-active .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center/contain; }
+
+a.navbar-item:hover {
+  background-color: #98d4f5;
+  color: #ffffff; }
+  a.navbar-item:hover .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center/contain; }
 
 .navbar-item:hover {
   background-color: #98d4f5; }
@@ -8702,11 +8730,15 @@ a.navbar-item:focus {
   background-color: #ffffff; }
 
 .icon-holding-div {
-  width: 20%;
+  width: 11%;
   margin: 0 auto; }
-  .icon-holding-div .Introduction {
-    height: 35px;
-    background: url("/src/images/Home.png") center/cover; }
+
+.icon-holding-div:hover .Introduction {
+  height: 25px;
+  background: url("/src/images/icons_hover/Home.png") center/contain; }
+
+.navbar-item p:hover {
+  color: #ffffff; }
 
 .nav-border {
   border-right: 1px solid gray; }
