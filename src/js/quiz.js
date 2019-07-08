@@ -1,8 +1,8 @@
 var bgColorCanvas = '#fff',
-  dColorFill = '#333',
-  aColorFill = '#338',
-  vColorFill = '#383',
-  kColorFill = '#833'
+  dColorFill = '#2daae2',
+  aColorFill = '#12a19b',
+  vColorFill = '#e71873',
+  kColorFill = '#feed00'
 dTextColorFill = '#888',//digital text colour
   aTextColorFill = '#33d',//auditry text colour
   vTextColorFill = '#3d3',
@@ -30,11 +30,6 @@ function DrawGraph(r) {
   ctx.save();
   ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
 
-  ctx.strokeStyle = '#0ff';
-
-  ctx.beginPath();
-  ctx.arc(0, 0, m2, 0, Math.PI * 2);
-  ctx.stroke();
   //draw pie
   var ang = 0;
   for (var g in r) {
@@ -52,19 +47,25 @@ function DrawGraph(r) {
         ctx.fillStyle = kColorFill;
         break;
     }
+    ctx.strokeStyle=ctx.fillStyle;
     var an = r[g].count * Math.PI * 2;
 
     var er=m4/2;
-    ctx.strokeStyle = '#000';
+    //ctx.strokeStyle = '#000';
     ctx.beginPath();
     ctx.arc(m2-er, 0, er, 0, Math.PI);
     ctx.arc(0, 0, m2-er*2, 0, -an, true);
     ctx.rotate(-an);
     ctx.arc(m2-er, 0, er, Math.PI, 0, true);
     ctx.arc(0, 0, m2, 0, an, false);
+    ctx.fill();
     ctx.stroke();
 
-    ctx.fill();
+    
+  /*ctx.strokeStyle = '#0ff';
+  ctx.beginPath();
+  ctx.arc(0, 0, m2, 0, Math.PI * 2);
+  ctx.stroke();*/
     
     ang += an;
   }
@@ -73,7 +74,7 @@ function DrawGraph(r) {
   $(window).unbind('resize').resize(function () { DrawGraph(window.results); });
 
 }
-
+/*
 function DrawGraph2(r) {
   var ctx = document.getElementById('canvasResults');
   if (!ctx) return;
@@ -155,7 +156,7 @@ function DrawGraph2(r) {
   ctx.restore();
   $(window).unbind('resize').resize(function () { DrawGraph(window.results); });
 
-}
+}*/
 
 function CreateQuestionButton(it, label, questions, bAllButtons) {
   var cz = '';
@@ -203,16 +204,16 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
       for (var g in window.results) {
         switch (window.results[g].type) {
           case 'D':
-            html += '<span class="legend" style="background-color: '+dColorFill+'"/>Digital: ';
+            html += '<span class="legend" style="background-color: '+dColorFill+'"/>&nbsp;Digital:&nbsp;';
             break;
           case 'A':
-            html += '<span class="legend" style="background-color: '+aColorFill+'"/>Auditory: ';
+            html += '<span class="legend" style="background-color: '+aColorFill+'"/>&nbsp;Auditory:&nbsp;';
             break;
           case 'V':
-            html += '<span class="legend" style="background-color: '+vColorFill+'"/>Visual: ';
+            html += '<span class="legend" style="background-color: '+vColorFill+'"/>&nbsp;Visual:&nbsp;';
             break;
           case 'K':
-            html += '<span class="legend" style="background-color: '+kColorFill+'"/>Kinaesthetic ';
+            html += '<span class="legend" style="background-color: '+kColorFill+'"/>&nbsp;Kinaesthetic:&nbsp;';
             break;
         }
         p = Math.round(window.results[g].count * 100);
@@ -377,7 +378,7 @@ $(function () {
       //add results container
       var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
       if (it > 1) qContainer.hide();
-      qContainer.append($('<div class="results"><canvas id="canvasResults"></canvas><p id="textResults"></p></div>'));
+      qContainer.append($('<div class="results"><div class="columns fullscreen"><div class="column is-8"><canvas id="canvasResults"></canvas></div><div class="column"><p id="textResults"></p></div></div></div>'));
       $('#quizBox').append(qContainer);
       continue;
     }
