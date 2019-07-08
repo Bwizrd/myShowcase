@@ -209,9 +209,6 @@ fieldset {
   width: 19%;
   display: inline-block; }
 
-.navLink-active {
-  background-color: #98d4f5; }
-
 /* .navLink-active{
 	background-color: #148399;
 	background: linear-gradient(0deg, #148399 0%, #ffffff 50%, #ffffff 100%);
@@ -226,9 +223,6 @@ fieldset {
 	//transition: all 1s ease-in-out;
 	color:#fff;
 } */
-.navLink-active:active, .navLink-active:visited, .navLink-active:hover {
-  color: #98d4f5; }
-
 @-webkit-keyframes AnimationName {
   0% {
     background-position: 50% 0%; }
@@ -8692,36 +8686,29 @@ body {
 .navbar-item {
   width: 14.2857%;
   padding: 0;
-  padding-top: 0.5rem;
-  margin: 1px 0px;
-  border-left: 1px gray solid;
-  border-right: solid 1px gray; }
+  padding-top: 0.5rem; }
 
 a.navbar-item:hover {
-  background-color: #98d4f5; }
+  color: #787878; }
 
 a.navbar-item:focus {
-  background-color: #98d4f5; }
+  background-color: #98d4f5;
+  color: #787878; }
 
-.navLink-active:focus {
-  background-color: #98d4f5; }
-
-.navLink-active {
-  background-color: #98d4f5; }
-
-a.navbar-item:active {
+.navbar-item:hover {
   background-color: #98d4f5; }
 
 .navbar.is-link {
   background-color: #ffffff; }
 
-.navbar a {
-  margin: 10px 0px; }
+.icon-holding-div {
+  width: 20%;
+  margin: 0 auto; }
+  .icon-holding-div .Introduction {
+    height: 35px;
+    background: url("/src/images/Home.png") center/cover; }
 
-.navbar a:hover {
-  background-color: #98d4f5; }
-
-.nav-border:not(:last-child) {
+.nav-border {
   border-right: 1px solid gray; }
 
 .nav-border {
