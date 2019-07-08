@@ -169,40 +169,50 @@ body{
   width: 14.2857%;
   padding: 0;
   padding-top: 0.5rem;
-  margin: 1px 0px;
-    border-left: 1px gray solid;
-    border-right: solid 1px gray;
 }
 a.navbar-item:hover{
-    background-color: $hover-color;
+  color: #787878;
 }
 a.navbar-item:focus{
     background-color: $hover-color;
+    color: #787878;
 }
-.navLink-active:focus{
-    background-color: $hover-color;
-}
-.navLink-active{
-    background-color: $hover-color;
-}
+// .navLink-active:focus{
+//     background-color: $hover-color;
+// }
+// .navLink-active{
+//     background-color: $hover-color;
+// }
 
-a.navbar-item:active{
-    background-color: $hover-color;
+// a.navbar-item:active{
+//     background-color: $hover-color;
+// }
+
+.navbar-item:hover{
+  background-color: $hover-color;
 }
 
 .navbar.is-link{
     background-color: #ffffff;
 }
 
-.navbar a{
-  margin: 10px 0px;
+.icon-holding-div{
+  width: 20%;
+  margin: 0 auto;
+  .Introduction{
+    height: 35px;
+    background:url('/src/images/Home.png') center / cover;
+  }
 }
 
-.navbar a:hover{
-    background-color: $hover-color;
-}
 
-.nav-border:not(:last-child) {
+
+
+// .navbar a:hover{
+//     background-color: $hover-color;
+// }
+
+.nav-border {
   border-right: 1px solid gray;
 }
 .nav-border{

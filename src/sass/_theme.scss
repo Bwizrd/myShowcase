@@ -247,9 +247,6 @@ fieldset{
 	width:19%;
 	display: inline-block;
 }
-.navLink-active{
-	background-color: $hover-color;
-}
 
 /* .navLink-active{
 	background-color: #148399;
@@ -265,9 +262,7 @@ fieldset{
 	//transition: all 1s ease-in-out;
 	color:#fff;
 } */
-.navLink-active:active, .navLink-active:visited, .navLink-active:hover{
-	color: $hover-color;
-}
+
 @-webkit-keyframes AnimationName {
     0%{background-position:50% 0%}
     100%{background-position:50% 100%}
