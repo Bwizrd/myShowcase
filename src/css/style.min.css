@@ -8867,4 +8867,5 @@ a.navbar-item:hover {
   width: 100%; }
 
 video {
-  width: 100%; }
+  width: 100%;
+  max-height: 75vh; }
