@@ -173,7 +173,11 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
     $('#qb' + (currentQuestion + 1)).show();
     $('#question_container' + (currentQuestion)).show();
     
-    $('#quizQuestion').html(questions[currentQuestion].q);
+    if(currentQuestion < questions.length){
+      $('#quizQuestion').html(questions[currentQuestion].q);
+    }else{
+      $('#quizQuestion').html('Your prefered representational system');
+    }
 
     if (i == questions.length) {
       /*update results page*/
@@ -231,7 +235,7 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
       }
       //$('#question_container'+(i+1))
       $('#textResults').html(html);
-      $('#quizTitle').html('Your prefered representation system');
+      //$('#quizTitle').html('Your prefered representation system');
 
       DrawGraph(window.results);
     }
@@ -376,7 +380,6 @@ $(function () {
       if (it > 1) qb.hide();
       if (it == questions.length) qb.addClass('qbtn-end');
     }
-
     if (it == questions.length) {
       //add results container
       var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
@@ -398,6 +401,7 @@ $(function () {
 
     //row.append($('<h1>' + question + '</h1>'));
     //$('#quizQuestion').html(question);
+    if(it==0)qContainer.append('<div>'+question+'</div>');
 
     //create list group
     var q = $('<div id="question' + it + '" class="question list-group col is-size-6-touch">');
