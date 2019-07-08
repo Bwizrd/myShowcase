@@ -36,8 +36,11 @@ $navbar-breakpoint: 0;
 
 
 #home {
-  background: black url('/src/images/Amex_BG_pattern.png') cover / contain;
+  background:url('/src/images/Amex_BG_pattern.png') rgba(0, 0, 0, 0.5);
+  background-size:cover;
+  background-blend-mode: multiply;
 }
+
 
 .main-container{
   height: 100%;
@@ -131,8 +134,27 @@ overflow-y: auto;
 
 //bulma flexbox additions
 
+body{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
 .outer-flex{
     display: flex;
+}
+
+.is-flex-column{
+  flex-direction: column;
+}
+
+.is-flex-row{
+  flex-direction: row;
+
+}
+
+.is-horizontal-center{
+  justify-content: center;
 }
 
 .is-vertical-center {
