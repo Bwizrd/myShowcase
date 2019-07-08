@@ -6,16 +6,18 @@ function loaded(d){
     if(toload.length==0){
         SetPage('home');
         $('.footer').show();
-        if(window.location.hash!==''){
-          if(window.location.hash.substr(1,7)=='Session'){
-            SetPage('training');
-            setTrainingContent(window.location.hash.substr(8,1))
+        //setInterval(function(){
+          if(window.location.hash!==''){
+            if(window.location.hash.substr(1,7).toLowerCase()=='session'){
+              SetPage('training');
+              setTrainingContent(window.location.hash.substr(8))
+            }
+            if(window.location.hash.substr(1,8).toLowerCase()=='exercise'){
+              SetPage('practice');
+              setTrainingContent(window.location.hash.substr(9))
+            }
           }
-          if(window.location.hash.substr(1,8)=='Exercise'){
-            SetPage('practice');
-            setTrainingContent(window.location.hash.substr(9,1))
-          }
-        }
+        //}, 300);
     }
 }
 
@@ -61,6 +63,60 @@ function SetPage(page){
     $('video').each(function(id,dom) {
       dom.pause();
     });
+    if(page!=window.currentPage){
+      /*switch (page) {
+        case 'training':
+            if(window.currentPage!='training' && window.currentPage!='practice')
+              window.location.hash='Session1';
+            else
+              window.location.hash='Session'+window.currentSession;
+            break;
+        case 'practice':
+            if(window.currentPage!='training' && window.currentPage!='practice')
+              window.location.hash='Exercise1';
+            else
+              window.location.hash='Exercise'+window.currentSession;
+            break;
+          break;
+        default:
+          window.location.hash='';
+      }*/
+      window.currentPage=page;
+      switch(window.currentPage){
+        case 'quiz':
+          DrawGraph(window.results);
+      }
+    }
+}
+
+
+
+function setTrainingContent(session) {
+  //     window.carousels[0].show(session);
+  //    /*var jq = $(".carousel");
+  //    if (jq[0] && jq[0].bulmaCarousel){
+  //     jq[0].bulmaCarousel.show(session)
+  //    }*/
+  $(".training-content").hide();
+  $(".training-content.item-" + session).show();
+  $(".menu-item-active").removeClass("menu-item-active");
+  $(".menu-item-" + session).addClass("menu-item-active");
+  $(".page > .columns > .column").removeClass('menu-list-active');
+  $('video').each(function (id, dom) {
+    dom.pause();
+  });
+  /*window.currentSession=session;
+  switch (window.currentPage) {
+    case 'training':
+      window.location.hash = 'Session' + session
+      break;
+    case 'practice':
+      window.location.hash = 'Exercise' + session
+      break;
+  }*/
+}
+function ToggleSessionMenu() {
+  $(".page > .columns > .column").toggleClass('menu-list-active');
 }
 
 

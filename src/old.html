@@ -1,0 +1,390 @@
+<!-- <div id="predicates" class="page predicates">
+			<div class="accordion" id="wordGroups">
+
+
+				<div class="card">
+					<a class="btn btn-default" data-toggle="collapse" data-toggle="collapse"
+						data-target="#collapseVisual" aria-expanded="false" aria-controls="collapseTwo">
+						<div class="card-header" id="headingVisual">
+							<h3 class="mb-0">
+								Visual
+								<span class="ABREV">V</span>
+							</h3>
+						</div>
+					</a>
+
+					<div id="collapseVisual" class="collapse" aria-labelledby="headingVisual" data-parent="#wordGroups">
+						<div class="card-body word-container">
+							<ul class="wordList" id="visualWords1"></ul>
+							<ul class="wordList" id="visualWords2"></ul>
+							<ul class="wordList" id="visualWords3"></ul>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="card">
+					<a class="btn btn-default" data-toggle="collapse" data-toggle="collapse"
+						data-target="#collapseAuditory" aria-expanded="false" aria-controls="collapseTwo">
+						<div class="card-header" id="headingAuditory">
+							<h3 class="mb-0">
+								Auditory
+								<span class="ABREV">A</span>
+							</h3>
+						</div>
+					</a>
+
+					<div id="collapseAuditory" class="collapse" aria-labelledby="headingAuditory"
+						data-parent="#wordGroups">
+						<div class="card-body word-container">
+							<ul class="wordList" id="auditoryWords1"></ul>
+							<ul class="wordList" id="auditoryWords2"></ul>
+							<ul class="wordList" id="auditoryWords3"></ul>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="card">
+					<a class="btn btn-default" data-toggle="collapse" data-toggle="collapse"
+						data-target="#collapseKinaesthetic" aria-expanded="false" aria-controls="collapseTwo">
+						<div class="card-header" id="headingKinaesthetic">
+							<h3 class="mb-0">
+								Kinaesthetic
+								<span class="ABREV">K</span>
+							</h3>
+						</div>
+					</a>
+
+					<div id="collapseKinaesthetic" class="collapse" aria-labelledby="headingKinaesthetic"
+						data-parent="#wordGroups">
+						<div class="card-body word-container">
+							<ul class="wordList" id="kinaestheticWords1"></ul>
+							<ul class="wordList" id="kinaestheticWords2"></ul>
+							<ul class="wordList" id="kinaestheticWords3"></ul>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="card">
+					<a class="btn btn-default" data-toggle="collapse" data-toggle="collapse"
+						data-target="#collapseDigital" aria-expanded="false" aria-controls="collapseTwo">
+						<div class="card-header" id="headingDigital">
+							<h3 class="mb-0">
+								Auditory Digital
+								<span class="ABREV">AD</span>
+							</h3>
+						</div>
+					</a>
+
+					<div id="collapseDigital" class="collapse show" aria-labelledby="headingDigital"
+						data-parent="#wordGroups">
+						<div class="card-body word-container">
+							<ul class="wordList" id="digitalWords1"></ul>
+							<ul class="wordList" id="digitalWords2"></ul>
+							<ul class="wordList" id="digitalWords3"></ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+      <script>
+        var words = {
+          "visual": [
+            "See",
+            "Look",
+            "Appear",
+            "View",
+            "Show",
+            "Dawn",
+            "Reveal",
+            "Envision",
+            "Illuminate",
+            "Twinkle",
+            "Clear",
+            "Foggy",
+            "Focused",
+            "Hazy",
+            "Crystal Clear",
+            "Flash",
+            "Imagine",
+            "Picture",
+            "Sparkling",
+            "Snap Shot",
+            "Vivid",
+            "Perceive",
+            "Light",
+            "Ray",
+            "Mesmerize",
+            "Watch",
+            "Perspective",
+            "Frame",
+            "Shine",
+            "Dim",
+            "Image",
+            "Vision",
+            "Observe",
+            "An eyeful",
+            "Appears to me",
+            "Beyond a shadow of a doubt",
+            "Birds eye view",
+            "Catch a glimpse of",
+            "Clear cut",
+            "Dim view",
+            "Eye to eye",
+            "Flashed on",
+            "Get a perspective on",
+            "Get a scope on",
+            "Hazy idea",
+            "Horse of a different colour",
+            "In light of",
+            "In view of",
+            "In person",
+            "Make a sense",
+            "Mental image",
+            "Mental picture",
+            "Mind’s eye",
+            "Naked eye",
+            "Paint a picture",
+            "Photographic memory",
+            "Plainly seen",
+            "Pretty as a picture",
+            "See to it",
+            "Short sighted",
+            "Showing off",
+            "Sight for sore eyes",
+            "Staring off into space",
+            "Take a peak",
+            "Tunnel vision",
+            "Under your nose",
+            "Well defined",
+          ],
+          "auditory": [
+            "Hear ",
+            "Listen",
+            "Sound (s)",
+            "Make music",
+            "Harmonize",
+            "Tune In/Out",
+            "Be All Ears",
+            "Rings A Bell",
+            "Silence",
+            "Be Heard",
+            "Resonate",
+            "Deaf",
+            "Mellifluous",
+            "Dissonance",
+            "Attune",
+            "Outspoken",
+            "Tell",
+            "Announce",
+            "Overtones",
+            "Unheard of",
+            "Talk ",
+            "Speak",
+            "State",
+            "Whine",
+            "Babble",
+            "Echo",
+            "Orchestrate",
+            "Whisper",
+            "Snap",
+            "Hum",
+            "Loud",
+            "Dialogue",
+            "Blabber mouth",
+            "Clear as a bell",
+            "Clearly expressed",
+            "Call on",
+            "Describe in detail",
+            "Earful",
+            "Express yourself",
+            "Give an account of",
+            "Give me your ear",
+            "Grant an audience",
+            "Heard voices",
+            "Hidden message",
+            "Hold your tongue",
+            "Idle talk",
+            "Inquire into",
+            "Key note speaker",
+            "Loud and clear",
+            "Manner of speaking",
+            "Pay attention to",
+            "Power of speech",
+            "Purrs like a kitten",
+            "Outspoken",
+            "Rap session",
+            "Rings a bell",
+            "State your purpose",
+            "Tattle-tale",
+            "To tell the truth",
+            "Tongue-tied",
+            "Tune in/tune out",
+            "Utterly",
+            "Unheard of",
+            "Voice an opinion",
+            "Well formed",
+            "Word for word",
+          ],
+          "kinaesthetic": [
+            "Feel",
+            "Touch",
+            "Grasp",
+            "Get hold of ",
+            "Slip through",
+            "Catch on",
+            "Tap into",
+            "Make contact",
+            "Throw out",
+            "Turn around",
+            "Hard",
+            "Unfeeling",
+            "Concrete",
+            "Scrape",
+            "Get a handle",
+            "Solid",
+            "Suffer",
+            "Unbudging",
+            "Impression",
+            "Touch base",
+            "Rub",
+            "Smooth",
+            "Pushy",
+            "Stumble",
+            "In touch",
+            "Relaxed",
+            "Loose",
+            "Cool",
+            "Tepid",
+            "Heavy",
+            "All washed up",
+            "Boils down to",
+            "Chip off the old block",
+            "Come to grips with",
+            "Connect with",
+            "Control yourself",
+            "Cool/calm/collected",
+            "Firm foundations",
+            "Floating on thin air",
+            "Get a handle on",
+            "Get a load of this",
+            "Get in touch with",
+            "Get the drift of",
+            "Hand in hand",
+            "Hang in there",
+            "Heated argument",
+            "Hold it - hold on",
+            "Hot-head",
+            "Keep you shirt on",
+            "Know-how",
+            "Lay the cards on the table",
+            "Light headed",
+            "Moment of panic",
+            "Pain-in-the-neck",
+            "Pull some strings",
+            "Sharp as a tack",
+            "Slipped my mind",
+            "Smooth operator",
+            "Start from scratch",
+            "Stiff upper lip",
+            "Topsy-turvy",
+            "Underhanded",
+            "Under pressure",
+          ],
+          "digital": [
+            "Sense",
+            "Experience",
+            "Understand",
+            "Think",
+            "Learn",
+            "Process",
+            "Decide",
+            "Motivate",
+            "Consider",
+            "Change",
+            "Perceive",
+            "Insensitive",
+            "Distinct",
+            "Conceive",
+            "Know",
+            "Question",
+            "Be conscious",
+            "Remember",
+            "Logic",
+            "Reasonable",
+            "Statistically",
+          ],
+        };
+        for (var cat in words) {
+          for (var y in words[cat]) {
+            var c = y % 1 + 1;//Math.floor(y/(words[cat].length/3))+1;
+            var jq = $('#' + cat + 'Words' + c);
+            jq.append($('<li>' + words[cat][y] + '</li>'));
+          }
+        }-->
+</script>
+
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!-- PREDICATES PAGE -->
+<div id="predicates" class="page predicates">
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Predicates</h1>
+      <h2 class="subtitle">
+        NLP Predicates
+      </h2>
+      <section class="accordions">
+        <article class="accordion">
+          <div class="accordion-header toggle">
+            <p>Visual</p>
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p id="visualWords1"></p>
+            </div>
+          </div>
+        </article>
+        <article class="accordion">
+          <div class="accordion-header toggle">
+            <p>Auditory</p>
+            <!-- <button class="toggle" aria-label="toggle"></button> -->
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p id="auditoryWords1"></p>
+            </div>
+          </div>
+        </article>
+        <article class="accordion">
+          <div class="accordion-header toggle">
+            <p>Kinaesthetic</p>
+            <!-- <button class="toggle" aria-label="toggle"></button> -->
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p id="kinaestheticWords1"></p>
+            </div>
+          </div>
+        </article>
+        <article class="accordion">
+          <div class="accordion-header toggle">
+            <p>Auditory Digital</p>
+            <!-- <button class="toggle" aria-label="toggle"></button> -->
+          </div>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              <p id="digitalWords1"></p>
+
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </section>
+</div>
