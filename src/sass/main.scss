@@ -1,8 +1,8 @@
 @charset "utf-8";
-$hover-color: #98d4f5;//#d3d6d7;
-@import 'theme';
-@import 'fonts';
-@import 'spacers';
+$hover-color: #98d4f5; //#d3d6d7;
+@import "theme";
+@import "fonts";
+@import "spacers";
 
 // Customization
 
@@ -35,24 +35,21 @@ $navbar-breakpoint: 0;
 @import "node_modules/bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
 // @import "node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css";
 
-
-
 #home {
-  background:url('/src/images/Amex_BG_pattern.png') rgba(0, 0, 0, 0.5);
-  background-size:cover;
+  background: url("/src/images/Amex_BG_pattern.png") rgba(0, 0, 0, 0.5);
+  background-size: cover;
   background-blend-mode: multiply;
 }
 
-
-.main-container{
+.main-container {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-#main{
+#main {
   overflow-y: auto;
 }
-.footer{
+.footer {
   position: initial;
 }
 .session-burger {
@@ -88,94 +85,129 @@ $navbar-breakpoint: 0;
 .session-burger span:nth-child(3) {
   top: calc(50% + 4px);
 }
-@media screen and (min-width: $tablet){
+@media screen and (min-width: $tablet) {
   .session-burger {
-      display: none;
+    display: none;
   }
 }
-@media screen and (max-width: $tablet){
-  .session-menu{
+@media screen and (max-width: $tablet) {
+  .session-menu {
     display: block !important;
     width: 0% !important;
     overflow-x: hidden;
     padding: 0;
   }
-  .columns{
+  .columns {
     margin-left: 0;
     margin-right: 0;
   }
-  .session-menu.menu-list-active{
+  .session-menu.menu-list-active {
     width: 50% !important;
   }
-  .page > .columns > .column{
+  .page > .columns > .column {
     transition: width 0.3s;
   }
-  .session-content{
-    width:100% !important;
+  .session-content {
+    width: 100% !important;
     padding: 0;
   }
-  .session-content.menu-list-active{
-    width:50% !important;
+  .session-content.menu-list-active {
+    width: 50% !important;
   }
-  .menu-label{
+  .menu-label {
     color: white;
   }
-  .menu-list-active .menu-label{
+  .menu-list-active .menu-label {
     color: #7a7a7a;
   }
-  .menu-label{
+  .menu-label {
     transition: color 0.3s;
   }
 }
-h1.title, h2.subtitle{
+h1.title,
+h2.subtitle {
   word-break: normal;
 }
-html{
-overflow-y: auto;
+html {
+  overflow-y: auto;
 }
 
 //bulma flexbox additions
 
-body{
+body {
   display: flex;
   height: 100%;
   flex-direction: column;
 }
 
-.outer-flex{
-    display: flex;
+.outer-flex {
+  display: flex;
 }
 
-.is-flex-column{
+.is-flex-column {
   flex-direction: column;
 }
 
-.is-flex-row{
+.is-flex-row {
   flex-direction: row;
-
 }
 
-.is-horizontal-center{
+.is-horizontal-center {
   justify-content: center;
 }
 
 .is-vertical-center {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
+}
 
 ////
-.navbar-item{
+.navbar-item {
   width: 14.2857%;
   padding: 0;
   padding-top: 0.5rem;
 }
-a.navbar-item:hover{
+a.navbar-item:hover {
   color: #787878;
 }
-a.navbar-item:focus{
-    background-color: $hover-color;
-    color: #787878;
+
+a.navbar-item{
+  .Introduction {
+    height: 25px;
+    background: url("/src/images/Home.png") center / contain;
+    background-repeat: no-repeat;
+  }
+  .LearningOutcomes {
+    height: 35px;
+    background: url("/src/images/Learning.png") center / contain;
+    background-repeat: no-repeat;
+  }
+}
+a.navbar-item:focus {
+  background-color: $hover-color;
+  color: #ffffff;
+  .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center / contain;
+  }
+}
+
+.navLink-active {
+  background-color: $hover-color;
+  color: #ffffff;
+  .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center / contain;
+  }
+}
+
+a.navbar-item:hover {
+  background-color: $hover-color;
+  color: #ffffff;
+  .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center / contain;
+  }
 }
 // .navLink-active:focus{
 //     background-color: $hover-color;
@@ -188,25 +220,29 @@ a.navbar-item:focus{
 //     background-color: $hover-color;
 // }
 
-.navbar-item:hover{
+.navbar-item:hover {
   background-color: $hover-color;
 }
 
-.navbar.is-link{
-    background-color: #ffffff;
+.navbar.is-link {
+  background-color: #ffffff;
 }
 
-.icon-holding-div{
-  width: 20%;
+.icon-holding-div {
+  width: 11%;
   margin: 0 auto;
-  .Introduction{
-    height: 35px;
-    background:url('/src/images/Home.png') center / cover;
+  
+}
+.icon-holding-div:hover {
+  .Introduction {
+    height: 25px;
+    background: url("/src/images/icons_hover/Home.png") center / contain;
   }
 }
 
-
-
+.navbar-item p:hover {
+  color: #ffffff;
+}
 
 // .navbar a:hover{
 //     background-color: $hover-color;
@@ -215,54 +251,38 @@ a.navbar-item:focus{
 .nav-border {
   border-right: 1px solid gray;
 }
-.nav-border{
+.nav-border {
   margin: 10px 0px;
 }
 
-.tabs ul{
-    -webkit-flex-direction: column;
-    flex-direction: column;
+.tabs ul {
+  -webkit-flex-direction: column;
+  flex-direction: column;
 }
 
-.amexLogo{
-    max-width: 30%;
-
+.amexLogo {
+  max-width: 30%;
 }
 
 //table
 
 #trainingContent table p {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 #trainingContent ol li {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
-.training-content .ul-disc{
-    list-style: disc;
+.training-content .ul-disc {
+  list-style: disc;
 }
 
-.video-container{
+.video-container {
   width: 100%;
 }
-video{
+video {
   width: 100%;
 }
 
 $navbar-breakpoint: 0;
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
