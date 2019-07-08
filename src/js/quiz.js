@@ -172,6 +172,9 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
     if (!bAllButtons) $('.qbtn').hide();
     $('#qb' + (currentQuestion + 1)).show();
     $('#question_container' + (currentQuestion)).show();
+    
+    $('#quizQuestion').html(questions[currentQuestion].q);
+
     if (i == questions.length) {
       /*update results page*/
       var res = {
@@ -393,7 +396,8 @@ $(function () {
     var row = $('<div class="row qrow"></div>');
     qContainer.append(row);
 
-    row.append($('<h1>' + question + '</h1>'));
+    //row.append($('<h1>' + question + '</h1>'));
+    //$('#quizQuestion').html(question);
 
     //create list group
     var q = $('<div id="question' + it + '" class="question list-group col is-size-6-touch">');
