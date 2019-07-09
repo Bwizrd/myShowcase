@@ -79,14 +79,14 @@
       <div class="page outcomes" id="outcomes">
         <section class="hero is-info is-bold">
           <div class="hero-body">
-            <div class="container">
+            <div class="mlm">
               <div class="outer-flex is-vertical-center">
-                <img src="images/icons_hover/Learning.png" class="LearningOutcomes-Icon mrl" alt="">
+                <img src="images/icons_hover/LearningSquare.png" class="LearningOutcomes-Icon mrl" alt="">
                 <div class="outer-flex is-flex-column ">
                   <h1 class="title">
                     Learning Outcomes
                   </h1>
-                  <h2 class="subtitle is-size-5">
+                  <h2 class="subtitle is-size-6">
                     What do you want to achieve from this training?
                   </h2>
                 </div>
@@ -95,42 +95,44 @@
           </div>
         </section>
         <div class="columns">
-          <div class="column is-half">
-            <div class="tile ptm pbm">
-              <article class="tile is-child notification is-info">
-                <p class="title">Please provide 6 learning outcomes</p>
+          <div class="column is-offset-0 is-7">
+            <div class="tile mll mtl ptm pbm">
+              <article class="tile is-child notification is-info is-rounded-5">
+                <p class="subtitle is-size-6">Please provide 6 learning outcomes</p>
                 <div class="field">
                   <div class="control">
-                    <input id="q1" class="input" type="text" placeholder="Outcome 1" />
+                    <input id="q1" class="input is-rounded-2" type="text" placeholder="Outcome 1" />
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q2" class="input" type="text" placeholder="Outcome 2" />
+                    <input id="q2" class="input is-rounded-2" type="text" placeholder="Outcome 2" />
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q3" class="input" type="text" placeholder="Outcome 3" />
+                    <input id="q3" class="input is-rounded-2" type="text" placeholder="Outcome 3" />
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q4" class="input" type="text" placeholder="Outcome 4" />
+                    <input id="q4" class="input is-rounded-2" type="text" placeholder="Outcome 4" />
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q5" class="input" type="text" placeholder="Outcome 5" />
+                    <input id="q5" class="input is-rounded-2" type="text" placeholder="Outcome 5" />
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q6" class="input" type="text" placeholder="Outcome 6" />
+                    <input id="q6" class="input is-rounded-2" type="text" placeholder="Outcome 6" />
                   </div>
                 </div>
 
-                <a href="javascript:SaveLearningOutcomes()" class="button is-large is-danger is-right mtl">Save</a>
+                <a href="javascript:SaveLearningOutcomes()" class="button is-medium is-outlined is-Amex-Gold-button is-right mtm"><span>Submit</span><span class="icon is-small">
+                    <i class="fas fa-check"></i>
+                  </span></a>
               </article>
             </div>
           </div>
@@ -187,10 +189,31 @@
       <div class="page training" id="training">
         <div class="columns is-mobile mlm-ns">
           <div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content">
-            <div class="carousel">
+            <div class="">
               <div class="training-content item-1">
                 <section class="hero is-info is-bold">
-                  <div class="hero-body">
+                    <div class="hero-body">
+                        <div class="mlm">
+                            <a role="button" class="session-burger is-pulled-right has-text-white" aria-label="menu" aria-expanded="false"
+                            onclick="ToggleSessionMenu()">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                          </a>
+                          <div class="outer-flex is-vertical-center">
+                            <img src="images/icons_hover/LearningSquare.png" class="LearningOutcomes-Icon mrl" alt="">
+                            <div class="outer-flex is-flex-column ">
+                              <h1 class="title">
+                                Learning Materials
+                              </h1>
+                              <h2 class="subtitle is-size-6">
+                                Session 1 - Introduction
+                              </h2>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  <!-- <div class="hero-body">
                     <div class="container">
                       <h1 class="title">
                         <a role="button" class="session-burger is-pulled-right" aria-label="menu" aria-expanded="false"
@@ -205,7 +228,7 @@
                         Introduction
                       </h2>
                     </div>
-                  </div>
+                  </div> -->
                 </section>
                 <div class="container mts">
                   <div class="columns">
