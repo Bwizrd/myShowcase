@@ -1,18 +1,17 @@
 @charset "utf-8";
-$hover-color: #2870D2; // #98d4f5; //#d3d6d7;
+$hover-color: #2870d2; // #98d4f5; //#d3d6d7;
 $hover-text-color: #fff;
-$info: #2870D2;
+$info: #2870d2;
 @import "theme";
 @import "fonts";
 @import "spacers";
 @import "flexbox";
-@import 'bulmaAdditions';
+@import "bulmaAdditions";
 
 // Customization
 
 // You can easily customize Bulma with your own variables.
 // Just uncomment the following block to see the result.
-
 
 // 1. Import the initial variables
 // @import "node_modules/bulma/sass/utilities/initial-variables";
@@ -31,22 +30,21 @@ $info: #2870D2;
 // $primary: $pink;
 // $primary-invert: $pink-invert;
 
-
 // 4. Import the rest of Bulma
 
-a.is-Amex-Gold-button{
-  background: #F9B500 !important;
+a.is-Amex-Gold-button {
+  background: #f9b500 !important;
   color: #fff;
   border: none;
   border-width: 0px;
-  &:hover{
+  &:hover {
     color: chocolate;
   }
 }
 
 $navbar-breakpoint: 0;
 @import "node_modules/bulma/bulma";
-@import 'navigation';
+@import "navigation";
 @import "node_modules/bulma-extensions/bulma-accordion/dist/css/bulma-accordion";
 // @import "node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css";
 
@@ -77,7 +75,6 @@ html {
 }
 
 ////
-
 
 .tabs ul {
   -webkit-flex-direction: column;
@@ -110,14 +107,14 @@ video {
   max-height: 75vh;
 }
 
-.LearningOutcomes-Icon{
+.LearningOutcomes-Icon {
   width: 5vh;
   height: 5vh;
   border: 2px white solid;
   border-radius: 50%;
   padding: 5px;
 }
-.Practice-Icon{
+.Practice-Icon {
   width: 5vh;
   height: 5vh;
   border: 2px white solid;
@@ -125,4 +122,14 @@ video {
   padding: 11px;
 }
 
-///Navigation
+.Quiz-Icon {
+  width: 5vh;
+  height: 5vh;
+  border: 2px white solid;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.quiz-container {
+  width: 800px;
+}

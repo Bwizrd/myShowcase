@@ -161,7 +161,7 @@ function DrawGraph2(r) {
 function CreateQuestionButton(it, label, questions, bAllButtons) {
   var cz = '';
   if (!bAllButtons) cz = ' onlyNext';
-  var qb = $('<a id="qb' + it + '" class="button is-large is-info qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
+  var qb = $('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
     $('#quiz').scrollTop(0);
     SlowReload();
     var jq = $('#question_container' + currentQuestion);
