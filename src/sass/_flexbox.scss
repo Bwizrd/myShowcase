@@ -28,3 +28,29 @@ body {
   .is-flex-1{
       flex:1;
   }
+
+  .is-justify-center {
+    justify-content: center;
+  }
+  
+  .is-align-center {
+    display: flex;
+    align-items: center;
+  }
+
+  .is-justify-start {
+    justify-content: flex-start;
+  }
+  
+  .is-align-start {
+    display: flex;
+    align-items: flex-start;
+  }
+  .is-justify-end {
+    justify-content: flex-end;
+  }
+  
+  .is-align-end {
+    display: flex;
+    align-items: flex-end;
+  }
