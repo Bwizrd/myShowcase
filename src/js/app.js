@@ -18,6 +18,7 @@ function loaded(d){
             }
           }
         //}, 300);
+      setMaterial(1);
     }
 }
 
@@ -131,6 +132,10 @@ function fitToContainer(canvas){
     canvas.height = canvas.offsetHeight;
 }
 
+function setMaterial(id) {
+  setTrainingMaterial(id);
+  setPracticeMaterial(id);
+}
 /*
 $('.navLink').click(function(event){
     $('.navLink').removeClass('navLink-active');
