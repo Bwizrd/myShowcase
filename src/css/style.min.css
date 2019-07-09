@@ -17,6 +17,8 @@
 
 .menu-item-active {
   background-color: #2870D2; }
+  .menu-item-active a {
+    color: #fff !important; }
 
 .menu-item-active:hover {
   background-color: #2870D2; }
@@ -144,7 +146,7 @@ body {
 .page {
   display: none;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: hidden; }
 
 .tinted {
@@ -1450,6 +1452,9 @@ body {
 .is-vertical-center {
   display: flex;
   align-items: center; }
+
+.is-flex-1 {
+  flex: 1; }
 
 .is-rounded-1 {
   border-radius: 5px !important; }
@@ -8889,3 +8894,10 @@ video {
   border: 2px white solid;
   border-radius: 50%;
   padding: 5px; }
+
+.Practice-Icon {
+  width: 5vh;
+  height: 5vh;
+  border: 2px white solid;
+  border-radius: 50%;
+  padding: 11px; }

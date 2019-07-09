@@ -16,6 +16,9 @@
 }
 .menu-item-active{
   background-color: $hover-color;
+  a{
+	  color: $hover-text-color !important;
+  }
 }
 .menu-item-active:hover{
   background-color: $hover-color;
