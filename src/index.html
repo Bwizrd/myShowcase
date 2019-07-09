@@ -130,7 +130,9 @@
                   </div>
                 </div>
 
-                <a href="javascript:SaveLearningOutcomes()" class="button is-medium is-outlined is-Amex-Gold-button is-right mtm"><span>Submit</span><span class="icon is-small">
+                <a href="javascript:SaveLearningOutcomes()"
+                  class="button is-medium is-outlined is-Amex-Gold-button is-right mtm"><span>Submit</span><span
+                    class="icon is-small">
                     <i class="fas fa-check"></i>
                   </span></a>
               </article>
@@ -192,27 +194,27 @@
             <div class="">
               <div class="training-content item-1">
                 <section class="hero is-info is-bold">
-                    <div class="hero-body">
-                        <div class="mlm">
-                            <a role="button" class="session-burger is-pulled-right has-text-white" aria-label="menu" aria-expanded="false"
-                            onclick="ToggleSessionMenu()">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                          </a>
-                          <div class="outer-flex is-vertical-center">
-                            <img src="images/icons_hover/LearningSquare.png" class="LearningOutcomes-Icon mrl" alt="">
-                            <div class="outer-flex is-flex-column ">
-                              <h1 class="title">
-                                Learning Materials
-                              </h1>
-                              <h2 class="subtitle is-size-6">
-                                Session 1 - Introduction
-                              </h2>
-                            </div>
-                          </div>
+                  <div class="hero-body">
+                    <div class="mlm">
+                      <a role="button" class="session-burger is-pulled-right has-text-white" aria-label="menu"
+                        aria-expanded="false" onclick="ToggleSessionMenu()">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                      </a>
+                      <div class="outer-flex is-vertical-center">
+                        <img src="images/icons_hover/LearningSquare.png" class="LearningOutcomes-Icon mrl" alt="">
+                        <div class="outer-flex is-flex-column ">
+                          <h1 class="title">
+                            Learning Materials
+                          </h1>
+                          <h2 class="subtitle is-size-6">
+                            Session 1 - Introduction
+                          </h2>
                         </div>
                       </div>
+                    </div>
+                  </div>
                   <!-- <div class="hero-body">
                     <div class="container">
                       <h1 class="title">
@@ -720,8 +722,139 @@
       <!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- PRACTICE PAGE -->
       <div class="page practice" id="practice">
+        <section class="hero is-info is-bold">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                <a role="button" class="session-burger is-pulled-right" aria-label="menu" aria-expanded="false"
+                  onclick="ToggleSessionMenu()">
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                  <span aria-hidden="true"></span>
+                </a>
+                Exercise&nbsp;1
+              </h1>
+              <h2 class="subtitle">
+                Introduction
+              </h2>
+            </div>
+          </div>
+        </section>
+        <div class="columns is-mobile">
 
-        <div class="columns is-mobile mlm-ns">
+          <div class="column is-four-fifths-desktop is-three-fifths-mobile session-menu">
+            <section class="mtl" id="practiceMaterial">
+            </section>
+          </div>
+
+          <div class="column is-one-fifth-desktop is-two-fifths-mobile session-menu">
+            <aside class="menu">
+              <br />
+              <br />
+              <p class="menu-label is-size-6">
+                Practice Exercises
+              </p>
+              <br />
+              <br />
+
+              <ul class="menu-list">
+                <li class="menu-item-1 menu-item-active"><a href="javascript:setMaterial(1)">Session&nbsp;1</a>
+                </li>
+                <li class="menu-item-2"><a href="javascript:setMaterial(2)">Session&nbsp;2</a>
+                </li>
+                <li class="menu-item-3"><a href="javascript:setTrainingContent(3)">Session&nbsp;3</a>
+                </li>
+                <li class="menu-item-4"><a href="javascript:setTrainingContent(4)">Session&nbsp;4</a>
+                </li>
+                <li class="menu-item-5"><a href="javascript:setTrainingContent(5)">Session&nbsp;5</a>
+                </li>
+                <li class="menu-item-6"><a href="javascript:setTrainingContent(6)">Session&nbsp;6</a>
+                </li>
+                <li class="menu-item-7"><a href="javascript:setTrainingContent(7)">Session&nbsp;7</a>
+                </li>
+                <li class="menu-item-8"><a href="javascript:setTrainingContent(8)">Session&nbsp;8</a>
+                </li>
+                <li class="menu-item-9"><a href="javascript:setTrainingContent(9)">Session&nbsp;9</a>
+                </li>
+                <li class="menu-item-10"><a href="javascript:setTrainingContent(10)">Session&nbsp;10</a>
+                </li>
+
+              </ul>
+
+            </aside>
+          </div>
+        </div>
+        <script>
+          function setMaterial(id) {
+            var html='';
+            switch(id){
+              case 1:
+                html = `
+                  <p class="title is 4"><strong>No Exercises</strong></p>
+                  <table class="table mtl">
+                    <thead>
+                      <tr>
+
+                        <th>Exercise Notes</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p>
+
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                `;
+                break;
+              case 2:
+                html=`<p class="title is 4"><strong>1. Teach to Learn – Pairs Activity</strong></p>
+                  <table class="table mtl">
+                    <thead>
+                      <tr>
+
+                        <th>Exercise Notes</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <p>
+                            <p class="mtm">Review your handouts and the notes you have taken
+                              and
+                              the
+                              content within the
+                              App.</p>
+                            <p>
+                              Stand up and find a partner and share three insights from
+                              the
+                              session
+                              and answer
+                              any questions they may have.
+                            </p>
+                            <p>
+                              Swap over and then move on to find a new partner
+                              and once again teach in your three insights
+                            </p>
+
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  `;
+                break;
+            }
+            $('#practiceMaterial').html(html);
+          }
+          setMaterial(1);
+        </script>
+        <!--<div class="columns is-mobile mlm-ns">
           <div id="trainingContent" class="column is-four-fifths-desktop is-three-fifths-touch session-content">
             <div class="carousel">
               <div class="training-content item-1">
@@ -1516,8 +1649,8 @@
             </aside>
           </div>
         </div>
-      </div>
-      <!------------------------------------------------------------------------------------------------------------------------------------------------------->
+      </div>-->
+        <!------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -1528,288 +1661,318 @@
 
 
 
-      <!------------------------------------------------------------------------------------------------------------------------------------------------------->
-      <!-- FEEDBACK PAGE -->
-      <div id="feedback" class="page feedback">
-        <div class="container">
-          <div class="notification">
+        <!------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <!-- FEEDBACK PAGE -->
+        <div id="feedback" class="page feedback">
+          <div class="container">
+            <div class="notification">
 
-            <h1 class="title is-size-3">Feedback</h1>
-            <form method="POST" action="feedback.php">
-              <fieldset>
-                <legend>1. On a scale of 1-5, with one lowest and five highest, please rate the
-                  relevance
-                  and
-                  value
-                  of each of these Session&nbsp;segments to your business needs:</legend>
-                <fieldset class="rating">
-                  <legend>Introduction – What is NLP &amp; Why Learn It?</legend>
-                  <input type="radio" id="star115" name="rating11" value="5" /><label for="star115" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star114" name="rating11" value="4" /><label for="star114" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star113" name="rating11" value="3" /><label for="star113" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star112" name="rating11" value="2" /><label for="star112" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star111" name="rating11" value="1" /><label for="star111" title="Very Poor">1
-                    star</label>
+              <h1 class="title is-size-3">Feedback</h1>
+              <form method="POST" action="feedback.php">
+                <fieldset>
+                  <legend>1. On a scale of 1-5, with one lowest and five highest, please rate the
+                    relevance
+                    and
+                    value
+                    of each of these Session&nbsp;segments to your business needs:</legend>
+                  <fieldset class="rating">
+                    <legend>Introduction – What is NLP &amp; Why Learn It?</legend>
+                    <input type="radio" id="star115" name="rating11" value="5" /><label for="star115"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star114" name="rating11" value="4" /><label for="star114" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star113" name="rating11" value="3" /><label for="star113" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star112" name="rating11" value="2" /><label for="star112" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star111" name="rating11" value="1" /><label for="star111"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>The NLP Communication Model</legend>
+                    <input type="radio" id="star125" name="rating12" value="5" /><label for="star125"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star124" name="rating12" value="4" /><label for="star124" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star123" name="rating12" value="3" /><label for="star123" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star122" name="rating12" value="2" /><label for="star122" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star121" name="rating12" value="1" /><label for="star121"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Representational Skills</legend>
+                    <input type="radio" id="star135" name="rating13" value="5" /><label for="star135"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star134" name="rating13" value="4" /><label for="star134" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star133" name="rating13" value="3" /><label for="star133" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star132" name="rating13" value="2" /><label for="star132" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star131" name="rating13" value="1" /><label for="star131"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Practical Exercises</legend>
+                    <input type="radio" id="star145" name="rating14" value="5" /><label for="star145"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star144" name="rating14" value="4" /><label for="star144" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star143" name="rating14" value="3" /><label for="star143" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star142" name="rating14" value="2" /><label for="star142" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star141" name="rating14" value="1" /><label for="star141"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Usefulness of the supporting app</legend>
+                    <input type="radio" id="star155" name="rating15" value="5" /><label for="star155"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star154" name="rating15" value="4" /><label for="star154" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star153" name="rating15" value="3" /><label for="star153" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star152" name="rating15" value="2" /><label for="star152" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star151" name="rating15" value="1" /><label for="star151"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
                 </fieldset>
-                <fieldset class="rating">
-                  <legend>The NLP Communication Model</legend>
-                  <input type="radio" id="star125" name="rating12" value="5" /><label for="star125" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star124" name="rating12" value="4" /><label for="star124" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star123" name="rating12" value="3" /><label for="star123" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star122" name="rating12" value="2" /><label for="star122" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star121" name="rating12" value="1" /><label for="star121" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Representational Skills</legend>
-                  <input type="radio" id="star135" name="rating13" value="5" /><label for="star135" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star134" name="rating13" value="4" /><label for="star134" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star133" name="rating13" value="3" /><label for="star133" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star132" name="rating13" value="2" /><label for="star132" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star131" name="rating13" value="1" /><label for="star131" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Practical Exercises</legend>
-                  <input type="radio" id="star145" name="rating14" value="5" /><label for="star145" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star144" name="rating14" value="4" /><label for="star144" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star143" name="rating14" value="3" /><label for="star143" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star142" name="rating14" value="2" /><label for="star142" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star141" name="rating14" value="1" /><label for="star141" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Usefulness of the supporting app</legend>
-                  <input type="radio" id="star155" name="rating15" value="5" /><label for="star155" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star154" name="rating15" value="4" /><label for="star154" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star153" name="rating15" value="3" /><label for="star153" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star152" name="rating15" value="2" /><label for="star152" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star151" name="rating15" value="1" /><label for="star151" title="Very Poor">1
-                    star</label>
-                </fieldset>
-              </fieldset>
 
 
 
 
 
 
-              <fieldset>
-                <legend>2. On a scale of 1-5, with one the least and five the most, please indicate
-                  which of
-                  these
-                  course topics should receive more or less time and depth of coverage in the future:
-                </legend>
-                <fieldset class="rating">
-                  <legend>Introduction – What is NLP &amp; Why Learn It?</legend>
-                  <input type="radio" id="star215" name="rating21" value="5" /><label for="star215" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star214" name="rating21" value="4" /><label for="star214" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star213" name="rating21" value="3" /><label for="star213" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star212" name="rating21" value="2" /><label for="star212" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star211" name="rating21" value="1" /><label for="star211" title="Very Poor">1
-                    star</label>
+                <fieldset>
+                  <legend>2. On a scale of 1-5, with one the least and five the most, please indicate
+                    which of
+                    these
+                    course topics should receive more or less time and depth of coverage in the future:
+                  </legend>
+                  <fieldset class="rating">
+                    <legend>Introduction – What is NLP &amp; Why Learn It?</legend>
+                    <input type="radio" id="star215" name="rating21" value="5" /><label for="star215"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star214" name="rating21" value="4" /><label for="star214" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star213" name="rating21" value="3" /><label for="star213" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star212" name="rating21" value="2" /><label for="star212" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star211" name="rating21" value="1" /><label for="star211"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>The NLP Communication Model</legend>
+                    <input type="radio" id="star225" name="rating22" value="5" /><label for="star225"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star224" name="rating22" value="4" /><label for="star224" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star223" name="rating22" value="3" /><label for="star223" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star222" name="rating22" value="2" /><label for="star222" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star221" name="rating22" value="1" /><label for="star221"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Representational Skills</legend>
+                    <input type="radio" id="star235" name="rating23" value="5" /><label for="star235"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star234" name="rating23" value="4" /><label for="star234" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star233" name="rating23" value="3" /><label for="star233" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star232" name="rating23" value="2" /><label for="star232" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star231" name="rating23" value="1" /><label for="star231"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Practical Exercises</legend>
+                    <input type="radio" id="star245" name="rating24" value="5" /><label for="star245"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star244" name="rating24" value="4" /><label for="star244" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star243" name="rating24" value="3" /><label for="star243" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star242" name="rating24" value="2" /><label for="star242" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star241" name="rating24" value="1" /><label for="star241"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
                 </fieldset>
-                <fieldset class="rating">
-                  <legend>The NLP Communication Model</legend>
-                  <input type="radio" id="star225" name="rating22" value="5" /><label for="star225" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star224" name="rating22" value="4" /><label for="star224" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star223" name="rating22" value="3" /><label for="star223" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star222" name="rating22" value="2" /><label for="star222" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star221" name="rating22" value="1" /><label for="star221" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Representational Skills</legend>
-                  <input type="radio" id="star235" name="rating23" value="5" /><label for="star235" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star234" name="rating23" value="4" /><label for="star234" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star233" name="rating23" value="3" /><label for="star233" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star232" name="rating23" value="2" /><label for="star232" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star231" name="rating23" value="1" /><label for="star231" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Practical Exercises</legend>
-                  <input type="radio" id="star245" name="rating24" value="5" /><label for="star245" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star244" name="rating24" value="4" /><label for="star244" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star243" name="rating24" value="3" /><label for="star243" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star242" name="rating24" value="2" /><label for="star242" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star241" name="rating24" value="1" /><label for="star241" title="Very Poor">1
-                    star</label>
-                </fieldset>
-              </fieldset>
 
-              <fieldset>
-                <legend>3. Please indicate your opinion on the presentation of the course</legend>
-                <fieldset class="rating">
-                  <legend>Fluency &amp; presentation skills of trainer</legend>
-                  <input type="radio" id="star315" name="rating31" value="5" /><label for="star315" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star314" name="rating31" value="4" /><label for="star314" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star313" name="rating31" value="3" /><label for="star313" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star312" name="rating31" value="2" /><label for="star312" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star311" name="rating31" value="1" /><label for="star311" title="Very Poor">1
-                    star</label>
+                <fieldset>
+                  <legend>3. Please indicate your opinion on the presentation of the course</legend>
+                  <fieldset class="rating">
+                    <legend>Fluency &amp; presentation skills of trainer</legend>
+                    <input type="radio" id="star315" name="rating31" value="5" /><label for="star315"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star314" name="rating31" value="4" /><label for="star314" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star313" name="rating31" value="3" /><label for="star313" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star312" name="rating31" value="2" /><label for="star312" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star311" name="rating31" value="1" /><label for="star311"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Subject knowledge of trainer</legend>
+                    <input type="radio" id="star325" name="rating32" value="5" /><label for="star325"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star324" name="rating32" value="4" /><label for="star324" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star323" name="rating32" value="3" /><label for="star323" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star322" name="rating32" value="2" /><label for="star322" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star321" name="rating32" value="1" /><label for="star321"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Approachability of trainer</legend>
+                    <input type="radio" id="star335" name="rating33" value="5" /><label for="star335"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star334" name="rating33" value="4" /><label for="star334" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star333" name="rating33" value="3" /><label for="star333" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star332" name="rating33" value="2" /><label for="star332" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star331" name="rating33" value="1" /><label for="star331"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Amount of time given to questions</legend>
+                    <input type="radio" id="star345" name="rating34" value="5" /><label for="star345"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star344" name="rating34" value="4" /><label for="star344" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star343" name="rating34" value="3" /><label for="star343" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star342" name="rating34" value="2" /><label for="star342" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star341" name="rating34" value="1" /><label for="star341"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Quality of visual aids</legend>
+                    <input type="radio" id="star355" name="rating35" value="5" /><label for="star355"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star354" name="rating35" value="4" /><label for="star354" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star353" name="rating35" value="3" /><label for="star353" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star352" name="rating35" value="2" /><label for="star352" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star351" name="rating35" value="1" /><label for="star351"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
+                  <fieldset class="rating">
+                    <legend>Quality of the supplied app</legend>
+                    <input type="radio" id="star365" name="rating36" value="5" /><label for="star365"
+                      title="Very Good">5
+                      stars</label>
+                    <input type="radio" id="star364" name="rating36" value="4" /><label for="star364" title="Good">4
+                      stars</label>
+                    <input type="radio" id="star363" name="rating36" value="3" /><label for="star363" title="Average">3
+                      stars</label>
+                    <input type="radio" id="star362" name="rating36" value="2" /><label for="star362" title="Poor">2
+                      stars</label>
+                    <input type="radio" id="star361" name="rating36" value="1" /><label for="star361"
+                      title="Very Poor">1
+                      star</label>
+                  </fieldset>
                 </fieldset>
-                <fieldset class="rating">
-                  <legend>Subject knowledge of trainer</legend>
-                  <input type="radio" id="star325" name="rating32" value="5" /><label for="star325" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star324" name="rating32" value="4" /><label for="star324" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star323" name="rating32" value="3" /><label for="star323" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star322" name="rating32" value="2" /><label for="star322" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star321" name="rating32" value="1" /><label for="star321" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Approachability of trainer</legend>
-                  <input type="radio" id="star335" name="rating33" value="5" /><label for="star335" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star334" name="rating33" value="4" /><label for="star334" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star333" name="rating33" value="3" /><label for="star333" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star332" name="rating33" value="2" /><label for="star332" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star331" name="rating33" value="1" /><label for="star331" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Amount of time given to questions</legend>
-                  <input type="radio" id="star345" name="rating34" value="5" /><label for="star345" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star344" name="rating34" value="4" /><label for="star344" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star343" name="rating34" value="3" /><label for="star343" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star342" name="rating34" value="2" /><label for="star342" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star341" name="rating34" value="1" /><label for="star341" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Quality of visual aids</legend>
-                  <input type="radio" id="star355" name="rating35" value="5" /><label for="star355" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star354" name="rating35" value="4" /><label for="star354" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star353" name="rating35" value="3" /><label for="star353" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star352" name="rating35" value="2" /><label for="star352" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star351" name="rating35" value="1" /><label for="star351" title="Very Poor">1
-                    star</label>
-                </fieldset>
-                <fieldset class="rating">
-                  <legend>Quality of the supplied app</legend>
-                  <input type="radio" id="star365" name="rating36" value="5" /><label for="star365" title="Very Good">5
-                    stars</label>
-                  <input type="radio" id="star364" name="rating36" value="4" /><label for="star364" title="Good">4
-                    stars</label>
-                  <input type="radio" id="star363" name="rating36" value="3" /><label for="star363" title="Average">3
-                    stars</label>
-                  <input type="radio" id="star362" name="rating36" value="2" /><label for="star362" title="Poor">2
-                    stars</label>
-                  <input type="radio" id="star361" name="rating36" value="1" /><label for="star361" title="Very Poor">1
-                    star</label>
-                </fieldset>
-              </fieldset>
 
-              <fieldset>
-                <legend>4. Would you recommend this Session&nbsp;to a colleague?</legend>
-                <input name="recommend" type="radio" /><label>Yes</label>
-                <input name="recommend" type="radio" /><label>No</label>
-                <br />
-                <br />
-                <label class="mtm">Why or why not?</label>
-                <input class="input" name="why_recommend" type="text" />
-              </fieldset>
+                <fieldset>
+                  <legend>4. Would you recommend this Session&nbsp;to a colleague?</legend>
+                  <input name="recommend" type="radio" /><label>Yes</label>
+                  <input name="recommend" type="radio" /><label>No</label>
+                  <br />
+                  <br />
+                  <label class="mtm">Why or why not?</label>
+                  <input class="input" name="why_recommend" type="text" />
+                </fieldset>
 
 
 
 
-              <fieldset class="mtm">
-                <legend>5. Optional:</legend>
-                <div class="field">
-                  <div class="control">
-                    <label for="name">Name</label>
-                    <input class="input" id="name" name="name" type="text" />
+                <fieldset class="mtm">
+                  <legend>5. Optional:</legend>
+                  <div class="field">
+                    <div class="control">
+                      <label for="name">Name</label>
+                      <input class="input" id="name" name="name" type="text" />
+                    </div>
                   </div>
-                </div>
 
-                <br />
-                <div class="field">
-                  <div class="control">
-                    <label for="title">Job title</label>
-                    <input class="input" id="title" name="title" type="text" />
+                  <br />
+                  <div class="field">
+                    <div class="control">
+                      <label for="title">Job title</label>
+                      <input class="input" id="title" name="title" type="text" />
+                    </div>
                   </div>
-                </div>
-                <br />
-                <div class="field">
-                  <div class="control">
-                    <label for="dept">Dept</label>
-                    <input class="input" id="dept" name="dept" type="text" />
+                  <br />
+                  <div class="field">
+                    <div class="control">
+                      <label for="dept">Dept</label>
+                      <input class="input" id="dept" name="dept" type="text" />
+                    </div>
                   </div>
-                </div>
-                <br />
-                <div class="field">
-                  <div class="control">
-                    <label for="location">Location</label>
-                    <input class="input" id="location" name="location" type="text" />
+                  <br />
+                  <div class="field">
+                    <div class="control">
+                      <label for="location">Location</label>
+                      <input class="input" id="location" name="location" type="text" />
+                    </div>
                   </div>
-                </div>
-              </fieldset>
+                </fieldset>
 
 
-              <input type="submit" class="button is-info" />
+                <input type="submit" class="button is-info" />
 
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------->
 
 
 
@@ -1829,120 +1992,120 @@
 
 
 
-    <!------------------------------------------------------------------------------------------------------------------------------------------------------->
-    <!-- FOOTER -->
-    <div class="main-footer">
-      <div class="privacy">
-        By continuing to use our WebApp, you acknowledge that you have read and understand our <a
-          href="privacy.html">Privacy Policy</a>.
-        <span class="delete mlm" onclick="$('.privacy').hide()"></span>
+      <!------------------------------------------------------------------------------------------------------------------------------------------------------->
+      <!-- FOOTER -->
+      <div class="main-footer">
+        <div class="privacy">
+          By continuing to use our WebApp, you acknowledge that you have read and understand our <a
+            href="privacy.html">Privacy Policy</a>.
+          <span class="delete mlm" onclick="$('.privacy').hide()"></span>
+        </div>
+        <nav class="navbar is-link" role="navigation">
+          <!-- <div class="navbar-brand"> -->
+          <a id="navhome" href="javascript:SetPage('home');" class="navbar-item is-expanded is-block has-text-centered">
+            <div class="nav-border">
+              <div>
+                <!-- <i class="fas fa-home is-size-2 is-size-5-touch has-text-white"></i> -->
+                <div class="icon-holding-div">
+                  <div class="Introduction"></div>
+                </div>
+              </div>
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Introduction</p>
+            </div>
+          </a>
+          <a id="navoutcomes" href="javascript:SetPage('outcomes');"
+            class="navbar-item is-expanded is-block has-text-centered">
+            <div class="nav-border">
+              <div>
+                <!-- <i class="fas fa-home is-size-2 is-size-5-touch has-text-white"></i> -->
+                <div class="icon-holding-div">
+                  <div class="LearningOutcomes"></div>
+                </div>
+              </div>
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Learning Outcomes</p>
+            </div>
+          </a>
+          <a id="navtraining" href="javascript:SetPage('training');"
+            class="navbar-item is-expanded is-block has-text-centered">
+            <div class="nav-border">
+              <div>
+
+                <div class="icon-holding-div">
+                  <div class="TrainingMaterials"></div>
+                </div>
+              </div>
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Training Materials</p>
+            </div>
+          </a>
+          <a id="navquiz" href="javascript:SetPage('quiz');" class="navbar-item is-expanded is-block has-text-centered">
+            <!-- <i class="fas fa-question is-size-2 is-size-5-touch has-text-white"></i> -->
+            <div class="nav-border">
+              <div>
+
+                <div class="icon-holding-div">
+                  <div class="Quiz"></div>
+                </div>
+              </div>
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Quiz</p>
+            </div>
+          </a>
+          <a id="navresources" href="javascript:SetPage('resources');"
+            class="navbar-item is-expanded is-block has-text-centered">
+            <div class="nav-border">
+              <!-- <i class="fas fa-cubes is-size-2 is-size-5-touch has-text-white"></i> -->
+              <div>
+
+                <div class="icon-holding-div">
+                  <div class="Resources"></div>
+                </div>
+              </div>
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Resources</p>
+            </div>
+          </a>
+          <a id="navpractice" href="javascript:SetPage('practice');"
+            class="navbar-item is-expanded is-block has-text-centered">
+            <div class="nav-border">
+              <div>
+
+                <div class="icon-holding-div">
+                  <div class="Practice"></div>
+                </div>
+              </div>
+              <!-- <i class="fas fa-comments is-size-2 is-size-5-touch has-text-white"></i> -->
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Practice</p>
+            </div>
+          </a>
+          <a id="navfeedback" href="javascript:SetPage('feedback');"
+            class="navbar-item is-expanded is-block has-text-centered">
+            <div class="nav-border">
+              <div>
+
+                <div class="icon-holding-div">
+                  <div class="Feedback"></div>
+                </div>
+              </div>
+              <!-- <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white"></i> -->
+              <p class="is-size-6 is-size-6-touch is-hidden-mobile">Feedback</p>
+            </div>
+          </a>
+          <!-- </div> -->
+        </nav>
       </div>
-      <nav class="navbar is-link" role="navigation">
-        <!-- <div class="navbar-brand"> -->
-        <a id="navhome" href="javascript:SetPage('home');" class="navbar-item is-expanded is-block has-text-centered">
-          <div class="nav-border">
-            <div>
-              <!-- <i class="fas fa-home is-size-2 is-size-5-touch has-text-white"></i> -->
-              <div class="icon-holding-div">
-                <div class="Introduction"></div>
-              </div>
-            </div>
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Introduction</p>
-          </div>
-        </a>
-        <a id="navoutcomes" href="javascript:SetPage('outcomes');"
-          class="navbar-item is-expanded is-block has-text-centered">
-          <div class="nav-border">
-            <div>
-              <!-- <i class="fas fa-home is-size-2 is-size-5-touch has-text-white"></i> -->
-              <div class="icon-holding-div">
-                <div class="LearningOutcomes"></div>
-              </div>
-            </div>
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Learning Outcomes</p>
-          </div>
-        </a>
-        <a id="navtraining" href="javascript:SetPage('training');"
-          class="navbar-item is-expanded is-block has-text-centered">
-          <div class="nav-border">
-            <div>
-
-              <div class="icon-holding-div">
-                <div class="TrainingMaterials"></div>
-              </div>
-            </div>
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Training Materials</p>
-          </div>
-        </a>
-        <a id="navquiz" href="javascript:SetPage('quiz');" class="navbar-item is-expanded is-block has-text-centered">
-          <!-- <i class="fas fa-question is-size-2 is-size-5-touch has-text-white"></i> -->
-          <div class="nav-border">
-            <div>
-
-              <div class="icon-holding-div">
-                <div class="Quiz"></div>
-              </div>
-            </div>
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Quiz</p>
-          </div>
-        </a>
-        <a id="navresources" href="javascript:SetPage('resources');"
-          class="navbar-item is-expanded is-block has-text-centered">
-          <div class="nav-border">
-            <!-- <i class="fas fa-cubes is-size-2 is-size-5-touch has-text-white"></i> -->
-            <div>
-
-              <div class="icon-holding-div">
-                <div class="Resources"></div>
-              </div>
-            </div>
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Resources</p>
-          </div>
-        </a>
-        <a id="navpractice" href="javascript:SetPage('practice');"
-          class="navbar-item is-expanded is-block has-text-centered">
-          <div class="nav-border">
-            <div>
-
-              <div class="icon-holding-div">
-                <div class="Practice"></div>
-              </div>
-            </div>
-            <!-- <i class="fas fa-comments is-size-2 is-size-5-touch has-text-white"></i> -->
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Practice</p>
-          </div>
-        </a>
-        <a id="navfeedback" href="javascript:SetPage('feedback');"
-          class="navbar-item is-expanded is-block has-text-centered">
-          <div class="nav-border">
-            <div>
-
-              <div class="icon-holding-div">
-                <div class="Feedback"></div>
-              </div>
-            </div>
-            <!-- <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white"></i> -->
-            <p class="is-size-6 is-size-6-touch is-hidden-mobile">Feedback</p>
-          </div>
-        </a>
-        <!-- </div> -->
-      </nav>
     </div>
-  </div>
 
 
-  <!-- Latest Sortable -->
-  <script src="js/Sortable.js"></script>
-  <!-- <script src="/AmexApp/scripts/Sortable.js"></script> -->
-  <script src="js/app.js"></script>
-  <script src="js/quiz.js"></script>
-  <script>
-    $(function () {
-      // var accordions = bulmaAccordion.attach();
-      $(".training-content").hide();
-      $(".training-content.item-1").show();
-    });
-  </script>
+    <!-- Latest Sortable -->
+    <script src="js/Sortable.js"></script>
+    <!-- <script src="/AmexApp/scripts/Sortable.js"></script> -->
+    <script src="js/app.js"></script>
+    <script src="js/quiz.js"></script>
+    <script>
+      $(function () {
+        // var accordions = bulmaAccordion.attach();
+        $(".training-content").hide();
+        $(".training-content.item-1").show();
+      });
+    </script>
 
 </body>
 
