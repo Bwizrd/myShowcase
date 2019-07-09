@@ -57,7 +57,7 @@ function SlowReload(){
 }
 function SetPage(page){
     $('.page').hide();
-    $('#'+page).show();
+    $('#'+page).css("display", "flex");
     $('.navbar-item').removeClass('navLink-active');
     $('#nav'+page).addClass('navLink-active');
     $('video').each(function(id,dom) {

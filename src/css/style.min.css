@@ -147,7 +147,8 @@ body {
   display: none;
   height: 100%;
   overflow-y: scroll;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  flex-direction: column; }
 
 .tinted {
   background-color: #fff6b2; }
@@ -294,6 +295,9 @@ p {
    xxl = extra extra large
 
     */
+.mtn-i {
+  margin-top: 0 !important; }
+
 .h30vh {
   height: 30vh; }
 
