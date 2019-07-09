@@ -275,11 +275,6 @@
           </div>
         </div>
         <script>
-          function setMaterial(id) {
-            setTrainingMaterial(id);
-            setPracticeMaterial(id);
-
-          }
 
           function setTrainingMaterial(id) {
             $(".menu-item-active").removeClass("menu-item-active");
@@ -344,7 +339,6 @@
             $('#VideoSource').attr('src', VideoSource);
             $('#VideoSource').parent()[0].load();
           }
-          setMaterial(1);
         </script>
       </div>
       <!------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -1043,7 +1037,6 @@
             }
             $('#practiceMaterial').html(html);
           }
-          setMaterial(1);
         </script>
       </div>
       <!------------------------------------------------------------------------------------------------------------------------------------------------------->
