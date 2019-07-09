@@ -384,7 +384,7 @@ $(function () {
       //add results container
       var qContainer = $('<div id="question_container' + it + '" class="container-fluid question_container"></div>');
       if (it > 1) qContainer.hide();
-      qContainer.append($('<div class="results"><div class="columns fullscreen"><div class="column is-8"><canvas id="canvasResults"></canvas></div><div class="column"><p id="textResults"></p></div></div></div>'));
+      qContainer.append($('<div class="results"><div class="columns fullscreen"><div class="column is-8 fullscreen"><canvas id="canvasResults"></canvas></div><div class="column"><p id="textResults"></p></div></div></div>'));
       $('#quizBox').append(qContainer);
       continue;
     }
