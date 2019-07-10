@@ -146,3 +146,19 @@ label[for^=star]{
     font-size: 0.8rem !important;
   }
 }
+
+.notepad{
+  background: hsl(0, 0%, 96%);
+  border: 1px solid hsl(0, 0%, 71%);
+  border-radius: 10px;
+  height: calc(70vh - 50px);
+}
+.notepad:focus{
+  // outline: none !important;
+  border: none !important;
+}
+
+textarea{
+  outline: none !important;
+}
+
