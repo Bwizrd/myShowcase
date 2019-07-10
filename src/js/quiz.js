@@ -19,7 +19,7 @@ function DrawGraph(r) {
   ctx = ctx.getContext('2d');
   if (!ctx) return;
   fitToContainer(ctx.canvas);
-  if(ctx.canvas.width==0 || ctx.canvas.height==0)
+  if (ctx.canvas.width == 0 || ctx.canvas.height == 0)
     return;
   ctx.fillStyle = bgColorCanvas;
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -47,26 +47,26 @@ function DrawGraph(r) {
         ctx.fillStyle = kColorFill;
         break;
     }
-    ctx.strokeStyle=ctx.fillStyle;
+    ctx.strokeStyle = ctx.fillStyle;
     var an = r[g].count * Math.PI * 2;
 
-    var er=m4/2;
+    var er = m4 / 2;
     //ctx.strokeStyle = '#000';
     ctx.beginPath();
-    ctx.arc(m2-er, 0, er, 0, Math.PI);
-    ctx.arc(0, 0, m2-er*2, 0, -an, true);
+    ctx.arc(m2 - er, 0, er, 0, Math.PI);
+    ctx.arc(0, 0, m2 - er * 2, 0, -an, true);
     ctx.rotate(-an);
-    ctx.arc(m2-er, 0, er, Math.PI, 0, true);
+    ctx.arc(m2 - er, 0, er, Math.PI, 0, true);
     ctx.arc(0, 0, m2, 0, an, false);
     ctx.fill();
     ctx.stroke();
 
-    
-  /*ctx.strokeStyle = '#0ff';
-  ctx.beginPath();
-  ctx.arc(0, 0, m2, 0, Math.PI * 2);
-  ctx.stroke();*/
-    
+
+    /*ctx.strokeStyle = '#0ff';
+    ctx.beginPath();
+    ctx.arc(0, 0, m2, 0, Math.PI * 2);
+    ctx.stroke();*/
+
     ang += an;
   }
 
@@ -161,87 +161,93 @@ function DrawGraph2(r) {
 function CreateQuestionButton(it, label, questions, bAllButtons) {
   var cz = '';
   if (!bAllButtons) cz = ' onlyNext';
-  var qb = $('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '</a>').data('it', it).click(function (event) {
-    $('#quiz').scrollTop(0);
-    SlowReload();
-    var jq = $('#question_container' + currentQuestion);
-    $('.question_container').hide();
-    //$('.qbtn').removeClass('btn-');
-    var i = $(event.target)/*.removeClass('btn-outline-primary').addClass('btn-success')*/.data('it');
-    currentQuestion = i;
-    if (!bAllButtons) $('.qbtn').hide();
-    $('#qb' + (currentQuestion + 1)).show();
-    $('#question_container' + (currentQuestion)).show();
-    
-    if(currentQuestion < questions.length){
-      $('#quizQuestion').html(questions[currentQuestion].q);
-    }else{
-      $('#quizQuestion').html('Your prefered representational system');
+  var qb = $('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '<span class= " is-small mlm"><i class="fas fa-caret-right"></i></span ></a >').data('it', it).click(function (event) {
+  $('#quiz').scrollTop(0);
+  SlowReload();
+  var jq = $('#question_container' + currentQuestion);
+  $('.question_container').hide();
+  //$('.qbtn').removeClass('btn-');
+  var i = $(event.target)/*.removeClass('btn-outline-primary').addClass('btn-success')*/.data('it');
+  currentQuestion = i;
+  if (!bAllButtons) $('.qbtn').hide();
+  $('#qb' + (currentQuestion + 1)).show();
+  $('#question_container' + (currentQuestion)).show();
+
+  if (currentQuestion < questions.length) {
+    $('#quizQuestion').html(questions[currentQuestion].q);
+  } else {
+    $('#quizQuestion').html('Your prefered representational system');
+  }
+  if (!(currentQuestion >= questions.length)) {
+  $('#quizSubtitle').html(currentQuestion+' / '+(questions.length-1));
+  } else {
+    $('#quizSubtitle').html('Result');
+  }
+
+  
+  if (i == questions.length) {
+    /*update results page*/
+    var res = {
+      "A": 0,
+      "V": 0,
+      "K": 0,
+      "D": 0,
+      "T": 0
+    };
+    var as = $('.question'), n = 0;
+    for (var a = 0; a < as.length; a++) {
+      var answers = $('#question' + (a + 1)).children();
+      for (var o = 0; o < answers.length; o++) {
+        n = 4 - o;
+        n *= n;
+        res[$(answers[o]).data('type')] += n;
+        res.T += n;
+      }
     }
 
-    if (i == questions.length) {
-      /*update results page*/
-      var res = {
-        "A": 0,
-        "V": 0,
-        "K": 0,
-        "D": 0,
-        "T": 0
-      };
-      var as = $('.question'), n = 0;
-      for (var a = 0; a < as.length; a++) {
-        var answers = $('#question' + (a + 1)).children();
-        for (var o = 0; o < answers.length; o++) {
-          n = 4 - o;
-          n *= n;
-          res[$(answers[o]).data('type')] += n;
-          res.T += n;
+    var html = '';
+    window.results = [
+      { "type": "A", "count": res.A / res.T },
+      { "type": "V", "count": res.V / res.T },
+      { "type": "K", "count": res.K / res.T },
+      { "type": "D", "count": res.D / res.T }
+    ];
+    window.results.sort(function (a, b) { return b.count - a.count });
+    var pt = 0, p = 0;
+    for (var g in window.results) {
+      switch (window.results[g].type) {
+        case 'D':
+          html += '<span class="legend" style="background-color: ' + dColorFill + '"/>&nbsp;Digital:&nbsp;';
+          break;
+        case 'A':
+          html += '<span class="legend" style="background-color: ' + aColorFill + '"/>&nbsp;Auditory:&nbsp;';
+          break;
+        case 'V':
+          html += '<span class="legend" style="background-color: ' + vColorFill + '"/>&nbsp;Visual:&nbsp;';
+          break;
+        case 'K':
+          html += '<span class="legend" style="background-color: ' + kColorFill + '"/>&nbsp;Kinaesthetic:&nbsp;';
+          break;
+      }
+      p = Math.round(window.results[g].count * 100);
+      pt += p;
+      if (g == window.results.length - 1) {
+        if (pt != 100) {
+          //alert('arp..!! ' + (pt-100) + '%');
+          p -= (pt - 100);
         }
       }
-
-      var html = '';
-      window.results = [
-        { "type": "A", "count": res.A / res.T },
-        { "type": "V", "count": res.V / res.T },
-        { "type": "K", "count": res.K / res.T },
-        { "type": "D", "count": res.D / res.T }
-      ];
-      window.results.sort(function (a, b) { return b.count - a.count });
-      var pt = 0, p = 0;
-      for (var g in window.results) {
-        switch (window.results[g].type) {
-          case 'D':
-            html += '<span class="legend" style="background-color: '+dColorFill+'"/>&nbsp;Digital:&nbsp;';
-            break;
-          case 'A':
-            html += '<span class="legend" style="background-color: '+aColorFill+'"/>&nbsp;Auditory:&nbsp;';
-            break;
-          case 'V':
-            html += '<span class="legend" style="background-color: '+vColorFill+'"/>&nbsp;Visual:&nbsp;';
-            break;
-          case 'K':
-            html += '<span class="legend" style="background-color: '+kColorFill+'"/>&nbsp;Kinaesthetic:&nbsp;';
-            break;
-        }
-        p = Math.round(window.results[g].count * 100);
-        pt += p;
-        if (g == window.results.length - 1) {
-          if (pt != 100) {
-            //alert('arp..!! ' + (pt-100) + '%');
-            p -= (pt - 100);
-          }
-        }
-        html += +p + '% <br/>';
-      }
-      //$('#question_container'+(i+1))
-      $('#textResults').html(html);
-      //$('#quizTitle').html('Your prefered representation system');
-
-      DrawGraph(window.results);
+      html += +p + '% <br/>';
     }
-    //console.log(jq.data('question').sortable("toArray"));
-  });
-  return qb;
+    //$('#question_container'+(i+1))
+    $('#textResults').html(html);
+    //$('#quizTitle').html('Your prefered representation system');
+
+    DrawGraph(window.results);
+  }
+  //console.log(jq.data('question').sortable("toArray"));
+});
+return qb;
 }
 
 $(function () {
@@ -401,7 +407,7 @@ $(function () {
 
     //row.append($('<h1>' + question + '</h1>'));
     //$('#quizQuestion').html(question);
-    if(it==0)qContainer.append('<div>'+question+'</div>');
+    if (it == 0) qContainer.append('<div>' + question + '</div>');
 
     //create list group
     var q = $('<div id="question' + it + '" class="question list-group col is-size-6-touch">');
