@@ -9,6 +9,7 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
+const image = require('gulp-image');
 const changed = require('gulp-changed');
 const uglify = require('gulp-uglify');
 const lineec = require('gulp-line-ending-corrector');
@@ -23,7 +24,7 @@ const jsDist = './dist/js/';
 const jsWatch = './src/js/**/*.js';
 
 const htmlWatch = './src/**/*.html'
-const imgSrc = './src/images/*';
+const imgSrc = './src/images/**/*';
 const imgDist = './dist/images/';
 
 
@@ -77,12 +78,25 @@ function javascript() {
 function imgmin() {
     return gulp.src(imgSrc)
     .pipe(changed(imgDist))
-    .pipe(imagemin([
-        imagemin.gifsicle({interlaced: true}),
-        imagemin.jpegtran({progressive: true}),
-        imagemin.optipng({optimizationLevel: 5})
+    /* imagemin not working */
+    // .pipe(imagemin([
+    //     imagemin.gifsicle({interlaced: true}),
+    //     imagemin.jpegtran({progressive: true}),
+    //     imagemin.optipng({optimizationLevel: 5})
 
-    ]))
+    // ]))
+    .pipe(image({
+        pngquant: true,
+        optipng: true,
+        zopflipng: true,
+        jpegRecompress: true,
+        mozjpeg: true,
+        guetzli: true,
+        gifsicle: true,
+        svgo: true,
+        // concurrent: 10, /*Unlimited*/
+        quiet: false // defaults to false
+      }))
     .pipe(gulp.dest(imgDist));
 }
 
@@ -99,6 +113,11 @@ function htmlminify(){
 function assets() {
     return gulp.src('./src/assets/*')
         .pipe(gulp.dest('dist/assets'));
+}
+
+function imgmove() {
+    return gulp.src('./src/images/**/*')
+        .pipe(gulp.dest('dist/images'));
 }
 
 //Watch when working on DIST folder - use NPM Run Start on Dev
@@ -151,11 +170,13 @@ function deploy(){
 gulp.task('watch', watch)
 gulp.task('sass', css);
 gulp.task('js', javascript);
-gulp.task('img', imgmin);
+gulp.task('img', imgmin); /* Not working use imgmove instead */
 gulp.task('html', htmlminify);
 gulp.task('assets', assets);
+gulp.task('imgmove', imgmove);
 
-const build = gulp.series(css, javascript, imgmin, htmlminify, assets);
+
+const build = gulp.series(css, javascript, imgmove, htmlminify, assets);
 
 gulp.task('default', build);
 

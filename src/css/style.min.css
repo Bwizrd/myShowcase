@@ -8939,3 +8939,11 @@ video {
 
 .quiz-container {
   width: 800px; }
+
+label[for^=star] {
+  position: relative;
+  top: -30px; }
+
+@media screen and (max-width: 620px) {
+  #feedback fieldset legend {
+    font-size: 0.8rem !important; } }
