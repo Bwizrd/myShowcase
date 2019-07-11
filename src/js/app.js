@@ -134,7 +134,8 @@ function fitToContainer(canvas){
 
 function setMaterial(id) {
   setTrainingMaterial(id);
-  setPracticeMaterial(id);
+  /*Has been temporarily removed
+  setPracticeMaterial(id);*/
 }
 /*
 $('.navLink').click(function(event){
