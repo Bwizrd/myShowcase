@@ -240,6 +240,24 @@
                     </div>
                   </div>
                 </section>
+                <div class="columns">
+                  <div class="column is-four-fifths is-offset-1">
+                    <textarea id="v1" class="textarea mtl notepad video-notes box" placeholder="Use this space to make notes:"></textarea>
+                    <div class="level">
+                      <!-- Left side -->
+                      <div class="level-left">
+                        <div class="level-item">
+                        </div>
+                      </div>
+                      <!-- Right side -->
+                      <div class="level-right">
+                        <a href="javascript:SaveVideoNotes()"
+                          class="button is-medium is-danger is-right"><span>Save</span></a>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -275,6 +293,65 @@
           </div>
         </div>
         <script>
+          //Save and Retrieve Notes Data
+          var vn = [
+          localStorage.getItem('videoNotes0'),
+          localStorage.getItem('videoNotes1'),
+          localStorage.getItem('videoNotes2'),
+          localStorage.getItem('videoNotes3'),
+          localStorage.getItem('videoNotes4'),
+          localStorage.getItem('videoNotes5'),
+          localStorage.getItem('videoNotes6'),
+          localStorage.getItem('videoNotes7'),
+          localStorage.getItem('videoNotes8'),
+          localStorage.getItem('videoNotes9'),
+          localStorage.getItem('videoNotes10'),
+          localStorage.getItem('videoNotes11')
+        ];
+
+        // $('#v1').val(vn[0]);
+        // $('#v2').val(vn[1]);
+        // $('#v3').val(vn[2]);
+        // $('#v4').val(vn[3]);
+        // $('#v5').val(vn[4]);
+        // $('#v6').val(vn[5]);
+        // $('#v7').val(vn[6]);
+        // $('#v8').val(vn[7]);
+        // $('#v9').val(vn[8]);
+        // $('#v10').val(vn[9]);
+        // $('#v11').val(vn[10]);
+        // $('#v12').val(vn[11]);
+
+        function SaveVideoNotes() {
+          var vn = [
+            $('#v1').val(),
+            $('#v2').val(),
+            $('#v3').val(),
+            $('#v4').val(),
+            $('#v5').val(),
+            $('#v6').val(),
+            $('#v7').val(),
+            $('#v8').val(),
+            $('#v9').val(),
+            $('#v10').val(),
+            $('#v11').val()
+          ]
+
+          localStorage.setItem('videoNotes0', vn[0]);
+          localStorage.setItem('videoNotes1', vn[1]);
+          localStorage.setItem('videoNotes2', vn[2]);
+          localStorage.setItem('videoNotes3', vn[3]);
+          localStorage.setItem('videoNotes4', vn[4]);
+          localStorage.setItem('videoNotes5', vn[5]);
+          localStorage.setItem('videoNotes6', vn[6]);
+          localStorage.setItem('videoNotes7', vn[7]);
+          localStorage.setItem('videoNotes8', vn[8]);
+          localStorage.setItem('videoNotes9', vn[9]);
+          localStorage.setItem('videoNotes10', vn[10]);
+          localStorage.setItem('videoNotes11', vn[11]);
+        }
+
+
 
           function setTrainingMaterial(id) {
             $(".menu-item-active").removeClass("menu-item-active");
@@ -282,62 +359,88 @@
             switch (id) {
               case 1:
                 var LearningMaterialsSubTitle = 'Session 1';
-                var VideoTitle = 'Session 1 Video - Placeholder'
-                var VideoSource = '#'
+                var VideoTitle = 'Session 1 Video - Placeholder';
+                var VideoSource = '#';
+                var VideoID = 'v'+ id;
+                var VNotes = vn[id-1];
 
                 break;
               case 2:
                 var LearningMaterialsSubTitle = 'Developing New Habits';
                 var VideoTitle = 'Session 2 Video - Developing New Habits';
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                var VideoID = 'v'+ id;
+                var VNotes = vn[id-1];
 
                 break;
               case 3:
                 var LearningMaterialsSubTitle = 'The TLS 3-Step Sales Process';
                 var VideoTitle = 'Session 3 Video - The TLS 3-Step Sales Process'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                var VideoID = 'v'+ id;
+                var VNotes = vn[id-1];
                 break;
               case 4:
                 var LearningMaterialsSubTitle = 'Representational Systems';
                 var VideoTitle = 'Session 4 Video - Representational Systems'
                 var VideoSource = 'assets/Session' + id + 'BAnimation.mp4';
+                var VideoID = 'v'+ id;
+                var VNotes = vn[id-1];
                 break;
               case 5:
                 var LearningMaterialsSubTitle = 'Powerful First Impressions';
                 var VideoTitle = 'Session 5 Video - Powerful First Impressions'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                var VideoID = 'v'+ id;
+                var VNotes = vn[id-1];
                 break;
               case 6:
                 var LearningMaterialsSubTitle = 'Develop A Positive Connection';
                 var VideoTitle = 'Session 6 Video - Develop A Positive Connection'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                var VideoID = 'v'+ id;
+                var VNotes = vn[id-1];
                 break;
               case 7:
                 var LearningMaterialsSubTitle = 'Session 7';
                 var VideoTitle = 'Session 7 Video - Placeholder'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                 var VideoID = 'v'+ id;
+                 var VNotes = vn[id-1];
                 break;
               case 8:
                 var LearningMaterialsSubTitle = 'Session 8';
                 var VideoTitle = 'Session 8 Video - Placeholder'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                 var VideoID = 'v'+ id;
+                 var VNotes = vn[id-1];
                 break;
               case 9:
                 var LearningMaterialsSubTitle = 'Session 9';
                 var VideoTitle = 'Session 9 Video - Placeholder'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                 var VideoID = 'v'+ id;
+                 var VNotes = vn[id-1];
                 break;
               case 10:
                 var LearningMaterialsSubTitle = 'Session 10';
                 var VideoTitle = 'Session 10 Video - Placeholder'
                 var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                 var VideoID = 'v'+ id;
+                 var VNotes = vn[id-1];
                 break;
 
             }
+           
+            // console.log(VideoID);
+            $('.video-notes').attr('id', VideoID);
             $('#LearningMaterialsSubTitle').html(LearningMaterialsSubTitle);
             $('#VideoTitle').html(VideoTitle);
             $('#VideoSource').attr('src', VideoSource);
             $('#VideoSource').parent()[0].load();
+            if ( VNotes !== "undefined") {
+            $('#'+ VideoID).val(vn[id-1]);
+            } else {$('#'+ VideoID).val('');}
           }
         </script>
       </div>
@@ -1428,7 +1531,7 @@
         <div class="columns">
           <div class="column is-two-thirds is-offset-1">
             <textarea class="textarea mtl notepad box" placeholder="Use this space to make notes:"></textarea>
-            
+
           </div>
         </div>
       </div>
