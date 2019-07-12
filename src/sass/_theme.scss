@@ -183,7 +183,7 @@ body {
 
 
 
-fieldset{
+.rating{
 	padding-left: 20px;
 }
 
@@ -195,7 +195,7 @@ fieldset{
    it doesn’t make the test unnecessarily selective */
 .rating:not(:checked) > input {
     position:absolute;
-    //top:-9999px;
+    top:-9999px;
     clip:rect(0,0,0,0);
     visibility: hidden;
 }

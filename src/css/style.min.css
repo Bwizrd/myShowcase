@@ -156,7 +156,7 @@ body {
 .handle {
   cursor: grab; }
 
-fieldset {
+.rating {
   padding-left: 20px; }
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
@@ -164,6 +164,7 @@ fieldset {
    it doesn’t make the test unnecessarily selective */
 .rating:not(:checked) > input {
   position: absolute;
+  top: -9999px;
   clip: rect(0, 0, 0, 0);
   visibility: hidden; }
 
@@ -8964,8 +8965,12 @@ label[for^=star] {
   top: -30px; }
 
 @media screen and (max-width: 620px) {
-  #feedback fieldset legend {
+  #feedback div legend {
     font-size: 0.8rem !important; } }
+
+div.rating {
+  width: 100%;
+  clear: both; }
 
 .notepad {
   background: whitesmoke;

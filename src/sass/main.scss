@@ -142,11 +142,16 @@ label[for^=star]{
 
 
 @media screen and (max-width: 620px) {
-  #feedback fieldset legend {
+  #feedback div legend {
     font-size: 0.8rem !important;
   }
 }
 
+div.rating{
+  width: 100%;
+  clear: both;
+  //margin-bottom: 30px;
+}
 .notepad{
   background: hsl(0, 0%, 96%);
   border: 1px solid hsl(0, 0%, 71%);
