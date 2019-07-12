@@ -176,7 +176,7 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
   if (currentQuestion < questions.length) {
     $('#quizQuestion').html(questions[currentQuestion].q);
   } else {
-    $('#quizQuestion').html('Your prefered representational system');
+    $('#quizQuestion').html('Your preferred representational system');
   }
   if (!(currentQuestion >= questions.length)) {
   $('#quizSubtitle').html(currentQuestion+' / '+(questions.length-1));

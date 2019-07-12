@@ -167,3 +167,19 @@ textarea{
   outline: none !important;
 }
 
+.lo-SubmitBtn{
+  font-size: 16px;
+}
+
+#textResults{
+  line-height: 2.5;
+
+}
+
+@media screen and ( min-width: 770px) {
+  #textResults{
+    position: relative;
+    top: 150px;
+  }
+}
+
