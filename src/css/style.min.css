@@ -8957,9 +8957,6 @@ video {
   border-radius: 50%;
   padding: 8px;*/ }
 
-.quiz-container {
-  width: 800px; }
-
 label[for^=star] {
   position: relative;
   top: -30px; }
