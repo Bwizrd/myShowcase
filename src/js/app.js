@@ -134,6 +134,7 @@ function fitToContainer(canvas){
 
 function setMaterial(id) {
   setTrainingMaterial(id);
+  $(".page > .columns > .column").removeClass('menu-list-active');
   /*Has been temporarily removed
   setPracticeMaterial(id);*/
 }
