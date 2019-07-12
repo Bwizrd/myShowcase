@@ -162,16 +162,17 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
   var cz = '';
   if (!bAllButtons) cz = ' onlyNext';
   console.log(it);
-  var qb = $('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '<span class= " is-small mlm"><i class="fas fa-caret-right"></i></span ></a >').data('it', it).attr('it', it).click(function (event) {
+  var qb=$('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '</a >').data('it', it).click(function (event) {
     $('#quiz').scrollTop(0);
     SlowReload();
     var jq = $('#question_container' + currentQuestion);
     $('.question_container').hide();
     //$('.qbtn').removeClass('btn-');
-    var i = $(event.target).data('it')||$(event.target).attr('it');
+    var i = $(event.target).data('it');
     console.log(i);
     if (i === undefined) {
       console.log(event);
+      console.log(event.target);
       console.log($(event.target).data('it'));
     }
     currentQuestion = i;
@@ -254,10 +255,6 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
     }
     //console.log(jq.data('question').sortable("toArray"));
   });
-  while(!qb.data('it')){
-    qb.data('it',it);
-    qb.attr('it',it);
-  }
   return qb;
 }
 
@@ -378,7 +375,7 @@ var questions =
     }
   ]
   ;
-  setTimeout(
+  
 $(function () {
   //loop questions json
   //for(var question in questions){
@@ -446,4 +443,4 @@ $(function () {
       ghostClass: 'blue-background-class'
     });
   }
-}),300);
+});
