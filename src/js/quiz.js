@@ -161,213 +161,224 @@ function DrawGraph2(r) {
 function CreateQuestionButton(it, label, questions, bAllButtons) {
   var cz = '';
   if (!bAllButtons) cz = ' onlyNext';
-  var qb = $('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '<span class= " is-small mlm"><i class="fas fa-caret-right"></i></span ></a >').data('it', it).click(function (event) {
-  $('#quiz').scrollTop(0);
-  SlowReload();
-  var jq = $('#question_container' + currentQuestion);
-  $('.question_container').hide();
-  //$('.qbtn').removeClass('btn-');
-  var i = $(event.target)/*.removeClass('btn-outline-primary').addClass('btn-success')*/.data('it');
-  currentQuestion = i;
-  if (!bAllButtons) $('.qbtn').hide();
-  $('#qb' + (currentQuestion + 1)).show();
-  $('#question_container' + (currentQuestion)).show();
+  console.log(it);
+  var qb = $('<a id="qb' + it + '" class="button is-Amex-Gold-button qbtn' + cz + '">' + label + '<span class= " is-small mlm"><i class="fas fa-caret-right"></i></span ></a >').data('it', it).attr('it', it).click(function (event) {
+    $('#quiz').scrollTop(0);
+    SlowReload();
+    var jq = $('#question_container' + currentQuestion);
+    $('.question_container').hide();
+    //$('.qbtn').removeClass('btn-');
+    var i = $(event.target).data('it')||$(event.target).attr('it');
+    console.log(i);
+    if (i === undefined) {
+      console.log(event);
+      console.log($(event.target).data('it'));
+    }
+    currentQuestion = i;
+    if (!bAllButtons) $('.qbtn').hide();
+    $('#qb' + (currentQuestion + 1)).show();
+    $('#question_container' + (currentQuestion)).show();
 
-  if (currentQuestion < questions.length) {
-    $('#quizQuestion').html(questions[currentQuestion].q);
-  } else {
-    $('#quizQuestion').html('Your preferred representational system');
-  }
-  if (!(currentQuestion >= questions.length)) {
-  $('#quizSubtitle').html(currentQuestion+' / '+(questions.length-1));
-  } else {
-    $('#quizSubtitle').html('Result');
-  }
-
-  
-  if (i == questions.length) {
-    /*update results page*/
-    var res = {
-      "A": 0,
-      "V": 0,
-      "K": 0,
-      "D": 0,
-      "T": 0
-    };
-    var as = $('.question'), n = 0;
-    for (var a = 0; a < as.length; a++) {
-      var answers = $('#question' + (a + 1)).children();
-      for (var o = 0; o < answers.length; o++) {
-        n = 4 - o;
-        n *= n;
-        res[$(answers[o]).data('type')] += n;
-        res.T += n;
-      }
+    if (currentQuestion < questions.length) {
+      $('#quizQuestion').html(questions[currentQuestion].q);
+    } else {
+      $('#quizQuestion').html('Your preferred representational system');
+    }
+    if (!(currentQuestion >= questions.length)) {
+      $('#quizSubtitle').html(currentQuestion + ' / ' + (questions.length - 1));
+    } else {
+      $('#quizSubtitle').html('Result');
     }
 
-    var html = '';
-    window.results = [
-      { "type": "A", "count": res.A / res.T },
-      { "type": "V", "count": res.V / res.T },
-      { "type": "K", "count": res.K / res.T },
-      { "type": "D", "count": res.D / res.T }
-    ];
-    window.results.sort(function (a, b) { return b.count - a.count });
-    var pt = 0, p = 0;
-    for (var g in window.results) {
-      switch (window.results[g].type) {
-        case 'D':
-          html += '<span class="legend" style="background-color: ' + dColorFill + '"/>&nbsp;Digital:&nbsp;';
-          break;
-        case 'A':
-          html += '<span class="legend" style="background-color: ' + aColorFill + '"/>&nbsp;Auditory:&nbsp;';
-          break;
-        case 'V':
-          html += '<span class="legend" style="background-color: ' + vColorFill + '"/>&nbsp;Visual:&nbsp;';
-          break;
-        case 'K':
-          html += '<span class="legend" style="background-color: ' + kColorFill + '"/>&nbsp;Kinaesthetic:&nbsp;';
-          break;
-      }
-      p = Math.round(window.results[g].count * 100);
-      pt += p;
-      if (g == window.results.length - 1) {
-        if (pt != 100) {
-          //alert('arp..!! ' + (pt-100) + '%');
-          p -= (pt - 100);
+
+    if (i == questions.length) {
+      /*update results page*/
+      var res = {
+        "A": 0,
+        "V": 0,
+        "K": 0,
+        "D": 0,
+        "T": 0
+      };
+      var as = $('.question'), n = 0;
+      for (var a = 0; a < as.length; a++) {
+        var answers = $('#question' + (a + 1)).children();
+        for (var o = 0; o < answers.length; o++) {
+          n = 4 - o;
+          n *= n;
+          res[$(answers[o]).data('type')] += n;
+          res.T += n;
         }
       }
-      html += +p + '% <br/>';
-    }
-    //$('#question_container'+(i+1))
-    $('#textResults').html(html);
-    //$('#quizTitle').html('Your prefered representation system');
 
-    DrawGraph(window.results);
+      var html = '';
+      window.results = [
+        { "type": "A", "count": res.A / res.T },
+        { "type": "V", "count": res.V / res.T },
+        { "type": "K", "count": res.K / res.T },
+        { "type": "D", "count": res.D / res.T }
+      ];
+      window.results.sort(function (a, b) { return b.count - a.count });
+      var pt = 0, p = 0;
+      for (var g in window.results) {
+        switch (window.results[g].type) {
+          case 'D':
+            html += '<span class="legend" style="background-color: ' + dColorFill + '"/>&nbsp;Digital:&nbsp;';
+            break;
+          case 'A':
+            html += '<span class="legend" style="background-color: ' + aColorFill + '"/>&nbsp;Auditory:&nbsp;';
+            break;
+          case 'V':
+            html += '<span class="legend" style="background-color: ' + vColorFill + '"/>&nbsp;Visual:&nbsp;';
+            break;
+          case 'K':
+            html += '<span class="legend" style="background-color: ' + kColorFill + '"/>&nbsp;Kinaesthetic:&nbsp;';
+            break;
+        }
+        p = Math.round(window.results[g].count * 100);
+        pt += p;
+        if (g == window.results.length - 1) {
+          if (pt != 100) {
+            //alert('arp..!! ' + (pt-100) + '%');
+            p -= (pt - 100);
+          }
+        }
+        html += +p + '% <br/>';
+      }
+
+      //$('#question_container'+(i+1))
+      $('#textResults').html(html);
+      //$('#quizTitle').html('Your prefered representation system');
+
+      DrawGraph(window.results);
+    }
+    //console.log(jq.data('question').sortable("toArray"));
+  });
+  while(!qb.data('it')){
+    qb.data('it',it);
+    qb.attr('it',it);
   }
-  //console.log(jq.data('question').sortable("toArray"));
-});
-return qb;
+  return qb;
 }
 
-$(function () {
-  var questions =
-    [
-      {
-        "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom.",
-        "a": {}
-      },
-      {
-        "q": "I base important decisions on:",
-        "a": {
-          "K": "A gut feeling.",
-          "A": "What sounds the best.",
-          "V": "What looks best to me.",
-          "D": "Precise review and study of the issues.",
-        }
-      },
-      {
-        "q": "During a disagreement, I am most likely to be influenced by:",
-        "a": {
-          "A": "The other person’s tone of voice.",
-          "V": "Whether or not I can see the other person’s point of view.",
-          "D": "Understanding the other person’s process.",
-          "K": "Whether or not I feel I am in touch with the other person’s true feelings.",
-        }
-      },
-      {
-
-        "q": "I most easily communicate what is going on with me by:",
-        "a": {
-          "V": "The way I dress and look.",
-          "K": "The feelings I share.",
-          "D": "The words I choose.",
-          "A": "The tone of my voice.",
-        }
-      },
-      {
-        "q": "It is easiest for me to:",
-        "a": {
-          "A": "Find the ideal volume and tuning on a stereo system.",
-          "D": "Select the most intellectually relevant point concerning an interesting subject.",
-          "K": "Select the most comfortable furniture.",
-          "V": "Select rich, attractive colour combinations.",
-        }
-      },
-      {
-        "q": "Order the following statements from most accurate at the top, to least accurate at the bottom.",
-        "a": {
-          "A": "I am very attuned to the sounds of my surroundings.",
-          "D": "I am very adept at making sense of new facts and data.",
-          "K": "I am very sensitive to the way articles of clothing feel on my body.",
-          "V": "I have a strong response to colours and to the way a room looks.",
-        }
-      },
-      {
-        "q": "People really know me best when they…",
-        "a": {
-          "K": "Experience what I am feeling.",
-          "V": "See at my perspective.",
-          "A": "Listen carefully to what I have to say and how it is said.",
-          "D": "Are interested in the meaning of what I’m doing or saying.",
-        }
-      },
-      {
-        "q": "I am more likely to:",
-        "a": {
-          "A": "Want understanding of the facts you tell me.",
-          "V": "Picture the overview or plan.",
-          "D": "Sequence the information you give me to make sense of it all.",
-          "K": "Get a handle on the feeling of the project.",
-        }
-      },
-      {
-        "q": "Describing myself I'd say…",
-        "a": {
-          "V": "Showing it to me makes it believable.",
-          "A": "The sincere tone of your voice makes it believable.",
-          "K": "When it feels right, it’s believable.",
-          "D": "When it makes sense, it’s believable.",
-        }
-      },
-      {
-        "q": "In times of stress I'm most challenged with…",
-        "a": {
-          "D": "Trusting the people or situation.",
-          "A": "Being diplomatic.",
-          "K": "Separating what my feelings are from what other people are feeling.",
-          "V": "Being flexible and changing plans easily.",
-        }
-      },
-      {
-        "q": "Order the following statements from most accurate at the top, to least accurate at the bottom.",
-        "a": {
-          "D": "I easily receive inner inspirations.",
-          "A": "I can tell easily where new ideas fit.",
-          "K": "I easily follow the direction of the tried and true methods.",
-          "V": "I easily organize and plan the timing of things.",
-        }
-      },
-      {
-        "q": "I decide which gym to join because:",
-        "a": {
-          "A": "The music sounds good.",
-          "D": "It makes sense based on the location.",
-          "K": "I get a good feeling when I walk in the door.",
-          "V": "I like the looks of the equipment.",
-        }
-      },
-      {
-        "q": "When meeting new people I prefer to:",
-        "a": {
-          "V": "Meet someone face to face.",
-          "A": "Over the telephone.",
-          "D": "Get a sense of who they are.",
-          "K": "Touch base to get a feeling of who they are.",
-        },
+var questions =
+  [
+    {
+      "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom.",
+      "a": {}
+    },
+    {
+      "q": "I base important decisions on:",
+      "a": {
+        "K": "A gut feeling.",
+        "A": "What sounds the best.",
+        "V": "What looks best to me.",
+        "D": "Precise review and study of the issues.",
       }
-    ]
-    ;
+    },
+    {
+      "q": "During a disagreement, I am most likely to be influenced by:",
+      "a": {
+        "A": "The other person’s tone of voice.",
+        "V": "Whether or not I can see the other person’s point of view.",
+        "D": "Understanding the other person’s process.",
+        "K": "Whether or not I feel I am in touch with the other person’s true feelings.",
+      }
+    },
+    {
+
+      "q": "I most easily communicate what is going on with me by:",
+      "a": {
+        "V": "The way I dress and look.",
+        "K": "The feelings I share.",
+        "D": "The words I choose.",
+        "A": "The tone of my voice.",
+      }
+    },
+    {
+      "q": "It is easiest for me to:",
+      "a": {
+        "A": "Find the ideal volume and tuning on a stereo system.",
+        "D": "Select the most intellectually relevant point concerning an interesting subject.",
+        "K": "Select the most comfortable furniture.",
+        "V": "Select rich, attractive colour combinations.",
+      }
+    },
+    {
+      "q": "Order the following statements from most accurate at the top, to least accurate at the bottom.",
+      "a": {
+        "A": "I am very attuned to the sounds of my surroundings.",
+        "D": "I am very adept at making sense of new facts and data.",
+        "K": "I am very sensitive to the way articles of clothing feel on my body.",
+        "V": "I have a strong response to colours and to the way a room looks.",
+      }
+    },
+    {
+      "q": "People really know me best when they…",
+      "a": {
+        "K": "Experience what I am feeling.",
+        "V": "See at my perspective.",
+        "A": "Listen carefully to what I have to say and how it is said.",
+        "D": "Are interested in the meaning of what I’m doing or saying.",
+      }
+    },
+    {
+      "q": "I am more likely to:",
+      "a": {
+        "A": "Want understanding of the facts you tell me.",
+        "V": "Picture the overview or plan.",
+        "D": "Sequence the information you give me to make sense of it all.",
+        "K": "Get a handle on the feeling of the project.",
+      }
+    },
+    {
+      "q": "Describing myself I'd say…",
+      "a": {
+        "V": "Showing it to me makes it believable.",
+        "A": "The sincere tone of your voice makes it believable.",
+        "K": "When it feels right, it’s believable.",
+        "D": "When it makes sense, it’s believable.",
+      }
+    },
+    {
+      "q": "In times of stress I'm most challenged with…",
+      "a": {
+        "D": "Trusting the people or situation.",
+        "A": "Being diplomatic.",
+        "K": "Separating what my feelings are from what other people are feeling.",
+        "V": "Being flexible and changing plans easily.",
+      }
+    },
+    {
+      "q": "Order the following statements from most accurate at the top, to least accurate at the bottom.",
+      "a": {
+        "D": "I easily receive inner inspirations.",
+        "A": "I can tell easily where new ideas fit.",
+        "K": "I easily follow the direction of the tried and true methods.",
+        "V": "I easily organize and plan the timing of things.",
+      }
+    },
+    {
+      "q": "I decide which gym to join because:",
+      "a": {
+        "A": "The music sounds good.",
+        "D": "It makes sense based on the location.",
+        "K": "I get a good feeling when I walk in the door.",
+        "V": "I like the looks of the equipment.",
+      }
+    },
+    {
+      "q": "When meeting new people I prefer to:",
+      "a": {
+        "V": "Meet someone face to face.",
+        "A": "Over the telephone.",
+        "D": "Get a sense of who they are.",
+        "K": "Touch base to get a feeling of who they are.",
+      },
+    }
+  ]
+  ;
+$(function () {
   //loop questions json
   //for(var question in questions){
   for (var it = 0; it <= questions.length; it++) {
