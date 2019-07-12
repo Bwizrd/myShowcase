@@ -377,7 +377,7 @@ $(function () {
       if (bAllButtons) {
         var label = it;
       } else {
-        var label = 'Submit Answer and Continue';
+        var label = 'Continue';
         if (it == 1) label = 'Start';
       }
       if (it == questions.length) label = 'Results';
