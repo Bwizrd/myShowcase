@@ -378,6 +378,7 @@ var questions =
     }
   ]
   ;
+  setTimeout(
 $(function () {
   //loop questions json
   //for(var question in questions){
@@ -445,4 +446,4 @@ $(function () {
       ghostClass: 'blue-background-class'
     });
   }
-});
+}),300);
