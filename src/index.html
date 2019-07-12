@@ -244,20 +244,7 @@
                 <div class="columns">
                   <div class="column is-four-fifths is-offset-1">
                     <textarea id="v1" class="textarea mtl notepad video-notes box"
-                      placeholder="Use this space to make notes:"></textarea>
-                    <div class="level">
-                      <!-- Left side -->
-                      <div class="level-left">
-                        <div class="level-item">
-                        </div>
-                      </div>
-                      <!-- Right side -->
-                      <div class="level-right">
-                        <a href="javascript:SaveVideoNotes()"
-                          class="button is-medium is-danger is-right"><span>Save</span></a>
-                      </div>
-                    </div>
-
+                      placeholder="Use this space to make notes:" oninput="SaveVideoNotes()"></textarea>
                   </div>
                 </div>
               </div>
@@ -297,18 +284,18 @@
         <script>
           //Save and Retrieve Notes Data
           var vn = [
-            localStorage.getItem('videoNotes0'),
-            localStorage.getItem('videoNotes1'),
-            localStorage.getItem('videoNotes2'),
-            localStorage.getItem('videoNotes3'),
-            localStorage.getItem('videoNotes4'),
-            localStorage.getItem('videoNotes5'),
-            localStorage.getItem('videoNotes6'),
-            localStorage.getItem('videoNotes7'),
-            localStorage.getItem('videoNotes8'),
-            localStorage.getItem('videoNotes9'),
-            localStorage.getItem('videoNotes10'),
-            localStorage.getItem('videoNotes11')
+            localStorage.getItem('videoNotes0')||'',
+            localStorage.getItem('videoNotes1')||'',
+            localStorage.getItem('videoNotes2')||'',
+            localStorage.getItem('videoNotes3')||'',
+            localStorage.getItem('videoNotes4')||'',
+            localStorage.getItem('videoNotes5')||'',
+            localStorage.getItem('videoNotes6')||'',
+            localStorage.getItem('videoNotes7')||'',
+            localStorage.getItem('videoNotes8')||'',
+            localStorage.getItem('videoNotes9')||'',
+            localStorage.getItem('videoNotes10')||'',
+            localStorage.getItem('videoNotes11')||''
           ];
 
           // $('#v1').val(vn[0]);
@@ -1740,6 +1727,14 @@
   <!------------------------------------------------------------------------------------------------------------------------------------------------------->
 
     <!-- notes PAGE -->
+    <script>
+      function SaveFinalNotes(){
+        localStorage.setItem('finalNotes', $('#finalNotes').val()||'');
+      }
+      $(function(){
+        $('#finalNotes').val(localStorage.getItem('finalNotes')||'');
+      });
+    </script>
     <div id="notes" class="page notes">
       <section class="hero is-info is-bold">
         <div class="hero-body">
@@ -1760,7 +1755,7 @@
       </section>
       <div class="columns">
         <div class="column is-two-thirds is-offset-1">
-          <textarea class="textarea mtl notepad box" placeholder="Use this space to make notes:"></textarea>
+          <textarea class="textarea mtl notepad box" placeholder="Use this space to make notes:" id="finalNotes" oninput="SaveFinalNotes()"></textarea>
 
         </div>
       </div>
