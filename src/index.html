@@ -198,7 +198,7 @@
                 <div class="outer-flex is-flex-column ">
                   <h1 class="title">
 
-                    <span>Learning Materials</span>
+                    <span>Videos</span>
                   </h1>
                   <h2 class="subtitle is-size-6" id="LearningMaterialsSubTitle">
                   </h2>
@@ -271,9 +271,9 @@
                 </li>
                 <li class="menu-item-8"><a href="javascript:setMaterial(8)">Session&nbsp;8</a>
                 </li>
-                <li class="menu-item-9"><a href="javascript:setMaterial(9)">Session&nbsp;9</a>
+                <li class="menu-item-9"><a href="javascript:setMaterial(9)">Session&nbsp;9a</a>
                 </li>
-                <li class="menu-item-10"><a href="javascript:setMaterial(10)">Session&nbsp;10</a>
+                <li class="menu-item-10"><a href="javascript:setMaterial(10)">Session&nbsp;9b</a>
                 </li>
 
               </ul>
@@ -377,14 +377,14 @@
               case 4:
                 var LearningMaterialsSubTitle = 'Creating Powerful First Impressions';
                 var VideoTitle = 'Session 4 Video - Creating Powerful First Impressions'
-                var VideoSource = 'assets/Session' + id + 'AnimationV3.mp4';
+                var VideoSource = 'assets/Session' + id + 'AnimationV4.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
               case 5:
                 var LearningMaterialsSubTitle = 'Building Rapport';
                 var VideoTitle = 'Session 5 Video - Building Rapport'
-                var VideoSource = 'assets/Session' + id + 'AnimationV3.mp4';
+                var VideoSource = 'assets/Session' + id + 'AnimationV4.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
@@ -410,16 +410,16 @@
                 var VNotes = vn[id - 1];
                 break;
               case 9:
-                var LearningMaterialsSubTitle = 'Final and Lasting Impressions';
-                var VideoTitle = 'Session 9 Video - Final and Lasting Impressions'
-                var VideoSource = 'assets/Session' + id + 'Animation.mp4';
+                var LearningMaterialsSubTitle = 'Assumptive Closing';
+                var VideoTitle = 'Session 9a Video - Assumptive Closing'
+                var VideoSource = 'assets/Session' + id + 'aAnimation.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
               case 10:
-                var LearningMaterialsSubTitle = 'Session 10';
-                var VideoTitle = 'Session 10 Video - Placeholder'
-                var VideoSource = '#';
+                var LearningMaterialsSubTitle = 'Final and Lasting Impressions';
+                var VideoTitle = 'Session 9b Video - Final and Lasting Impressions'
+                var VideoSource = 'assets/Session' + (id-1) + 'bAnimation.mp4'
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
@@ -456,7 +456,7 @@
                 <img src="images/icons_hover/QuizSquare.png" class="Quiz-Icon mrl" alt="">
                 <div class="outer-flex is-flex-column ">
                   <h1 class="title">
-                    Quiz
+                  Learning Styles
                   </h1>
                   <h2 id="quizSubtitle" class="subtitle is-size-6 mls">
                     Start
@@ -798,7 +798,7 @@
                 <img src="images/icons_hover/FeedbackSquare.png" class="Practice-Icon mrl" alt="">
                 <div class="outer-flex is-flex-column ">
                   <h1 class="title">
-                    Feedback
+                    Workshop Evaluation
                   </h1>
                   <h2 class="subtitle is-size-6">
                     <br />
@@ -1206,7 +1206,7 @@
               <div class="TrainingMaterials"></div>
             </div>
           </div>
-          <p class="is-size-6 is-size-6-touch is-hidden-mobile">Learning Materials</p>
+          <p class="is-size-6 is-size-6-touch is-hidden-mobile">Videos</p>
         </div>
       </a>
       <a id="navquiz" href="javascript:SetPage('quiz');" class="navbar-item is-expanded is-block has-text-centered">
@@ -1218,7 +1218,7 @@
               <div class="Quiz"></div>
             </div>
           </div>
-          <p class="is-size-6 is-size-6-touch is-hidden-mobile">Quiz</p>
+          <p class="is-size-6 is-size-6-touch is-hidden-mobile">Learning Styles</p>
         </div>
       </a>
       <a id="navresources" href="javascript:SetPage('resources');"
@@ -1256,7 +1256,7 @@
             </div>
           </div>
           <!-- <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white"></i> -->
-          <p class="is-size-6 is-size-6-touch is-hidden-mobile">Feedback</p>
+          <p class="is-size-6 is-size-6-touch is-hidden-mobile">Workshop Evaluation</p>
         </div>
       </a>
       <a id="navfeedback" href="javascript:SetPage('notes');"
