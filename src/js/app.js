@@ -18,7 +18,7 @@ function loaded(d){
             }
           }
         //}, 300);
-      setMaterial(1);
+      setMaterial(2);
     }
 }
 
