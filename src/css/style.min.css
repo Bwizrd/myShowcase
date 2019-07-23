@@ -8943,6 +8943,13 @@ video {
   border-radius: 50%;
   padding: 5px;*/ }
 
+.Training-Icon {
+  width: 5vh;
+  height: 5vh;
+  border: 2px white solid;
+  border-radius: 50%;
+  padding: 9px; }
+
 .Practice-Icon {
   width: 5vh;
   height: 5vh;
