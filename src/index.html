@@ -96,27 +96,27 @@
                 <p class="subtitle is-size-6">Please provide 3 to 6 learning outcomes</p>
                 <div class="field">
                   <div class="control">
-                    <input id="q1" class="input is-rounded-2" type="text" placeholder="Outcome 1" />
+                    <input id="q1" class="input is-rounded-2" type="text" placeholder="Outcome 1" oninput="SaveLearningOutcomes()"/>
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q2" class="input is-rounded-2" type="text" placeholder="Outcome 2" />
+                    <input id="q2" class="input is-rounded-2" type="text" placeholder="Outcome 2" oninput="SaveLearningOutcomes()"/>
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q3" class="input is-rounded-2" type="text" placeholder="Outcome 3" />
+                    <input id="q3" class="input is-rounded-2" type="text" placeholder="Outcome 3" oninput="SaveLearningOutcomes()"/>
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q4" class="input is-rounded-2" type="text" placeholder="Outcome 4" />
+                    <input id="q4" class="input is-rounded-2" type="text" placeholder="Outcome 4" oninput="SaveLearningOutcomes()"/>
                   </div>
                 </div>
                 <div class="field">
                   <div class="control">
-                    <input id="q5" class="input is-rounded-2" type="text" placeholder="Outcome 5" />
+                    <input id="q5" class="input is-rounded-2" type="text" placeholder="Outcome 5" oninput="SaveLearningOutcomes()"/>
                   </div>
                 </div>
                 <div class="field">
@@ -124,14 +124,15 @@
                     <input id="q6" class="input is-rounded-2" type="text" placeholder="Outcome 6" />
                   </div>
                 </div>
-
-                <a href="javascript:SaveLearningOutcomes()"
+                <div class="mtm"></div>
+                <!-- <a href="javascript:SaveLearningOutcomes()"
                   class="button is-medium is-outlined is-Amex-Gold-button is-right mtm"><span>Submit</span><span
                     class="icon">
                     <i class="fas fa-check lo-SubmitBtn"></i>
-                  </span></a>
+                  </span></a> -->
               </article>
             </div>
+            <span style="font-size: 14px;" class="mll"><em>In order for these notes to save cookies and local storage must be turned on in your browser. Google Chrome browser is recommended.</em></span>
           </div>
         </div>
       </div>
@@ -240,6 +241,7 @@
                   <div class="column is-four-fifths is-offset-1">
                     <textarea id="v1" class="textarea mtl notepad video-notes box"
                       placeholder="Use this space to make notes:" oninput="SaveVideoNotes()"></textarea>
+                      <span style="font-size: 14px;"><em>In order for these notes to save cookies and local storage must be turned on in your browser. Google Chrome browser is recommended.</em></span>
                   </div>
                 </div>
               </div>
@@ -363,8 +365,8 @@
 
                 break;
               case 3:
-                var LearningMaterialsSubTitle = 'The TLS 3-Step Sales Process';
-                var VideoTitle = 'Session 3 Video - The TLS 3-Step Sales Process'
+                var LearningMaterialsSubTitle = 'Card Member Engagement Strategy';
+                var VideoTitle = 'Session 3 Video - Card Member Engagement Strategy'
                 var VideoSource = 'assets/Session' + id + 'AnimationV7.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
@@ -379,13 +381,13 @@
               case 5:
                 var LearningMaterialsSubTitle = 'Building Rapport';
                 var VideoTitle = 'Session 5 Video - Building Rapport'
-                var VideoSource = 'assets/Session' + id + 'AnimationV7.mp4';
+                var VideoSource = 'assets/Session' + id + 'AnimationV8.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
               case 6:
-                var LearningMaterialsSubTitle = 'Build Value';
-                var VideoTitle = 'Session 6 Video - Build Value'
+                var LearningMaterialsSubTitle = 'Understanding the Card Members True Needs';
+                var VideoTitle = 'Session 6 Video - Understanding the Card Members True Needs'
                 var VideoSource = 'assets/Session' + id + 'AnimationV6.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
@@ -841,7 +843,7 @@
 
       <!------------------------------------------------------------------------------------------------------------------------------------------------------->
       <!-- FEEDBACK PAGE -->
-      <div id="feedback" class="page feedback">
+      <!-- <div id="feedback" class="page feedback">
         <section class="hero is-info is-bold">
           <div class="hero-body">
             <div class="mlm">
@@ -1156,18 +1158,28 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!------------------------------------------------------------------------------------------------------------------------------------------------------->
 
       <!-- notes PAGE -->
       <script>
-        function SaveFinalNotes() {
-          localStorage.setItem('finalNotes', $('#finalNotes').val() || '');
-        }
+        // function SaveFinalNotes() {
+        //   localStorage.setItem('finalNotes', $('#finalNotes').val() || '');
+        // }
         $(function () {
           $('#finalNotes').val(localStorage.getItem('finalNotes') || '');
         });
+
+        function SaveFinalNotes() {
+
+          var fn = [
+            $('#finalNotes').val(),
+          ]
+
+          localStorage.setItem('finalNotes', fn[0]);
+         
+        }
       </script>
       <div id="notes" class="page notes">
         <section class="hero is-info is-bold">
@@ -1191,7 +1203,7 @@
           <div class="column is-two-thirds is-offset-1">
             <textarea class="textarea mtl notepad box" placeholder="Use this space to make notes:" id="finalNotes"
               oninput="SaveFinalNotes()"></textarea>
-
+            <span style="font-size: 14px;"><em>In order for these notes to save cookies and local storage must be turned on in your browser. Google Chrome browser is recommended.</em></span>
           </div>
         </div>
       </div>
@@ -1297,7 +1309,7 @@
           <p class="is-size-6 is-size-6-touch is-hidden-mobile">Practice</p>
         </div>
       </a> -->
-      <a id="navfeedback" href="javascript:SetPage('feedback');"
+      <!-- <a id="navfeedback" href="javascript:SetPage('feedback');"
         class="navbar-item is-expanded is-block has-text-centered">
         <div class="nav-border">
           <div>
@@ -1306,10 +1318,10 @@
               <div class="Feedback"></div>
             </div>
           </div>
-          <!-- <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white"></i> -->
+          <i class="fas fa-theater-masks is-size-2 is-size-5-touch has-text-white"></i>
           <p class="is-size-6 is-size-6-touch is-hidden-mobile">Workshop Evaluation</p>
         </div>
-      </a>
+      </a> -->
       <a id="navfeedback" href="javascript:SetPage('notes');"
         class="navbar-item is-expanded is-block has-text-centered">
         <div class="nav-border">

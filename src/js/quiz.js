@@ -233,7 +233,7 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
             html += '<span class="legend" style="background-color: ' + vColorFill + '"/>&nbsp;Visual:&nbsp;';
             break;
           case 'K':
-            html += '<span class="legend" style="background-color: ' + kColorFill + '"/>&nbsp;Kinaesthetic:&nbsp;';
+            html += '<span class="legend" style="background-color: ' + kColorFill + '"/>&nbsp;Kinesthetic:&nbsp;';
             break;
         }
         p = Math.round(window.results[g].count * 100);
@@ -261,7 +261,7 @@ function CreateQuestionButton(it, label, questions, bAllButtons) {
 var questions =
   [
     {
-      "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinaesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom.",
+      "q": "This quiz allows you to better understand how you create your own internal experience through your preferred representational system.<br/>There is usually one modality (typically visual, auditory or kinesthetic) that is your preferred system for creating your inner worlds.<br/>It doesn’t matter which one it is, but it becomes very useful for you to know which one is your preferred system (known as your “preferred representational system”).<br/><br/>During the next few slides, you need to reorder the statements from most accurate at the top, to least accurate at the bottom.",
       "a": {}
     },
     {
