@@ -402,14 +402,14 @@
               case 8:
                 var LearningMaterialsSubTitle = 'Handling Concerns and Overcoming Objections';
                 var VideoTitle = 'Session 8 Video - Handling Concerns and Overcoming Objections'
-                var VideoSource = 'assets/Session' + id + 'AnimationV4.mp4';
+                var VideoSource = 'assets/Session' + id + 'AnimationV5.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
               case 9:
                 var LearningMaterialsSubTitle = 'Assumptive Closing';
                 var VideoTitle = 'Session 9a Video - Assumptive Closing'
-                var VideoSource = 'assets/Session' + id + 'aAnimationV6.mp4';
+                var VideoSource = 'assets/Session' + id + 'aAnimationV7.mp4';
                 var VideoID = 'v' + id;
                 var VNotes = vn[id - 1];
                 break;
@@ -1167,8 +1167,12 @@
         // function SaveFinalNotes() {
         //   localStorage.setItem('finalNotes', $('#finalNotes').val() || '');
         // }
+        // $(function () {
+        //   $('#finalNotes').val(localStorage.getItem('finalNotes') || '');
+        // });
+
         $(function () {
-          $('#finalNotes').val(localStorage.getItem('finalNotes') || '');
+        $('#finalNotes').val(localStorage.getItem('finalNotes'));
         });
 
         function SaveFinalNotes() {
