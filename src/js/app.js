@@ -32,7 +32,7 @@ function loaded(d){
 })(
     {
         "images":[
-            'images/wdr.png',
+            'images/yoda-50.png',
             'images/amex.png',
             /*'images/Quiz.svg',
             'images/NLP Model.svg',

@@ -1,0 +1,685 @@
+/* Animation properties */
+.star {
+  animation: star 10s ease-out infinite;
+}
+.wars {
+  animation: wars 10s ease-out infinite;
+}
+.byline span {
+  animation: spin-letters 10s linear infinite;
+}
+.byline {
+  animation: move-byline 10s linear infinite;
+}
+
+/* Keyframes */
+@keyframes star {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(-0.75em);
+  }
+  20% {
+    opacity: 1;
+  }
+  89% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+@keyframes wars {
+  0% {
+    opacity: 0;
+    transform: scale(1.5) translateY(0.5em);
+  }
+  20% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(-1000em);
+  }
+}
+
+@keyframes spin-letters {
+  0%,
+  10% {
+    opacity: 0;
+    transform: rotateY(90deg);
+  }
+  30% {
+    opacity: 1;
+  }
+  70%,
+  86% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+  95%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes move-byline {
+  0% {
+    transform: translateZ(5em);
+  }
+  100% {
+    transform: translateZ(0);
+  }
+}
+
+/* Make the 3D work on the container */
+.starwars-demo {
+  perspective: 800px;
+  transform-style: preserve3d;
+}
+
+/* General styles and layout */
+body {
+  background: #000 url(https://cssanimation.rocks/demo/starwars/images/bg.jpg);
+}
+
+.starwars-demo {
+  height: 17em;
+  left: 50%;
+  position: absolute;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  width: 34em;
+}
+
+.byline span {
+  display: inline-block;
+}
+
+img {
+  width: 100%;
+}
+
+.star,
+.wars,
+.byline {
+  position: absolute;
+}
+
+.star {
+  top: -0.75em;
+  left: 0em;
+}
+
+.wars {
+  bottom: -0.5em;
+  right: 0em;
+}
+
+.byline {
+  color: #fff;
+  font-family: "ITC Serif Gothic", Lato;
+  font-size: 2.25em;
+  left: -2em;
+  letter-spacing: 0.4em;
+  right: -2em;
+  text-align: center;
+  text-transform: uppercase;
+  top: 29%;
+}
+
+/*** Media queries for adjusting to different screen sizes ***/
+
+@media only screen and (max-width: 600px) {
+  .starwars-demo {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .starwars-demo {
+    font-size: 7px;
+  }
+}
+
+// About
+
+.aboutPage {
+  &__CardContainer {
+    margin: 0 auto;
+  }
+  &__Card {
+    position: relative;
+    height: 450px;
+    width: 1100px;
+    margin: 100px auto;
+    background-color: #fff;
+    -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+  }
+  &__Thumbnail {
+    float: left;
+    position: relative;
+    left: 30px;
+    top: -30px;
+    height: 320px;
+    width: 530px;
+    -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+    overflow: hidden;
+  }
+  &__CardRight {
+    margin-left: 590px;
+    margin-right: 20px;
+    h1 {
+      padding-top: 15px;
+      font-size: 1.3rem;
+      color: #4b4b4b;
+    }
+    .author {
+      background-color: #9ecaff;
+      height: 36px;
+      width: 9em;
+      line-height: 1.4em;
+      padding-right: 1em;
+      border-radius: 20px;
+    }
+    .author > img {
+      padding-top: 5px;
+      margin-left: 10px;
+      float: left;
+      height: 33px;
+      width: 30px;
+      // border-radius: 50%;
+    }
+    h2 {
+      padding-top: 8px;
+      margin-right: 6px;
+      text-align: right;
+      font-size: 0.8rem;
+    }
+    .separator {
+      margin-top: 10px;
+      border: 1px solid #c3c3c3;
+    }
+    p {
+      text-align: justify;
+      padding-top: 10px;
+      font-size: 0.95rem;
+      line-height: 150%;
+      color: #4b4b4b;
+    }
+  }
+  &__Date {
+    h5 {
+      position: absolute;
+      left: 30px;
+      bottom: 40px;
+      font-size: 6rem;
+      color: #c3c3c3;
+    }
+    h6 {
+      position: absolute;
+      left: 30px;
+      bottom: 35px;
+      font-size: 2rem;
+      color: #c3c3c3;
+    }
+    .year {
+      position: absolute;
+      top: 400px;
+      left: 160px;
+    }
+    /* Those futur buttons */
+    ul {
+      margin-left: 250px;
+    }
+    li {
+      position: relative;
+      top: -30px;
+      display: inline;
+      list-style: none;
+      padding-right: 40px;
+      color: #7b7b7b;
+    }
+    .fabb {
+      position: absolute;
+      right: 50px;
+      bottom: -40px;
+      box-sizing: border-box;
+      padding-top: 18px;
+      background-color: #1875d0;
+      width: 80px;
+      height: 80px;
+      color: white;
+      text-align: center;
+      border-radius: 50%;
+      -webkit-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
+      img {
+        height: 50px;
+        width: 50px;
+        position: relative;
+        top: -5px;
+      }
+    }
+  }
+}
+#cover {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  display: none;
+}
+
+#modal {
+  position: absolute;
+  width: 33%;
+  left: 33%;
+  top: 20%;
+  height: auto;
+  background: rgba(255, 255, 255, 1);
+  z-index: 2;
+  display: none;
+  h3 {
+    font-size: 34px;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+#modal2 {
+  position: absolute;
+  width: 33%;
+  left: 33%;
+  top: 20%;
+  height: auto;
+  background: rgba(255, 255, 255, 1);
+  z-index: 2;
+  display: none;
+  h3 {
+    font-size: 34px;
+    text-align: center;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+#quizBox {
+  color: #867676;
+  font-size: 1.3em;
+}
+
+#quizQuestion {
+  color: #867676;
+  font-size: 1.2em;
+}
+
+.resources {
+  .container {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+  .webbox {
+    width: 270px;
+    height: 250px;
+    padding: 0px;
+    position: relative;
+    img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      transition: all 0.5s ease-out;
+    }
+    &::before {
+      border-top: 2px dashed white;
+      border-bottom: 2px dashed white;
+      transform: scale(0, 1);
+    }
+    &::after {
+      border-left: 2px dashed white;
+      border-right: 2px dashed white;
+      transform: scale(1, 0);
+    }
+    &:hover::before {
+      background-color: rgba(0, 0, 0, 0.4);
+      transform: scale(1.05, 1);
+    }
+    &:hover::after {
+      background-color: rgba(0, 0, 0, 0.4);
+      transform: scale(1, 1.05);
+    }
+    &:hover .contents-text {
+      display: block;
+    }
+  }
+
+  .contents-text {
+    position: relative;
+    color: white;
+    width: 270px;
+    top: -250px;
+    height: 250px;
+    padding: 75px 25px;
+    display: none;
+    text-align: center;
+    h2 {
+      color: white;
+    }
+  }
+}
+
+$card-ratio: 55 / 85 !default;
+
+// Settings.
+$card-width: 600px !default;
+$card-height: $card-width * $card-ratio !default;
+
+$corner-size: 12px !default;
+$icon-size: 80px !default;
+
+// Colours.
+$colour-bg: #333 !default;
+$colour-card-bg: #302f34 !default;
+$colour-gold: #d4cd96 !default;
+
+.notes {
+  .card-wrapper {
+    height: $card-height;
+    max-width: $card-width;
+    perspective: 600px;
+    position: relative;
+    width: 100%;
+    transition: transform 1s;
+  }
+  .businesscard {
+    color: $colour-gold;
+    font-family: "Fira Sans", sans-serif;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform-style: preserve-3d;
+    width: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: transform 0.6s cubic-bezier(0.49, 0.23, 0.58, 0.49);
+
+    &.flipped {
+      transform: translateX(-100%) rotateY(-180deg);
+    }
+  }
+  .card-front,
+  .card-back {
+    backface-visibility: hidden;
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(darken($colour-card-bg, 50), 0.3),
+      transparent 1px,
+      rgba(darken($colour-card-bg, 50), 0.3) 2px
+    );
+    background-size: 3px 3px;
+    background-color: $colour-card-bg;
+    border-radius: 1px;
+    box-shadow: 0px -6px 8px 0px rgba(#000, 0.1), 0px 6px 8px 0px rgba(#000, 0.1), 6px 0px 8px 0px rgba(#000, 0.1),
+      -6px 0px 8px 0px rgba(#000, 0.1);
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    padding: 5%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
+
+    .layer {
+      background: repeating-linear-gradient(
+        135deg,
+        rgba(darken($colour-gold, 50), 0.3),
+        transparent 1px,
+        rgba(darken($colour-gold, 50), 0.3) 2px
+      );
+      background-size: 3px 3px;
+      background-color: $colour-gold;
+      color: $colour-card-bg;
+      height: 100%;
+      position: relative;
+      width: 100%;
+
+      &:after {
+        background: linear-gradient(135deg, rgba(#000, 0.2), transparent);
+        content: "";
+        display: block;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .top,
+      .bottom {
+        left: 8%;
+        position: absolute;
+        z-index: 1;
+      }
+
+      .top {
+        top: 21%;
+      }
+      .bottom {
+        bottom: 22%;
+      }
+
+      h2,
+      h3,
+      h4 {
+        font-weight: 400;
+        margin: 2px 0;
+      }
+
+      h2 {
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+
+      h4 {
+        font-size: 16px;
+        font-style: italic;
+      }
+    }
+  }
+
+  .card-front {
+    .layer {
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+
+      h1 {
+        font-size: 32px;
+        font-weight: 400;
+        letter-spacing: -2px;
+        margin: 0 auto;
+        padding: 6px 18px 4px;
+        text-align: center;
+      }
+
+      .corner {
+        backface-visibility: hidden;
+        border-right: 2px solid $colour-gold;
+        border-top: 2px solid $colour-gold;
+        height: $corner-size;
+        position: absolute;
+        width: $corner-size;
+
+        &:nth-of-type(1) {
+          right: 0;
+          top: 0;
+        }
+
+        &:nth-of-type(2) {
+          left: 0;
+          top: 0;
+          transform: rotateZ(-90deg);
+        }
+
+        &:nth-of-type(3) {
+          bottom: 0;
+          left: 0;
+          transform: rotateZ(180deg);
+        }
+
+        &:nth-of-type(4) {
+          bottom: 0;
+          right: 0;
+          transform: rotateZ(90deg);
+        }
+      }
+    }
+  }
+  .outerWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap');
+
+.feedback {
+  h2 {
+    font-size: 180%;
+    font-weight: normal;
+    font-family: "Permanent Marker", arial, sans-serif;
+  }
+  p {
+    font-size: 100%;
+    font-weight: normal;
+  }
+  ul,
+  li {
+    list-style: none;
+  }
+  ul {
+    overflow: hidden;
+    padding: 3em;
+  }
+  ul li a {
+    text-decoration: none;
+    color: #000;
+    background: #ffc;
+    display: block;
+    height: 18em;
+    width: 20em;
+    padding: 1em;
+    -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
+    -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+    box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+    -moz-transition: -moz-transform 0.15s linear;
+    -o-transition: -o-transform 0.15s linear;
+    -webkit-transition: -webkit-transform 0.15s linear;
+  }
+  ul li {
+    margin: 1em;
+    float: left;
+  }
+  ul li h2 {
+    font-size: 140%;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+  ul li p {
+    font-family: "Reenie Beanie", arial, sans-serif;
+    font-size: 200%;
+  }
+  ul li a {
+    -webkit-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+    -moz-transform: rotate(-6deg);
+  }
+  ul li:nth-child(even) a {
+    -o-transform: rotate(4deg);
+    -webkit-transform: rotate(4deg);
+    -moz-transform: rotate(4deg);
+    position: relative;
+    top: 5px;
+    background: #cfc;
+  }
+  ul li:nth-child(3n) a {
+    -o-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    position: relative;
+    top: -5px;
+    background: #ccf;
+  }
+  ul li:nth-child(5n) a {
+    -o-transform: rotate(5deg);
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    position: relative;
+    top: -10px;
+  }
+  ul li a:hover,
+  ul li a:focus {
+    box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 10px 10px 7px rgba(0, 0, 0, 0.7);
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    position: relative;
+    z-index: 5;
+  }
+  ol {
+    text-align: center;
+  }
+  ol li {
+    display: inline;
+    padding-right: 1em;
+  }
+  ol li a {
+    color: #fff;
+  }
+}

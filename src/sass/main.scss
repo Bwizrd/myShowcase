@@ -1,12 +1,15 @@
 @charset "utf-8";
-$hover-color: #2870d2; // #98d4f5; //#d3d6d7;
+$hover-color: #3a567d; //#2870d2; // #98d4f5; //#d3d6d7;
 $hover-text-color: #fff;
-$info: #2870d2;
+$info: #3a567d;
 @import "theme";
 @import "fonts";
 @import "spacers";
 @import "flexbox";
 @import "bulmaAdditions";
+@import "homepage";
+// @import "about";
+
 
 // Customization
 
@@ -32,7 +35,7 @@ $info: #2870d2;
 
 // 4. Import the rest of Bulma
 
-a.is-Amex-Gold-button {
+a.is-ssd-Gold-button {
   background: #f9b500 !important;
   color: #fff;
   border: none;
@@ -49,9 +52,9 @@ $navbar-breakpoint: 0;
 // @import "node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css";
 
 #home {
-  background: url("../images/Amex_BG_pattern.png") rgba(0, 0, 0, 0.5);
-  background-size: cover;
-  background-blend-mode: multiply;
+  // background: url("../images/Amex_BG_pattern.png") rgba(0, 0, 0, 0.5);
+  // background-size: cover;
+  // background-blend-mode: multiply;
 }
 
 .main-container {
@@ -116,16 +119,14 @@ video {
 }
 
 .Training-Icon {
-  width: 5vh;
-  height: 5vh;
-  border: 2px white solid;
-  border-radius: 50%;
+  width: 7vh;
+  height: 7vh;
   padding: 9px;
 }
 
 .Practice-Icon {
-  width: 5vh;
-  height: 5vh;
+  width: 7vh;
+  height: 7vh;
   /*border: 2px white solid;
   border-radius: 50%;
   padding: 11px;*/
