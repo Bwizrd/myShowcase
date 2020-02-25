@@ -39,7 +39,7 @@
         </div>
 
 
-      
+
 
 
 
@@ -484,11 +484,42 @@
             </div>
           </div>
         </section>
+        <style>
+          /* Quick fix for Edge/IE CSS Grid Issues*/
+          /*EDGE only styles*/
+
+          .edgeOnly {
+            display: none;
+          }
+
+          @supports (-ms-ime-align:auto) {
+            .resources .container {
+              display: none;
+            }
+
+            .edgeOnly {
+              display: block;
+            }
+          }
+
+          /* IE Styles*/
+          _:-ms-fullscreen, .resources .container {
+              display: none;
+            }
+            
+          
+          _:-ms-fullscreen, .ieOnly {
+            display: block;
+          }
+        </style>
         <div class="columns">
           <div class="column is-four-fifths is-offset-1 mtm">
             <div class="content is-medium">
               <h1 class="title is-size-3 has-text-white">Website Links</h1>
-
+              <div class="edgeOnly ieOnly">
+                <h1>If you are seeing this message it is because your browser does not support CSS grid</h1>
+                <h2>Please use Google Chrome for best performance</h2>
+              </div>
               <div class="container">
                 <a href="http://thedeerlodge.co.uk" target="_blank">
                   <div class="webbox">
@@ -884,50 +915,50 @@
           </div>
         </section>
         <div class="outerWrapper">
-            <!-- <textarea class="textarea mtl notepad box" placeholder="Use this space to make notes:" id="finalNotes"
+          <!-- <textarea class="textarea mtl notepad box" placeholder="Use this space to make notes:" id="finalNotes"
               oninput="SaveFinalNotes()"></textarea>
             <span style="font-size: 14px;"><em>In order for these notes to save cookies and local storage must be turned
                 on in your browser. Google Chrome browser is recommended.</em></span> -->
-            <div class="card-wrapper">
-              <div class="businesscard">
-                <div class="card-front">
-                  <div class="layer">
-                    <h1>Paul Leppard</h1>
-                    <div class="corner"></div>
-                    <div class="corner"></div>
-                    <div class="corner"></div>
-                    <div class="corner"></div>
-                  </div>
+          <div class="card-wrapper">
+            <div class="businesscard">
+              <div class="card-front">
+                <div class="layer">
+                  <h1>Paul Leppard</h1>
+                  <div class="corner"></div>
+                  <div class="corner"></div>
+                  <div class="corner"></div>
+                  <div class="corner"></div>
                 </div>
-                <div class="card-back">
-                  <div class="layer">
-                    <div class="top">
-                      <h2>Front End Developer</h2>
-                    </div>
-                    <div class="bottom">
-                      <h3>
-                        Phone: 01458 830325
-                        
-                      </h3>
-                      <h3>
-                        Email: paul@pans-house.com
-                        <!-- <a>{:href => "mailto:#{email}"} #{email}</a> -->
-                      </h3>
-                      <h3>
-                        Facebook: https://www.facebook.com/panshouseglastonbury/
-                        <!-- <a>{:href => "#{twitter}", :target => "_blank"} #{twitter_raw}</a> -->
-                      </h3>
-                      <h3>
-                        Web: pans-house.com (Currently Down Due to Too Much Work)
-                        <!-- <a>{:href => "#{web}", :target => "_blank"} #{web_raw}</a> -->
-                      </h3>
-                    </div>
+              </div>
+              <div class="card-back">
+                <div class="layer">
+                  <div class="top">
+                    <h2>Front End Developer</h2>
+                  </div>
+                  <div class="bottom">
+                    <h3>
+                      Phone: 01458 830325
+
+                    </h3>
+                    <h3>
+                      Email: paul@pans-house.com
+                      <!-- <a>{:href => "mailto:#{email}"} #{email}</a> -->
+                    </h3>
+                    <h3>
+                      Facebook: https://www.facebook.com/panshouseglastonbury/
+                      <!-- <a>{:href => "#{twitter}", :target => "_blank"} #{twitter_raw}</a> -->
+                    </h3>
+                    <h3>
+                      Web: pans-house.com (Currently Down Due to Too Much Work)
+                      <!-- <a>{:href => "#{web}", :target => "_blank"} #{web_raw}</a> -->
+                    </h3>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
-      
+
         </div>
         <h1><a target="_blank" href="https://icons8.com/icons/set/darth-vader">Darth Vader</a>, <a target="_blank"
             href="https://icons8.com/icons/set/r2-d2">R2-D2</a> and other icons by <a target="_blank"
